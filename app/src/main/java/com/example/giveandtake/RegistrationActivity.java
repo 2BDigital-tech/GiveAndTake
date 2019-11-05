@@ -30,11 +30,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText passwordbox;
     private Button RegisterBtn;
     private FirebaseAuth firebaseAut;
-    private DatabaseReference firebaseDatabase;
+    private FirebaseDatabase firebaseDatabase;
     private Button computerBtn;
     boolean[] checkItems;
     String[] listItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
+    ArrayList<String> finalItems = new ArrayList<>();
 
 
 
@@ -50,8 +51,8 @@ public class RegistrationActivity extends AppCompatActivity {
         computerBtn = (Button)findViewById(R.id.computerBtn);
         firebaseAut = firebaseAut.getInstance();
 
-        // if there is problme, its here
-            firebaseDatabase =  FirebaseDatabase.getInstance().getReference();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = firebaseDatabase.getReference("Uusers_Infomation");
 
 
         listItems = getResources().getStringArray(R.array.computerOps);
@@ -79,9 +80,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         String Email = emailbox.getText().toString().trim();
-                        String id = firebaseDatabase.push().getKey();
-                        User newUser = new User(Email,mUserItems);
-                        firebaseDatabase.child(id).setValue(newUser);
+                        String id = myRef.push().getKey();
+
+
+                        for(int e : mUserItems){
+                            finalItems.add(listItems[e]);
+                        }
+                        User newUser = new User(Email,finalItems);
+                        myRef.child(id).setValue(newUser);
 
 
                     }
@@ -93,20 +99,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
 
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override

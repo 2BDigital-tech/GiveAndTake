@@ -3,17 +3,20 @@ package com.example.giveandtake;
 import java.util.ArrayList;
 
 public class User {
-
+    static int countUsers = 0;
     String Name;
+    int idnum;
     String UserEmail;
     String PhoneNumber;
-    ArrayList<Integer> computer;
+    ArrayList<String> computerSubject;
 
-    public User(String userEmail,ArrayList<Integer> computer) {
+    public User(String userEmail,ArrayList<String> computerSubject) {
         UserEmail = userEmail;
-        this.computer = computer;
-    }
+        this.computerSubject = computerSubject;
+        idnum = countUsers;
+        this.countUsers++;
 
+    }
 
     public String getUserEmail() {
         return UserEmail;
@@ -23,7 +26,7 @@ public class User {
         return PhoneNumber;
     }
 
-    public ArrayList<Integer> getComputer() {
-        return computer;
+    public ArrayList<String> getComputer() {
+        return computerSubject;
     }
 }
