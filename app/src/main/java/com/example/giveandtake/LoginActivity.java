@@ -49,7 +49,7 @@ import com.google.firebase.auth.FirebaseAuth;
             @Override
             public void onClick(View v) {
                 final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Processing...", true);
-                (firebaseAuth.createUserWithEmailAndPassword(emailboxLogin.getText().toString(), passwordboxLogin.getText().toString()))
+                (firebaseAuth.signInWithEmailAndPassword(emailboxLogin.getText().toString(), passwordboxLogin.getText().toString()))
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
