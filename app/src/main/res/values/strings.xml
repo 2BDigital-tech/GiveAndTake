@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GiveAndTake</string>
+    <string-array name="computerOps">
+        <item>Fix Computer</item>
+        <item>install progrems</item>
+    </string-array>
 </resources>
