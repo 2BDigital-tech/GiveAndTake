@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
     public class LoginActivity extends AppCompatActivity {
 
-
+//shimon test git
     private EditText emailboxLogin;
     private  EditText passwordboxLogin;
     private  Button buttonLogin;
