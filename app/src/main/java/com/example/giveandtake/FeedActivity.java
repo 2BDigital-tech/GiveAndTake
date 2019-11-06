@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FeedActivity extends AppCompatActivity {
-//test git naomi
+
     private TextView tvemail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
