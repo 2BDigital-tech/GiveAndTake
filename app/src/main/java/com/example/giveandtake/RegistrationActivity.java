@@ -23,10 +23,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
     private ProgressBar progressBar;
+
     private FirebaseAuth mAuth;
-    private Button ReturnBtn;
 
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -36,22 +36,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         editTextPassword = findViewById(R.id.edit_text_password);
         editTextPhone = findViewById(R.id.edit_text_phone);
         progressBar = findViewById(R.id.progressbar);
-       progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
 
         mAuth = FirebaseAuth.getInstance();
-        ReturnBtn = (Button)findViewById(R.id.returnRegisterbtn);
 
-
-       findViewById(R.id.button_register);
-               ReturnBtn.setOnClickListener(this);
-
-        ReturnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
+        findViewById(R.id.button_register).setOnClickListener(this);
     }
 
     @Override
@@ -112,7 +101,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
 
 
-       progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -131,11 +120,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                   progressBar.setVisibility(View.GONE);
+                                    progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
-                                        Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
-                                        startActivity(i);
                                     } else {
                                         //display a failure message
                                     }
@@ -144,8 +131,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                         } else {
                             Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            Log.e("onComplete: Failed=", task.getException().getMessage());
-
                         }
                     }
                 });
