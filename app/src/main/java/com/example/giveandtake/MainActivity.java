@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button RegisterBtn = (Button)findViewById(R.id.RegisterMainBox);
+        final Button RegisterBtn = (Button)findViewById(R.id.RegisterMainBox);
         Button LoginBtn = (Button)findViewById(R.id.LoginMainBox);
         Button ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
 
