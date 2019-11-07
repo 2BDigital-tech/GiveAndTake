@@ -5,102 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ghost_app_background"
-    tools:context=".RegistrationActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:padding="@dimen/default_padding">
+    tools:context=".RegistrationActivity" >
 
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="cursive"
-            android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/app_name_size" />
-
-
-        <EditText
-            android:id="@+id/edit_text_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_name"
-            android:drawablePadding="@dimen/drawable_padding"
-            android:hint="@string/full_name"
-            android:nextFocusDown="@id/edit_text_email"
-            android:textColor="@color/colorText"
-            android:textColorHint="@color/colorHint" />
-
-        <EditText
-            android:id="@+id/edit_text_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_email"
-            android:drawablePadding="@dimen/drawable_padding"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:nextFocusDown="@id/edit_text_password"
-            android:textColor="@color/colorText"
-            android:textColorHint="@color/colorHint" />
-
-
-        <EditText
-            android:id="@+id/edit_text_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_password"
-            android:drawablePadding="@dimen/drawable_padding"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:nextFocusDown="@id/edit_text_phone"
-            android:textColor="@color/colorText"
-            android:textColorHint="@color/colorHint"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/edit_text_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:drawableLeft="@drawable/ic_phone"
-            android:drawablePadding="@dimen/drawable_padding"
-            android:hint="@string/phone"
-            android:inputType="number"
-            android:maxLength="10"
-            android:nextFocusDown="@id/button_register"
-            android:textColor="@color/colorText"
-            android:textColorHint="@color/colorHint"
-            android:importantForAutofill="no" />
-
-        <Button
-            android:id="@+id/button_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_register"
-            android:backgroundTint="@android:color/transparent"
-            android:text="@string/register"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/returnRegisterbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:text="Return"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.334"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.522" />
-
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -108,5 +14,110 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="484dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="cursive"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/app_name_size" />
+
+
+            <EditText
+                android:id="@+id/edit_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_name"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:hint="@string/full_name"
+                android:nextFocusDown="@id/edit_text_email"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/colorHint" />
+
+            <EditText
+                android:id="@+id/edit_text_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@id/edit_text_password"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/colorHint" />
+
+
+            <EditText
+                android:id="@+id/edit_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:nextFocusDown="@id/edit_text_phone"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint" />
+
+            <EditText
+                android:id="@+id/edit_text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:hint="@string/phone"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="10"
+                android:nextFocusDown="@id/button_register"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint" />
+
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/register" />
+
+            <Button
+                android:id="@+id/returnRegisterbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:text="Return"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.334"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.522" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

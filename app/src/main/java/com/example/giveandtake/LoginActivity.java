@@ -39,7 +39,7 @@ import com.google.firebase.auth.FirebaseAuth;
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
