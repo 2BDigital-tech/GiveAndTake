@@ -13,6 +13,8 @@
     <string name="input_error_phone">phone required</string>
     <string name="input_error_password_length">password should be atleast 6 characters long</string>
     <string name="input_error_phone_invalid">enter a valid phone number</string>
+    <string name="input_error_Israel_phone">enter a valid Israel number </string>
+
     <string name="registration_success">Registered Successfully</string>
     <string name="input_error_email_invalid">enter a valid email</string>
 

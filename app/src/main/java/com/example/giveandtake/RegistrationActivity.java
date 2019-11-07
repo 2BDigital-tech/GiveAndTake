@@ -67,6 +67,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         final String phone = editTextPhone.getText().toString().trim();
+        Log.e(": Failed=", this.editTextPhone.getText().toString());
 
         if (name.isEmpty()) {
             editTextName.setError(getString(R.string.input_error_name));
@@ -106,6 +107,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         if (phone.length() != 10) {
             editTextPhone.setError(getString(R.string.input_error_phone_invalid));
+            editTextPhone.requestFocus();
+            return;
+        }
+        if (phone.charAt(0) != '0') {
+            editTextPhone.setError(getString(R.string.input_error_phone_invalid));
+            editTextPhone.requestFocus();
+            return;
+        }
+        if (phone.charAt(1) != '5') {
+            editTextPhone.setError(getString(R.string.input_error_Israel_phone));
             editTextPhone.requestFocus();
             return;
         }
