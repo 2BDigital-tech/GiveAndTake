@@ -99,6 +99,7 @@
                 android:id="@+id/button_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
                 android:text="@string/register" />
 
             <Button

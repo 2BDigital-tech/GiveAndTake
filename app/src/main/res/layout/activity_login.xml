@@ -55,7 +55,11 @@
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login" />
+            android:backgroundTint="@android:color/transparent"
+            android:text="@string/login"
+            android:textColor="@color/colorButtonTransparent"
+            android:textColorHighlight="@android:color/transparent"
+            android:textColorHint="@color/colorButtonTransparent" />
 
         <Button
         android:id="@+id/returnLoginbtn"
