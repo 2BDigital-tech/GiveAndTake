@@ -23,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
     private ProgressBar progressBar;
-
+    private Button ReturnBtn;
     private FirebaseAuth mAuth;
 
     @Override
@@ -41,6 +41,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.button_register).setOnClickListener(this);
+        ReturnBtn = (Button)findViewById(R.id.returnRegisterbtn);
+        ReturnBtn.setOnClickListener(this);
+
+        ReturnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
