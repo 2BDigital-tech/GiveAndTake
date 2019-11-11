@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="4dp">
+        android:layout_marginEnd="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,6 +31,7 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:padding="@dimen/default_padding">
+
 
             <TextView
 
@@ -95,26 +96,151 @@
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint" />
 
-            <Button
-                android:id="@+id/button_register"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="@string/register" />
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/returnRegisterbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Return"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.334"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.522" />
+                <TableRow
+                    android:id="@+id/Table_layout_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button_register"
+                        android:layout_width="187dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:text="@string/register" />
+
+                    <Button
+                        android:id="@+id/returnRegisterbtn"
+                        android:layout_width="197dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:text="Return"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.334"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.522" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Ad_option_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+
+                        android:id="@+id/optionText1"
+                        android:layout_width="185dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="@string/computer"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/app_name_size" />
+
+                    <Button
+                        android:id="@+id/Option1"
+                        android:layout_width="163dp"
+                        android:layout_height="wrap_content"
+                        android:text="Button" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Ad_option_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+
+                        android:id="@+id/optionText2"
+                        android:layout_width="185dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Computer"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/app_name_size" />
+
+                    <Button
+                        android:id="@+id/Option2"
+                        android:layout_width="163dp"
+                        android:layout_height="wrap_content"
+                        android:text="Button" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Ad_option_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+
+                        android:id="@+id/optionText3"
+                        android:layout_width="185dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Computer"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/app_name_size" />
+
+                    <Button
+                        android:id="@+id/Option3"
+                        android:layout_width="163dp"
+                        android:layout_height="wrap_content"
+                        android:text="Button" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Ad_option_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+
+                        android:id="@+id/optionText4"
+                        android:layout_width="185dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Computer"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/app_name_size" />
+
+                    <Button
+                        android:id="@+id/Option4"
+                        android:layout_width="163dp"
+                        android:layout_height="wrap_content"
+                        android:text="Add" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+
+            </TableLayout>
 
         </LinearLayout>
 
