@@ -118,19 +118,17 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         } else if(userIteamOption1.contains(position)){
                                 userIteamOption1.remove(position);
                             }
-                        }
+                    }
+
                 });
                 mBuilder.setCancelable(false);
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-
+                        finalUserItemsOption1 = new ArrayList<>();
                         for(int e : userIteamOption1){
-                            if(!finalUserItemsOption1.contains(itemsOptions1[e])){
-                                finalUserItemsOption1.add(itemsOptions1[e]);
-                            }
+                            finalUserItemsOption1.add(itemsOptions1[e]);
                         }
-
 
                     }
                 });
@@ -165,11 +163,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int position, boolean isChecked) {
                         if(isChecked){
-                            if(!userIteamOption2.contains(position)){
+                            if(!userIteamOption2.contains(position)) {
                                 userIteamOption2.add(position);
-                            } else{
-                                userIteamOption2.remove(position);
                             }
+                        } else if(userIteamOption2.contains(position)){
+                            userIteamOption2.remove(position);
                         }
                     }
                 });
@@ -177,11 +175,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        finalUserItemsOption2 = new ArrayList<>();
                         for(int e : userIteamOption2){
                             finalUserItemsOption2.add(itemsOptions2[e]);
                         }
-
-
 
                     }
                 });
@@ -216,9 +213,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             if(!userIteamOption3.contains(position)) {
                                 userIteamOption3.add(position);
                             }
-                            else if(userIteamOption3.contains(position)){
-                                userIteamOption3.remove(position);
-                            }
+                        } else if(userIteamOption3.contains(position)){
+                            userIteamOption3.remove(position);
                         }
                     }
                 });
@@ -226,6 +222,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        finalUserItemsOption3 = new ArrayList<>();
                         for(int e : userIteamOption3){
                             finalUserItemsOption3.add(itemsOptions3[e]);
                         }
@@ -261,11 +258,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int position, boolean isChecked) {
                         if(isChecked){
-                            if(!userIteamOption4.contains(position)){
+                            if(!userIteamOption4.contains(position)) {
                                 userIteamOption4.add(position);
-                            } else{
-                                userIteamOption4.remove(position);
                             }
+                        } else if(userIteamOption4.contains(position)){
+                            userIteamOption4.remove(position);
                         }
                     }
                 });
@@ -273,6 +270,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        finalUserItemsOption4 = new ArrayList<>();
                         for(int e : userIteamOption4){
                             finalUserItemsOption4.add(itemsOptions4[e]);
                         }
