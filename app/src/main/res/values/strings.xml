@@ -9,9 +9,26 @@
     <string name="register">Register</string>
     <string name="input_error_name">name required</string>
     <string name="input_error_email">email required</string>
-    <string name="computerOps">
-        <item>omer</item>
-    </string>
+    <string-array name="Option1">
+        <item>Option1-1</item>
+        <item>Option1-2</item>
+        <item>Option1-3</item>
+    </string-array>
+    <string-array name="Option2">
+        <item>Option2-1</item>
+        <item>Option2-2</item>
+        <item>Option2-3</item>
+    </string-array>
+    <string-array name="Option3">
+        <item>Option3-1</item>
+        <item>Option3-2</item>
+        <item>Option3-3</item>
+    </string-array>
+    <string-array name="Option4">
+        <item>Option4-1</item>
+        <item>Option4-2</item>
+        <item>Option4-3</item>
+    </string-array>
     <string name="input_error_password">password required</string>
     <string name="input_error_phone">phone required</string>
     <string name="input_error_password_length">password should be atleast 6 characters long</string>
