@@ -40,7 +40,7 @@
     <string name="computer">Computer</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Activity</string>
+    <string name="title_notifications">Profil</string>
 
 </resources>
