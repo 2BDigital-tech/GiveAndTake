@@ -8,8 +8,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
         Button LoginBtn = (Button)findViewById(R.id.LoginMainBox);
         Button ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
         Button testhome = (Button)findViewById(R.id.testhome);
+/*
+if user connect as not open a login and register box 
+ */
+        firebaseAuth=firebaseAuth.getInstance();
+
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        if(user!=null){
+
+            Intent activi=new Intent(MainActivity.this,Main2Activity.class);
+            startActivity(activi);
+        }
+
 
         testhome.setOnClickListener(new View.OnClickListener() {
             @Override
