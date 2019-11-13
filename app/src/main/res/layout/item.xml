@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/ImageView"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:text="item 1">
 
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/ImageView"
             android:layout_below="@+id/NameAsk"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:text="item 2"
             android:textStyle="bold">
 
@@ -38,7 +39,7 @@
         <ImageView
             android:id="@+id/ImageView"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="75dp"
             android:padding="2dp">
 
         </ImageView>
