@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/NameAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ImageView"
+            android:textStyle="bold"
+            android:text="item 1">
+
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/PhoneAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ImageView"
+            android:layout_below="@+id/NameAsk"
+            android:textSize="10dp"
+            android:text="item 2"
+            android:textStyle="bold">
+
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp">
+
+        </ImageView>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
