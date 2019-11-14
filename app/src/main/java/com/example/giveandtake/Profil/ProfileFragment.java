@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,8 @@ public class ProfileFragment extends Fragment {
 
                 Intent activi=new Intent(getActivity(),com.example.giveandtake.MainActivity.class);
                 startActivity(activi);
+                Toast.makeText(getActivity(),"Disconnect Full", Toast.LENGTH_LONG).show();
+
             }
         });
 
