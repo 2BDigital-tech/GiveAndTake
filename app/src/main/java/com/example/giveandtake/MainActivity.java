@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.giveandtake.Admin.AdminConnect;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -39,7 +40,7 @@ if user connect as not open a login and register box
         testhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                Intent i = new Intent(MainActivity.this, AdminConnect.class);
                 startActivity(i);
             }
         });
