@@ -4,52 +4,60 @@ package com.example.giveandtake;
 import java.util.ArrayList;
 
 public class User {
-    public String name, email, phone;
-    public ArrayList<String> Option1 = new ArrayList<>();
-    public ArrayList<String> Option2 = new ArrayList<>();
-    public ArrayList<String> Option3 = new ArrayList<>();
-    public ArrayList<String> Option4 = new ArrayList<>();
+
+    private ArrayList<String> option1 = new ArrayList<>();
+    private ArrayList<String> option2 = new ArrayList<>();
+    private ArrayList<String> option3 = new ArrayList<>();
+    private ArrayList<String> option4 = new ArrayList<>();
+    private String email;
+    private String name ;
+    private String phone;
+
+    public User(){
+    }
 
     public User(String name, String email, String phone, ArrayList<String> option1, ArrayList<String> option2, ArrayList<String> option3, ArrayList<String> option4) {
-        this.name = name;
+
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
         this.email = email;
+        this.name = name;
         this.phone = phone;
-        Option1 = option1;
-        Option2 = option2;
-        Option3 = option3;
-        Option4 = option4;
+
     }
 
     public ArrayList<String> getOption1() {
-        return Option1;
+        return option1;
     }
 
     public void setOption1(ArrayList<String> option1) {
-        Option1 = option1;
+        option1 = option1;
     }
 
     public ArrayList<String> getOption2() {
-        return Option2;
+        return option2;
     }
 
     public void setOption2(ArrayList<String> option2) {
-        Option2 = option2;
+        option2 = option2;
     }
 
     public ArrayList<String> getOption3() {
-        return Option3;
+        return option3;
     }
 
     public void setOption3(ArrayList<String> option3) {
-        Option3 = option3;
+        option3 = option3;
     }
 
     public ArrayList<String> getOption4() {
-        return Option4;
+        return option4;
     }
 
     public void setOption4(ArrayList<String> option4) {
-        Option4 = option4;
+        option4 = option4;
     }
 
     public String getUserEmail() {
@@ -78,7 +86,7 @@ public class User {
     }
 
 
-    ////setters and getters for Option1'2'3
 }
+
 
 
