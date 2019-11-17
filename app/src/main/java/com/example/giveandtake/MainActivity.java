@@ -17,7 +17,12 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
 
         final Button RegisterBtn = (Button)findViewById(R.id.RegisterMainBox);

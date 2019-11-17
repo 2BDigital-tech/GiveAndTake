@@ -1,38 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Admin.ShowUsers">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/User_txt_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="sans-serif-black"
-                    android:lineSpacingExtra="18sp"
-                    android:text="View User"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic"
-                    android:typeface="monospace" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/find_friends_recycler_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="28dp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/User_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="531dp" />
-
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+</RelativeLayout>

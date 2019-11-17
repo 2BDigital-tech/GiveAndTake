@@ -3,7 +3,8 @@ package com.example.giveandtake;
 
 import java.util.ArrayList;
 
-public class User {
+public class User
+{
     public String name, email, phone;
     public ArrayList<String> Option1 = new ArrayList<>();
     public ArrayList<String> Option2 = new ArrayList<>();
@@ -19,6 +20,7 @@ public class User {
         Option3 = option3;
         Option4 = option4;
     }
+
 
     public ArrayList<String> getOption1() {
         return Option1;

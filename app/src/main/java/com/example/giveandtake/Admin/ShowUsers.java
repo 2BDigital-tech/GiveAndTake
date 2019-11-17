@@ -1,88 +1,114 @@
 package com.example.giveandtake.Admin;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.giveandtake.R;
-import com.example.giveandtake.home.HomeViewModel;
-import com.example.giveandtake.home.Item;
-import com.example.giveandtake.home.ItemAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.giveandtake.User2;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class ShowUsers extends AppCompatActivity {
 
-    private HomeViewModel homeViewModel;
-    private RecyclerView _RecyclerView;
-    private RecyclerView.Adapter _Adapter;
-    private RecyclerView.LayoutManager _LayoutManager;
-    private FirebaseDatabase firebaseDatabase;
-    private ArrayList<Item> exampleItems = new ArrayList<>();
+    private Toolbar mToolbar;
+    private RecyclerView FindFriendsRecyclerList;
+    private DatabaseReference UsersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_users);
 
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users_Infomation");
 
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = firebaseDatabase.getReference("Users_Infomation");
-
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String name = ds.child("name").getValue(String.class);
-                    //String email = ds.child("email").getValue(String.class);
-                    String phone = ds.child("phone").getValue(String.class);
-                    Item Item1 = new Item(R.drawable.ic_phone,name,phone);
-                    boolean add = exampleItems.add(Item1);
-
-                }
-                _RecyclerView = findViewById(R.id.User_recycler);
-                _RecyclerView.setHasFixedSize(true);
-                _LayoutManager = new LinearLayoutManager(ShowUsers.this);
-                _Adapter = new ItemAdapter(exampleItems);
-                _RecyclerView.setLayoutManager(_LayoutManager);
-                _RecyclerView.setAdapter(_Adapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-        myRef.addListenerForSingleValueEvent(eventListener);
+        FindFriendsRecyclerList = (RecyclerView) findViewById(R.id.find_friends_recycler_list);
+        FindFriendsRecyclerList.setLayoutManager(new LinearLayoutManager(this));
 
 
+//        mToolbar = (Toolbar) findViewById(R.id.find_friends_toolbar);
+//        setSupportActionBar(mToolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setTitle("Find Friends");
+    }
+
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        FirebaseRecyclerOptions<User2> options =
+                new FirebaseRecyclerOptions.Builder<User2>()
+                        .setQuery(UsersRef, User2.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<User2, FindFriendViewHolder> adapter =
+                new FirebaseRecyclerAdapter<User2, FindFriendViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, final int position, @NonNull User2 model)
+                    {
+                        holder.userName.setText(model.getUserName());
+                        holder.userStatus.setText(model.getUserPhone());
+                        //Picasso.get().load(model.getImage()).placeholder(R.drawable.profile_image).into(holder.profileImage);
+
+
+//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view)
+//                            {
+//                                String visit_user_id = getRef(position).getKey();
+//
+//                           //     Intent profileIntent = new Intent(ShowUsers.this, AdminConnect.class);
+//                             //   profileIntent.putExtra("visit_user_id", visit_user_id);
+//                               // startActivity(profileIntent);
+//                            }
+//                        });
+                    }
+
+                    @NonNull
+                    @Override
+                    public FindFriendViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
+                    {
+                        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.users_display_layout, viewGroup, false);
+                        FindFriendViewHolder viewHolder = new FindFriendViewHolder(view);
+                        return viewHolder;
+                    }
+                };
+
+        FindFriendsRecyclerList.setAdapter(adapter);
+
+        adapter.startListening();
+    }
 
 
 
+    public static class FindFriendViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView userName, userStatus;
+     //   CircleImageView profileImage;
 
 
+        public FindFriendViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            userName = itemView.findViewById(R.id.user_profile_name);
+            userStatus = itemView.findViewById(R.id.user_status);
+          //  profileImage = itemView.findViewById(R.id.users_profile_image);
+        }
     }
 }
