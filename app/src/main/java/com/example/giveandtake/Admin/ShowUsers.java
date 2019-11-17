@@ -1,5 +1,7 @@
 package com.example.giveandtake.Admin;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.giveandtake.ProfileActivity;
 import com.example.giveandtake.R;
 import com.example.giveandtake.User2;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -59,24 +62,30 @@ public class ShowUsers extends AppCompatActivity {
         FirebaseRecyclerAdapter<User2, FindFriendViewHolder> adapter =
                 new FirebaseRecyclerAdapter<User2, FindFriendViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, final int position, @NonNull User2 model)
+                    protected void onBindViewHolder(@NonNull final FindFriendViewHolder holder, final int position, @NonNull User2 model)
                     {
                         holder.userName.setText(model.getUserName());
                         holder.userStatus.setText(model.getUserPhone());
-                        //Picasso.get().load(model.getImage()).placeholder(R.drawable.profile_image).into(holder.profileImage);
+                       // Picasso.get().load(model.getImage()).placeholder(R.drawable.profile_image).into(holder.profileImage);
 
 
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view)
-//                            {
-//                                String visit_user_id = getRef(position).getKey();
+                        holder.userStatus.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
+
+                                String visit_user_id = getRef(position).getKey();
+                                Intent sIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:12345"));
+                                sIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                startActivity(sIntent);
+
 //
-//                           //     Intent profileIntent = new Intent(ShowUsers.this, AdminConnect.class);
-//                             //   profileIntent.putExtra("visit_user_id", visit_user_id);
-//                               // startActivity(profileIntent);
-//                            }
-//                        });
+//                                Intent profileIntent = new Intent(ShowUsers.this, ProfileActivity.class);
+//                               profileIntent.putExtra("visit_user_id", visit_user_id);
+//                                startActivity(profileIntent);
+                            }
+                        });
                     }
 
                     @NonNull
@@ -99,7 +108,7 @@ public class ShowUsers extends AppCompatActivity {
     public static class FindFriendViewHolder extends RecyclerView.ViewHolder
     {
         TextView userName, userStatus;
-     //   CircleImageView profileImage;
+      CircleImageView profileImage;
 
 
         public FindFriendViewHolder(@NonNull View itemView)
@@ -108,7 +117,7 @@ public class ShowUsers extends AppCompatActivity {
 
             userName = itemView.findViewById(R.id.user_profile_name);
             userStatus = itemView.findViewById(R.id.user_status);
-          //  profileImage = itemView.findViewById(R.id.users_profile_image);
+          profileImage = itemView.findViewById(R.id.users_profile_image);
         }
     }
 }
