@@ -3,16 +3,16 @@ package com.example.giveandtake;
 
 import java.util.ArrayList;
 
-public class User2 {
+public class User_Admin_Class {
     public String name, phone,email;
 
-    public User2(String name ,String phone,String email){
+    public User_Admin_Class(String name , String phone, String email){
         this.name = name;
         this.phone = phone;
         this.email = email;
 
             }
-public User2(){
+public User_Admin_Class(){
     this.name = "";
     this.phone = "" ;
     this.email="";

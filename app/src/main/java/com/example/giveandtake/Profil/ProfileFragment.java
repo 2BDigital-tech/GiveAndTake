@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.giveandtake.R;
+import com.example.giveandtake.Start_Application;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
@@ -35,7 +36,7 @@ public class ProfileFragment extends Fragment {
 
                 firebaseAuth.getInstance().signOut();
 
-                Intent activi=new Intent(getActivity(),com.example.giveandtake.MainActivity.class);
+                Intent activi=new Intent(getActivity(), Start_Application.class);
                 startActivity(activi);
                 Toast.makeText(getActivity(),"Disconnect Full", Toast.LENGTH_LONG).show();
 

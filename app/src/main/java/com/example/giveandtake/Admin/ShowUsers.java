@@ -3,11 +3,9 @@ package com.example.giveandtake.Admin;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -18,13 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.giveandtake.R;
-import com.example.giveandtake.User2;
+import com.example.giveandtake.User_Admin_Class;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -58,15 +52,15 @@ firebaseAuth=FirebaseAuth.getInstance();
     {
         super.onStart();
 
-        FirebaseRecyclerOptions<User2> options =
-                new FirebaseRecyclerOptions.Builder<User2>()
-                        .setQuery(UsersRef, User2.class)
+        FirebaseRecyclerOptions<User_Admin_Class> options =
+                new FirebaseRecyclerOptions.Builder<User_Admin_Class>()
+                        .setQuery(UsersRef, User_Admin_Class.class)
                         .build();
 
-        FirebaseRecyclerAdapter<User2, FindFriendViewHolder> adapter =
-                new FirebaseRecyclerAdapter<User2, FindFriendViewHolder>(options) {
+        FirebaseRecyclerAdapter<User_Admin_Class, FindFriendViewHolder> adapter =
+                new FirebaseRecyclerAdapter<User_Admin_Class, FindFriendViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull final FindFriendViewHolder holder, final int position, @NonNull User2 model) {
+                    protected void onBindViewHolder(@NonNull final FindFriendViewHolder holder, final int position, @NonNull User_Admin_Class model) {
                         holder.userName.setText(model.getUserName());
                         holder.userStatus.setText(model.getUserPhone());
                         holder.ViewEmail.setText(model.getUserEmail());

@@ -12,7 +12,7 @@ import com.example.giveandtake.Admin.AdminConnect;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class Start_Application extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     @Override
@@ -37,7 +37,7 @@ if user connect as not open a login and register box
         FirebaseUser user=firebaseAuth.getCurrentUser();
         if(user!=null){
 
-            Intent activi=new Intent(MainActivity.this,Main2Activity.class);
+            Intent activi=new Intent(Start_Application.this, Connect_Fragment.class);
             startActivity(activi);
         }
 
@@ -45,7 +45,7 @@ if user connect as not open a login and register box
         testhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AdminConnect.class);
+                Intent i = new Intent(Start_Application.this, AdminConnect.class);
                 startActivity(i);
             }
         });
@@ -53,7 +53,7 @@ if user connect as not open a login and register box
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                Intent i = new Intent(Start_Application.this, LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -61,7 +61,7 @@ if user connect as not open a login and register box
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+                Intent i = new Intent(Start_Application.this, RegistrationActivity.class);
                 startActivity(i);
             }
         });

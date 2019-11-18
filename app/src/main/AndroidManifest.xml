@@ -15,11 +15,11 @@
         <activity android:name=".Admin.AdminConnect" />
         <activity android:name=".ProfileActivity" />
         <activity
-            android:name=".Main2Activity"
+            android:name=".Connect_Fragment"
             android:label="@string/title_activity_main2" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Start_Application">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

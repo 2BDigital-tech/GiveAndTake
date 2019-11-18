@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.giveandtake.home.ItemDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -296,7 +295,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
+                Intent i = new Intent(RegistrationActivity.this, Start_Application.class);
                 startActivity(i);
             }
         });
