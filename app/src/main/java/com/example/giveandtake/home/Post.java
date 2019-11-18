@@ -1,6 +1,6 @@
 package com.example.giveandtake.home;
 
-public class Item {
+public class Post {
     private int imageResocure;
     private String NameAsk;
     private String PhoneAsk;
@@ -8,6 +8,7 @@ public class Item {
 
     public void setImageResocure(int imageResocure) {
         this.imageResocure = imageResocure;
+
     }
 
     public void setNameAsk(String nameAsk) {
@@ -30,7 +31,7 @@ public class Item {
         return PhoneAsk;
     }
 
-    public Item(int imageResocure, String nameAsk, String phoneAsk) {
+    public Post(int imageResocure, String nameAsk, String phoneAsk) {
         this.imageResocure = imageResocure;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;

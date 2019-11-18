@@ -2,6 +2,7 @@ package com.example.giveandtake.home;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,29 +38,32 @@ public class HomeFragment extends Fragment {
     private RecyclerView.Adapter _Adapter;
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
-    private ArrayList<Item> exampleItems = new ArrayList<>();
-    private ArrayList<String> category = new ArrayList<>();
-    private String myname;
+    static private ArrayList<Post> PostsList = new ArrayList<>();
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser f;
-
-    User coorentUser;
-
-    View root;
+    private DatabaseReference myRef;
+    private Button addItem;
+    private View root;
+    private Button giveBtn;
+    private Button takeBtn;
 
     /// get the Buttoms ////
 
-    private Button addItem;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = firebaseDatabase.getReference("Posts");
+        myRef = firebaseDatabase.getReference("Posts");
         firebaseAuth = firebaseAuth.getInstance();
 
-
+        //////////////////// Create Dialog ///////////////////
         addItem = root.findViewById(R.id.addItem);
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        giveBtn = root.findViewById(R.id.giveBtn);
+        takeBtn = root.findViewById(R.id.takeBtn);
+
+
+
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +72,24 @@ public class HomeFragment extends Fragment {
 
         });
 
+        createToShowPosts();
+
+
+        return root;
+
+    }
+
+    public void buildRecyclerView(){
+        _RecyclerView = root.findViewById(R.id.recyclerview);
+        _RecyclerView.setHasFixedSize(true);
+        _LayoutManager = new LinearLayoutManager(getContext());
+        _Adapter = new ItemAdapter(PostsList);
+        _RecyclerView.setLayoutManager(_LayoutManager);
+        _RecyclerView.setAdapter(_Adapter);
+
+    }
+
+    public void createToShowPosts(){
 
 
         ValueEventListener eventListener = new ValueEventListener() {
@@ -76,18 +98,11 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.child("name").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
-
-
-                    Item Item1 = new Item(R.drawable.item_24dp, name, phone);
-                    boolean add = exampleItems.add(Item1);
-
+                    Post Item1 = new Post(R.drawable.item_24dp, name, phone);
+                    PostsList.add(Item1);
                 }
-                _RecyclerView = root.findViewById(R.id.recyclerview);
-                _RecyclerView.setHasFixedSize(true);
-                _LayoutManager = new LinearLayoutManager(getContext());
-                _Adapter = new ItemAdapter(exampleItems);
-                _RecyclerView.setLayoutManager(_LayoutManager);
-                _RecyclerView.setAdapter(_Adapter);
+
+                buildRecyclerView();
             }
 
             @Override
@@ -96,14 +111,12 @@ public class HomeFragment extends Fragment {
         };
         myRef.addListenerForSingleValueEvent(eventListener);
 
-
-        return root;
-
     }
 
     private void openDialog() {
         ItemDialog itemDialog = new ItemDialog();
         itemDialog.show(getFragmentManager(), "Ex");
+
 
     }
 }

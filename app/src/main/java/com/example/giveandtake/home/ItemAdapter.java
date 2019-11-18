@@ -14,7 +14,7 @@ import com.example.giveandtake.R;
 import java.util.ArrayList;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
-    private ArrayList<Item> Listitem;
+    private ArrayList<Post> Listitem;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -31,7 +31,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         }
     }
 
-    public ItemAdapter(ArrayList<Item> myListitem){
+    public ItemAdapter(ArrayList<Post> myListitem){
         Listitem = myListitem;
 
     }
@@ -48,7 +48,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Item correntItem = Listitem.get(position);
+        Post correntItem = Listitem.get(position);
 
         holder._ImageView.setImageResource(correntItem.getImageResocure());
         holder._NameAsk.setText(correntItem.getNameAsk());
