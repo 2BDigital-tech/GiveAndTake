@@ -9,15 +9,54 @@
         android:id="@+id/recyclerview"
         android:layout_width="391dp"
         android:layout_height="578dp"
+        android:layout_marginTop="120dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="3dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
         android:background="@android:color/darker_gray"
         android:padding="4dp"
         android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/addItem"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="349dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="528dp"
+        android:text="+" />
+
+    <TextView
+        android:id="@+id/giveText"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="520dp"
+        android:text="What You Can give?"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/takeText"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="487dp"
+        android:text="What You Need?"
+        android:textSize="15dp" />
 
 </RelativeLayout>

@@ -1,9 +1,14 @@
 package com.example.giveandtake.home;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,12 +16,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.giveandtake.R;
+import com.example.giveandtake.RegistrationActivity;
+import com.example.giveandtake.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
@@ -26,28 +37,66 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
     private ArrayList<Item> exampleItems = new ArrayList<>();
+    private ArrayList<String> category = new ArrayList<>();
+    private String myname;
+    private FirebaseAuth firebaseAuth;
+
+
+    User coorentUser;
+
     View root;
 
+    /// get the Buttoms ////
+
+    private Button addItem;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_home, container, false);
-
-
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = firebaseDatabase.getReference("Users_Infomation");
+        firebaseAuth = firebaseAuth.getInstance();
 
 
 
 
-        Item Item1 = new Item(R.drawable.item_24dp,"Omer Paz","052-8332534");
+
+        addItem = root.findViewById(R.id.addItem);
+        addItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+
+        });
+
+
+        /////// show the Data Items ///////////
+
+
+
+
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    String email = firebaseAuth.getCurrentUser().getEmail();
                     String name = ds.child("name").getValue(String.class);
-                    //String email = ds.child("email").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
-                    Item Item1 = new Item(R.drawable.item_24dp,name,phone);
+
+
+                    for (int i= 0 ; i <4 ; i++) {
+                        String option1_0 = ds.child("Option1/"+i+"").getValue(String.class);
+                        option1_0 = ""+option1_0;
+                        boolean a = (option1_0.equals("null"));
+                        if(a != true){
+                           Log.d("TAG2", a+""+name+" "+i + " "+"" + option1_0);
+                        }
+                    }
+
+
+
+                    Item Item1 = new Item(R.drawable.item_24dp, name, phone);
                     boolean add = exampleItems.add(Item1);
 
                 }
@@ -60,22 +109,20 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         };
         myRef.addListenerForSingleValueEvent(eventListener);
-
-//            _RecyclerView = root.findViewById(R.id.recyclerview);
-//            _RecyclerView.setHasFixedSize(true);
-//            _LayoutManager = new LinearLayoutManager(this.getActivity());
-//            _Adapter = new ItemAdapter(exampleItems);
-//            _RecyclerView.setLayoutManager(_LayoutManager);
-//            _RecyclerView.setAdapter(_Adapter);
-
-
 
 
         return root;
 
     }
 
+    private void openDialog() {
+        ItemDialog itemDialog = new ItemDialog();
+        itemDialog.show(getFragmentManager(), "Ex");
+
+    }
 }
+
