@@ -19,6 +19,7 @@ import com.example.giveandtake.R;
 import com.example.giveandtake.RegistrationActivity;
 import com.example.giveandtake.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +41,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> category = new ArrayList<>();
     private String myname;
     private FirebaseAuth firebaseAuth;
-
+    private FirebaseUser f;
 
     User coorentUser;
 
@@ -54,11 +55,8 @@ public class HomeFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = firebaseDatabase.getReference("Users_Infomation");
+        final DatabaseReference myRef = firebaseDatabase.getReference("Posts");
         firebaseAuth = firebaseAuth.getInstance();
-
-
-
 
 
         addItem = root.findViewById(R.id.addItem);
@@ -71,29 +69,13 @@ public class HomeFragment extends Fragment {
         });
 
 
-        /////// show the Data Items ///////////
-
-
-
 
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String email = firebaseAuth.getCurrentUser().getEmail();
                     String name = ds.child("name").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
-
-
-                    for (int i= 0 ; i <4 ; i++) {
-                        String option1_0 = ds.child("Option1/"+i+"").getValue(String.class);
-                        option1_0 = ""+option1_0;
-                        boolean a = (option1_0.equals("null"));
-                        if(a != true){
-                           Log.d("TAG2", a+""+name+" "+i + " "+"" + option1_0);
-                        }
-                    }
-
 
 
                     Item Item1 = new Item(R.drawable.item_24dp, name, phone);

@@ -37,7 +37,7 @@ public class ShowUsers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_users);
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users_Infomation");
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
         FindFriendsRecyclerList = (RecyclerView) findViewById(R.id.find_friends_recycler_list);

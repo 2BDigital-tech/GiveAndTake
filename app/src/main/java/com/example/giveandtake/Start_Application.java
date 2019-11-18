@@ -32,14 +32,14 @@ public class Start_Application extends AppCompatActivity {
 /*
 if user connect as not open a login and register box 
  */
-        firebaseAuth=firebaseAuth.getInstance();
-
-        FirebaseUser user=firebaseAuth.getCurrentUser();
-        if(user!=null){
-
-            Intent activi=new Intent(Start_Application.this, Connect_Fragment.class);
-            startActivity(activi);
-        }
+//        firebaseAuth=firebaseAuth.getInstance();
+//
+//        FirebaseUser user=firebaseAuth.getCurrentUser();
+//        if(user!=null){
+//
+//            Intent activi=new Intent(Start_Application.this, Connect_Fragment.class);
+//            startActivity(activi);
+//        }
 
 
         testhome.setOnClickListener(new View.OnClickListener() {

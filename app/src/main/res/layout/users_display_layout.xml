@@ -91,7 +91,7 @@
                     android:autoText="false"
                     android:background="#00D80909"
                     android:text="@string/email"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textSize="16sp"
                     android:textStyle="bold|italic"
                     android:visibility="visible" />
