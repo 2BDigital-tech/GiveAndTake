@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,17 @@ import java.util.ArrayList;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     private ArrayList<Post> Listitem;
 
+    private OnPostClickListener mListener;
+
+    public interface OnPostClickListener{
+        void onPostClick(int position);
+
+    }
+
+    public void setOnPostClickListener(OnPostClickListener listener){
+        mListener = listener;
+    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -28,7 +40,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public EditText _freeText;
 
 
-        public ViewHolder(View itemView){
+        public ViewHolder(View itemView, final OnPostClickListener listener){
             super(itemView);
             _ImageView = itemView.findViewById(R.id.ImageView);
             _NameAsk = itemView.findViewById(R.id.NameAsk);
@@ -36,6 +48,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
             _freeText = itemView.findViewById(R.id.freeText);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onPostClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -49,7 +73,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
-        ViewHolder evh = new ViewHolder(v);
+        ViewHolder evh = new ViewHolder(v,mListener);
         return evh;
     }
 
@@ -64,6 +88,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
         //holder._freeText.setText(correntItem.getfreeText());
+
+
 
 
 

@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private RecyclerView _RecyclerView;
-    private RecyclerView.Adapter _Adapter;
+    private ItemAdapter _Adapter;
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
     static private ArrayList<Post> PostsList;
@@ -120,6 +120,13 @@ public class HomeFragment extends Fragment {
                 _Adapter = new ItemAdapter(PostsList);
                 _RecyclerView.setLayoutManager(_LayoutManager);
                 _RecyclerView.setAdapter(_Adapter);
+
+                _Adapter.setOnPostClickListener(new ItemAdapter.OnPostClickListener() {
+                    @Override
+                    public void onPostClick(int position) {
+                        PostsList.get(position);
+                    }
+                });
 
             }
 
