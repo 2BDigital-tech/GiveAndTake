@@ -6,6 +6,7 @@ public class Post {
     private String PhoneAsk;
     private String Give;
     private String Take;
+    private String currentUserID;
 
 
     public void setNameAsk(String nameAsk) {
@@ -33,15 +34,19 @@ public class Post {
     public String getTake() {
         return Take;
     }
+    public String getcurrentUserID() {
+        return currentUserID;
+    }
 
 
-    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk) {
+
+    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String id) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
         Give = GiveAsk;
         Take = TakeAsk;
-
+        currentUserID = id;
 
     }
 }

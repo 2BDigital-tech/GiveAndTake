@@ -50,6 +50,9 @@ public class HomeFragment extends Fragment {
     private View root;
     private Button giveBtn;
     private Button takeBtn;
+    private String currentUserID;
+    private FirebaseAuth mAuth;
+
 
     /// get the Buttoms ////
 
@@ -66,7 +69,8 @@ public class HomeFragment extends Fragment {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
         giveBtn = root.findViewById(R.id.giveBtn);
         takeBtn = root.findViewById(R.id.takeBtn);
-
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
 
 
         addItem.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +106,7 @@ public class HomeFragment extends Fragment {
                     String phone = ds.child("phoneAsk").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
-                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take);
+                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,currentUserID);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }

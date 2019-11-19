@@ -123,15 +123,13 @@ public class Post_activity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
                         String retrieveUserName = dataSnapshot.child("name").getValue().toString();
                         courrentName = retrieveUserName;
                         String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                         courrentPhone = retrieveUserPhone;
 
-                        Exist();
 
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,currentUserID);
                         Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+"");
 
 //                            if(Exist(){
@@ -140,9 +138,9 @@ public class Post_activity extends AppCompatActivity {
 //                        }
 
 
-
+                        String id = RootRef.push().getKey();
                         FirebaseDatabase.getInstance().getReference("Posts")
-                                .child(currentUserID) //.child("2")
+                                .child(id)
                                 .setValue(p);
 
                     }
@@ -153,30 +151,6 @@ public class Post_activity extends AppCompatActivity {
 
                 });
 
-    }
-
-    public boolean Exist(){
-            RootRef.child("Posts").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(currentUserID)) {
-                    Log.e(": S1=","Exist! "+currentUserID);
-
-                }
-                else {
-                    Log.e(": S1=","No Exist! "+currentUserID);
-
-                }
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-            });
-
-        return true;
     }
 
 
