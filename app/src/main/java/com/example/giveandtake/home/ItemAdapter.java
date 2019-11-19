@@ -3,6 +3,7 @@ package com.example.giveandtake.home;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public TextView _PhoneAsk;
         public TextView _GiveAsk;
         public TextView _TakeAsk;
+        public EditText _freeText;
 
 
         public ViewHolder(View itemView){
@@ -33,6 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             _PhoneAsk = itemView.findViewById(R.id.PhoneAsk);
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
+            _freeText = itemView.findViewById(R.id.freeText);
         }
     }
 
@@ -60,6 +63,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._PhoneAsk.setText(correntItem.getPhoneAsk());
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
+        //holder._freeText.setText(correntItem.getfreeText());
 
 
 

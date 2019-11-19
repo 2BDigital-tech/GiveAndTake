@@ -7,7 +7,7 @@ public class Post {
     private String Give;
     private String Take;
     private String currentUserID;
-
+    private String freeText;
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -16,6 +16,11 @@ public class Post {
     public void setPhoneAsk(String phoneAsk) {
         PhoneAsk = phoneAsk;
     }
+
+    public void setFreeText(String newFreeText) {
+        freeText = newFreeText;
+    }
+
 
     public int getImageResocure() {
         return imageResocure;
@@ -37,16 +42,20 @@ public class Post {
     public String getcurrentUserID() {
         return currentUserID;
     }
+    public String getfreeText() {
+        return freeText;
+    }
 
 
 
-    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String id) {
+    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String moreInfoText ,String id) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
         Give = GiveAsk;
         Take = TakeAsk;
         currentUserID = id;
+        freeText = moreInfoText;
 
     }
 }

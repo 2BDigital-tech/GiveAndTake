@@ -106,7 +106,9 @@ public class HomeFragment extends Fragment {
                     String phone = ds.child("phoneAsk").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
-                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,currentUserID);
+                    String freeText = ds.child("freetext").getValue(String.class);
+
+                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,currentUserID);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }

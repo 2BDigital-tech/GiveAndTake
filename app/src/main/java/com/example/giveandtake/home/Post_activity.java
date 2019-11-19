@@ -39,6 +39,7 @@ public class Post_activity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private String currentUserID;
     private DatabaseReference RootRef;
+    private String MoreInfoText;
 
 
     @Override
@@ -115,10 +116,13 @@ public class Post_activity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void registerPostToDataBase(){
-
+        MoreInfoText = freeText.getText().toString().trim();
+        Log.e(": TAG10=",MoreInfoText);
         RootRef.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -128,21 +132,11 @@ public class Post_activity extends AppCompatActivity {
                         String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                         courrentPhone = retrieveUserPhone;
 
-
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,currentUserID);
-                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+"");
-
-//                            if(Exist(){
-//
-//
-//                        }
-
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,MoreInfoText,currentUserID);
+                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID);
 
                         String id = RootRef.push().getKey();
-                        FirebaseDatabase.getInstance().getReference("Posts")
-                                .child(id)
-                                .setValue(p);
-
+                        FirebaseDatabase.getInstance().getReference("Posts").child(id).setValue(p);
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
