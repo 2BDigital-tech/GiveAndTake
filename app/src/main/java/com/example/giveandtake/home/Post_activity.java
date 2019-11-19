@@ -1,5 +1,6 @@
 package com.example.giveandtake.home;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +36,7 @@ public class Post_activity extends AppCompatActivity {
     private String []giveOptions;
     private String []takeOptions;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase firebaseDatabase;
     private String currentUserID;
     private DatabaseReference RootRef;
 
@@ -49,7 +52,9 @@ public class Post_activity extends AppCompatActivity {
         freeText = findViewById(R.id.freeText);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-        RootRef = FirebaseDatabase.getInstance().getReference();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        RootRef = firebaseDatabase.getInstance().getReference();
+
 
 
 
@@ -118,18 +123,27 @@ public class Post_activity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+
                         String retrieveUserName = dataSnapshot.child("name").getValue().toString();
                         courrentName = retrieveUserName;
                         String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                         courrentPhone = retrieveUserPhone;
-                        String id = RootRef.push().getKey();
+
+                        Exist();
 
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
-//                        FirebaseDatabase.getInstance().getReference("Users")
-//                                //FirebaseAuth.getInstance().getCurrentUser().getUid()
-//                                .child(currentUserID)
-//                                .setValue(p);
-                        RootRef.child(currentUserID).setValue(p);
+                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+"");
+
+//                            if(Exist(){
+//
+//
+//                        }
+
+
+
+                        FirebaseDatabase.getInstance().getReference("Posts")
+                                .child(currentUserID) //.child("2")
+                                .setValue(p);
 
                     }
                     @Override
@@ -139,20 +153,34 @@ public class Post_activity extends AppCompatActivity {
 
                 });
 
+    }
+
+    public boolean Exist(){
+            RootRef.child("Posts").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(currentUserID)) {
+                    Log.e(": S1=","Exist! "+currentUserID);
+
+                }
+                else {
+                    Log.e(": S1=","No Exist! "+currentUserID);
+
+                }
+            }
 
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        // to Implment.
-        // Use CourrentName and CourrentPhone - for the start to see if its work!.
-        /*
-            in the end of the register:
+            }
+            });
 
-            create new post:
+        return true;
+    }
 
-            Post p = new Post(img,name,phone);
-            and add to the database.
-         */
+
 
     }
 
-}
+

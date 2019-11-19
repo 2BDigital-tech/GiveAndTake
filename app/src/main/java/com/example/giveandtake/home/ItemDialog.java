@@ -170,7 +170,7 @@ public class ItemDialog extends AppCompatDialogFragment {
 
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
                         String id = RootRef.push().getKey();
-                        FirebaseDatabase.getInstance().getReference("Users")
+                        FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 //FirebaseAuth.getInstance().getCurrentUser().getUid()
                                 .child(id)
                                 .setValue(p);

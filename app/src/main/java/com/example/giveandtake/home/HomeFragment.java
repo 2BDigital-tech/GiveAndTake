@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
     static private ArrayList<Post> PostsList;
+
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
     private Button addItem;
@@ -79,21 +80,15 @@ public class HomeFragment extends Fragment {
         });
 
         createToShowPosts();
-        buildRecyclerView();
 
         return root;
 
     }
 
-    public void buildRecyclerView(){
-        _RecyclerView = root.findViewById(R.id.recyclerview);
-        _RecyclerView.setHasFixedSize(true);
-        _LayoutManager = new LinearLayoutManager(getContext());
-        _Adapter = new ItemAdapter(PostsList);
-        _RecyclerView.setLayoutManager(_LayoutManager);
-        _RecyclerView.setAdapter(_Adapter);
-
-    }
+//    public void buildRecyclerView(){
+//
+//
+//    }
 
     public void createToShowPosts(){
 
@@ -101,18 +96,24 @@ public class HomeFragment extends Fragment {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                PostsList = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    PostsList = new ArrayList<>();
                     String name = ds.child("nameAsk").getValue(String.class);
                     String phone = ds.child("phoneAsk").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
                     Post p = new Post(R.drawable.item_24dp, name, phone,give,take);
-                    PostsList.add(p);
+                    if(!PostsList.contains(p)){
+                        PostsList.add(p);
+                    }
                 }
 
-                buildRecyclerView();
-                createToShowPosts();
+                _RecyclerView = root.findViewById(R.id.recyclerview);
+                _RecyclerView.setHasFixedSize(true);
+                _LayoutManager = new LinearLayoutManager(getContext());
+                _Adapter = new ItemAdapter(PostsList);
+                _RecyclerView.setLayoutManager(_LayoutManager);
+                _RecyclerView.setAdapter(_Adapter);
 
             }
 
@@ -124,10 +125,5 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void openDialog() {
-        ItemDialog itemDialog = new ItemDialog();
-        itemDialog.show(getFragmentManager(), "Ex");
-
-    }
 }
 
