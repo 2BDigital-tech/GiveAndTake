@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="50dp">
 
 
     <RelativeLayout
@@ -17,24 +17,100 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/ImageView"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textStyle="bold"
-            android:text="item 1">
+            android:text="Name">
 
 
         </TextView>
 
         <TextView
-            android:id="@+id/PhoneAsk"
+        android:id="@+id/PhoneAsk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/ImageView"
+        android:layout_below="@+id/NameAsk"
+        android:textSize="20dp"
+        android:text="Phone"
+        android:textStyle="bold">
+
+        </TextView>
+
+
+
+
+        <TextView
+            android:id="@+id/GiveOption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/ImageView"
-            android:layout_below="@+id/NameAsk"
+            android:layout_toEndOf="@+id/GiveText"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="20dp"
             android:textSize="15dp"
-            android:text="item 2"
+            android:text="GiveOp"
             android:textStyle="bold">
+        </TextView>
 
+        <TextView
+            android:id="@+id/TakeOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/TakeText"
+            android:layout_below="@+id/GiveOption"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="15dp"
+            android:textSize="15dp"
+            android:text="TakeOp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/GiveText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/NameAsk"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="20dp"
+            android:textSize="15dp"
+            android:text="Give:"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/TakeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GiveText"
+            android:layout_toEndOf="@+id/NameAsk"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="20dp"
+            android:textSize="15dp"
+            android:text="Take:"
+            android:textStyle="bold">
+        </TextView>
 
+        <TextView
+            android:id="@+id/CityOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/TakeText"
+            android:layout_below="@+id/TakeOption"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="15dp"
+            android:textSize="15dp"
+            android:text="CityOp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:id="@+id/CityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TakeText"
+            android:layout_toEndOf="@+id/NameAsk"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="20dp"
+            android:textSize="15dp"
+            android:text="City:"
+            android:textStyle="bold">
         </TextView>
 
         <ImageView

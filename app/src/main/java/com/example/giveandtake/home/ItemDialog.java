@@ -58,7 +58,8 @@ public class ItemDialog extends AppCompatDialogFragment {
     private String courrentPhone;
     private String couurentGive;
     private String courrentTake;
-    private String []itemsOptions;
+    private String []giveOptions;
+    private String []takeOptions;
 
 
 
@@ -93,13 +94,36 @@ public class ItemDialog extends AppCompatDialogFragment {
         giveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemsOptions = getResources().getStringArray(R.array.Option1);
+                giveOptions = getResources().getStringArray(R.array.Option1);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 mBuilder.setTitle("Choose From Options:");
-                mBuilder.setSingleChoiceItems(itemsOptions, -1, new DialogInterface.OnClickListener() {
+                mBuilder.setSingleChoiceItems(giveOptions, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        couurentGive = itemsOptions[which];
+                        couurentGive = giveOptions[which];
+                        dialog.dismiss();
+                    }
+                });
+                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
+        takeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takeOptions = getResources().getStringArray(R.array.Option2);
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                mBuilder.setTitle("Choose From Options:");
+                mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        courrentTake = takeOptions[which];
                         dialog.dismiss();
                     }
                 });
@@ -125,7 +149,7 @@ public class ItemDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //start
-                        Log.e("TAG", couurentGive);
+                        Log.e("TAG", couurentGive+" "+courrentTake);
 
                         registerPostToDataBase();
                         // end
