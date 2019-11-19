@@ -125,6 +125,17 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onPostClick(int position) {
                         PostsList.get(position);
+
+                        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                        mBuilder.setTitle(PostsList.get(position).getNameAsk());
+                        mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        AlertDialog mDialog = mBuilder.create();
+                        mDialog.show();
                     }
                 });
 
