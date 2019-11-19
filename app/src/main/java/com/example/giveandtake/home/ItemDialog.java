@@ -56,6 +56,9 @@ public class ItemDialog extends AppCompatDialogFragment {
     private DatabaseReference RootRef;
     private String courrentName;
     private String courrentPhone;
+    private String couurentGive;
+    private String courrentTake;
+    private String []itemsOptions;
 
 
 
@@ -90,7 +93,24 @@ public class ItemDialog extends AppCompatDialogFragment {
         giveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                itemsOptions = getResources().getStringArray(R.array.Option1);
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                mBuilder.setTitle("Choose From Options:");
+                mBuilder.setSingleChoiceItems(itemsOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        couurentGive = itemsOptions[which];
+                        dialog.dismiss();
+                    }
+                });
+                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
             }
         });
 
@@ -105,7 +125,9 @@ public class ItemDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //start
-                            registerPostToDataBase();
+                        Log.e("TAG", couurentGive);
+
+                        registerPostToDataBase();
                         // end
                     }
                 });
