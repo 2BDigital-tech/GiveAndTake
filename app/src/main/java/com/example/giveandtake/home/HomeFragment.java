@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.Adapter _Adapter;
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
-    static private ArrayList<Post> PostsList = new ArrayList<>();
+    static private ArrayList<Post> PostsList;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
     private Button addItem;
@@ -96,12 +96,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String name = ds.child("name").getValue(String.class);
-                    String phone = ds.child("phone").getValue(String.class);
+                    PostsList = new ArrayList<>();
+                    String name = ds.child("nameAsk").getValue(String.class);
+                    String phone = ds.child("phoneAsk").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
-                    Post Item1 = new Post(R.drawable.item_24dp, name, phone,give,take);
-                    PostsList.add(Item1);
+                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take);
+                    PostsList.add(p);
                 }
 
                 buildRecyclerView();
@@ -118,7 +119,7 @@ public class HomeFragment extends Fragment {
     private void openDialog() {
         ItemDialog itemDialog = new ItemDialog();
         itemDialog.show(getFragmentManager(), "Ex");
-
+        createToShowPosts();
 
     }
 }

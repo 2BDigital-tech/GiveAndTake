@@ -4,7 +4,6 @@ public class Post {
     private int imageResocure;
     private String NameAsk;
     private String PhoneAsk;
-    private String Name;
     private String Give;
     private String Take;
 

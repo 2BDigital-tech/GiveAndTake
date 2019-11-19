@@ -61,7 +61,7 @@ public class ItemDialog extends AppCompatDialogFragment {
     private String courrentTake;
     private String []giveOptions;
     private String []takeOptions;
-
+    private int count = 0;
 
 
 
@@ -149,8 +149,6 @@ public class ItemDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //start
-                        Log.e("TAG", couurentGive+" "+courrentTake);
-
                         registerPostToDataBase();
                         // end
                     }
@@ -165,13 +163,17 @@ public class ItemDialog extends AppCompatDialogFragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("name"))) {
                             String retrieveUserName = dataSnapshot.child("name").getValue().toString();
                             courrentName = retrieveUserName;
-                        } else if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("phone"))) {
                             String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                             courrentPhone = retrieveUserPhone;
-                        }
+
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
+                        String id = RootRef.push().getKey();
+                        FirebaseDatabase.getInstance().getReference("Posts")
+                                //FirebaseAuth.getInstance().getCurrentUser().getUid()
+                                .child(id)
+                                .setValue(p);
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -180,11 +182,7 @@ public class ItemDialog extends AppCompatDialogFragment {
 
                 });
 
-        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
-        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+"");
 
-        RootRef = firebaseDatabase.getReference("Posts");
-        RootRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p);
 
 
         // to Implment.

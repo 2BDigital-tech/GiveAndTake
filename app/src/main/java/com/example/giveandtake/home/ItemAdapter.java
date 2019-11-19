@@ -59,7 +59,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._NameAsk.setText(correntItem.getNameAsk());
         holder._PhoneAsk.setText(correntItem.getPhoneAsk());
         holder._GiveAsk.setText(correntItem.getGive());
-        holder._GiveAsk.setText(correntItem.getTake());
+        holder._TakeAsk.setText(correntItem.getTake());
 
 
 
