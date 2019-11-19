@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_home, container, false);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = firebaseDatabase.getReference("Posts");
+        myRef = firebaseDatabase.getReference("Users");
         firebaseAuth = firebaseAuth.getInstance();
 
         //////////////////// Create Dialog ///////////////////
