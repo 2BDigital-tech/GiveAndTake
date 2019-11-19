@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_home, container, false);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = firebaseDatabase.getReference("Users");
+        myRef = firebaseDatabase.getReference("Posts");
         firebaseAuth = firebaseAuth.getInstance();
 
         //////////////////// Create Dialog ///////////////////
@@ -98,7 +98,9 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.child("name").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
-                    Post Item1 = new Post(R.drawable.item_24dp, name, phone);
+                    String give = ds.child("give").getValue(String.class);
+                    String take = ds.child("take").getValue(String.class);
+                    Post Item1 = new Post(R.drawable.item_24dp, name, phone,give,take);
                     PostsList.add(Item1);
                 }
 

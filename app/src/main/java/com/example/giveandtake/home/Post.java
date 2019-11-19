@@ -5,11 +5,9 @@ public class Post {
     private String NameAsk;
     private String PhoneAsk;
     private String Name;
+    private String Give;
+    private String Take;
 
-    public void setImageResocure(int imageResocure) {
-        this.imageResocure = imageResocure;
-
-    }
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -30,10 +28,21 @@ public class Post {
     public String getPhoneAsk() {
         return PhoneAsk;
     }
+    public String getGive() {
+        return Give;
+    }
+    public String getTake() {
+        return Take;
+    }
 
-    public Post(int imageResocure, String nameAsk, String phoneAsk) {
-        this.imageResocure = imageResocure;
+
+    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk) {
+        imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
+        Give = GiveAsk;
+        Take = TakeAsk;
+
+
     }
 }

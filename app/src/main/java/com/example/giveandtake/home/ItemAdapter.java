@@ -22,12 +22,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public ImageView _ImageView;
         public TextView _NameAsk;
         public TextView _PhoneAsk;
+        public TextView _GiveAsk;
+        public TextView _TakeAsk;
+
 
         public ViewHolder(View itemView){
             super(itemView);
             _ImageView = itemView.findViewById(R.id.ImageView);
             _NameAsk = itemView.findViewById(R.id.NameAsk);
             _PhoneAsk = itemView.findViewById(R.id.PhoneAsk);
+            _GiveAsk = itemView.findViewById(R.id.GiveOption);
+            _TakeAsk = itemView.findViewById(R.id.TakeOption);
         }
     }
 
@@ -53,6 +58,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._ImageView.setImageResource(correntItem.getImageResocure());
         holder._NameAsk.setText(correntItem.getNameAsk());
         holder._PhoneAsk.setText(correntItem.getPhoneAsk());
+        holder._GiveAsk.setText(correntItem.getGive());
+        holder._GiveAsk.setText(correntItem.getTake());
+
+
 
     }
 

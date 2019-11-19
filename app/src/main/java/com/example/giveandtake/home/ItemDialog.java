@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -89,7 +90,6 @@ public class ItemDialog extends AppCompatDialogFragment {
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = firebaseDatabase.getReference("Posts");
 
         giveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +160,31 @@ public class ItemDialog extends AppCompatDialogFragment {
     }
 
     public void registerPostToDataBase(){
+
+        RootRef.child("Users").child(currentUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("name"))) {
+                            String retrieveUserName = dataSnapshot.child("name").getValue().toString();
+                            courrentName = retrieveUserName;
+                        } else if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("phone"))) {
+                            String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
+                            courrentPhone = retrieveUserPhone;
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
+
+        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake);
+        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+"");
+
+        RootRef = firebaseDatabase.getReference("Posts");
+        RootRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p);
 
 
         // to Implment.
