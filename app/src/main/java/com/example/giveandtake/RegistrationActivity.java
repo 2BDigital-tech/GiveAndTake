@@ -158,6 +158,8 @@ private Spinner mySpinner;
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+                                        Intent act= new Intent(RegistrationActivity.this,Start_Application.class);
+                                        startActivity(act);
                                     } else {
                                         //display a failure message
                                     }
