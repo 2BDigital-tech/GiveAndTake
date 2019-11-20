@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +28,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private ProgressBar progressBar;
     private Button ReturnBtn;
     private FirebaseAuth mAuth;
-
+private Spinner mySpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.button_register).setOnClickListener(this);
         ReturnBtn = (Button)findViewById(R.id.returnRegisterbtn);
         ReturnBtn.setOnClickListener(this);
+        mySpinner = (Spinner) findViewById(R.id.cityspinner);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RegistrationActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.City));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
+
 
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +132,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             return;
         }
 
+      final  String city = (String) mySpinner.getSelectedItem().toString();
+
 
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -133,7 +146,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             User user = new User(
                                     name,
                                     email,
-                                    phone
+                                    phone,
+                                    city
                             );
 
                             FirebaseDatabase.getInstance().getReference("Users")
@@ -144,6 +158,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+                                        Intent act= new Intent(RegistrationActivity.this,Start_Application.class);
+                                        startActivity(act);
                                     } else {
                                         //display a failure message
                                     }
