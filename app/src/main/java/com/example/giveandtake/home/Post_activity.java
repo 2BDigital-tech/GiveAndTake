@@ -131,11 +131,13 @@ public class Post_activity extends AppCompatActivity {
                         String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                         courrentPhone = retrieveUserPhone;
 
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,MoreInfoText,currentUserID);
+
+                        String postId = RootRef.push().getKey();
+
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,MoreInfoText,currentUserID,postId);
                         Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID);
 
-                        String id = RootRef.push().getKey();
-                        FirebaseDatabase.getInstance().getReference("Posts").child(id).setValue(p);
+                        FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {

@@ -94,6 +94,29 @@ public class HomeFragment extends Fragment {
 //
 //    }
 
+    public void DeletePost(String uid) {
+        //myRef = firebaseDatabase.getReference("Posts");
+        myRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+                updateView();
+                createToShowPosts();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+
+
+
     public void createToShowPosts(){
 
 
@@ -108,28 +131,24 @@ public class HomeFragment extends Fragment {
                     String take = ds.child("take").getValue(String.class);
                     String freeText = ds.child("freeText").getValue(String.class);
                     String courrentUser = ds.child("currentUserID").getValue(String.class);
+                    String PostID = ds.child("postid").getValue(String.class);
 
-                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,courrentUser);
+                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,courrentUser,PostID);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }
                 }
 
-                _RecyclerView = root.findViewById(R.id.recyclerview);
-                _RecyclerView.setHasFixedSize(true);
-                _LayoutManager = new LinearLayoutManager(getContext());
-                _Adapter = new ItemAdapter(PostsList);
-                _RecyclerView.setLayoutManager(_LayoutManager);
-                _RecyclerView.setAdapter(_Adapter);
+                updateView();
 
                 _Adapter.setOnPostClickListener(new ItemAdapter.OnPostClickListener() {
                     @Override
-                    public void onPostClick(int position) {
+                    public void onPostClick(final int position) {
                         PostsList.get(position);
 
                         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle(PostsList.get(position).getPhoneAsk() +" Post");
-                        mBuilder.setMessage(PostsList.get(position).getcurrentUserID()+"");
+                        mBuilder.setMessage(PostsList.get(position).getfreeText()+"");
                         Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
@@ -138,7 +157,10 @@ public class HomeFragment extends Fragment {
                             mBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                // Delete user..
+                                    DeletePost(PostsList.get(position).getPostid());
+                                   // PostsList.remove(PostsList.get(position));
+                                    updateView();
+
                                     /*
                                     https://stackoverflow.com/questions/46763346/remove-a-specific-value-from-firebase-database/46763581
                                      */
@@ -178,6 +200,15 @@ public class HomeFragment extends Fragment {
         };
         myRef.addListenerForSingleValueEvent(eventListener);
 
+    }
+
+    public void updateView(){
+        _RecyclerView = root.findViewById(R.id.recyclerview);
+        _RecyclerView.setHasFixedSize(true);
+        _LayoutManager = new LinearLayoutManager(getContext());
+        _Adapter = new ItemAdapter(PostsList);
+        _RecyclerView.setLayoutManager(_LayoutManager);
+        _RecyclerView.setAdapter(_Adapter);
     }
 
 }

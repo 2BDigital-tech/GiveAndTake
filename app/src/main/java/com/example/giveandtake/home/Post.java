@@ -8,6 +8,7 @@ public class Post {
     private String Take;
     private String currentUserID;
     private String freeText;
+    private String PostId;
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -39,6 +40,10 @@ public class Post {
     public String getTake() {
         return Take;
     }
+    public String getPostid() {
+        return PostId;
+    }
+
     public String getcurrentUserID() {
         return currentUserID;
     }
@@ -48,7 +53,7 @@ public class Post {
 
 
 
-    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String moreInfoText ,String id) {
+    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String moreInfoText ,String id, String postid) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
@@ -56,6 +61,7 @@ public class Post {
         Take = TakeAsk;
         currentUserID = id;
         freeText = moreInfoText;
+        PostId = postid;
 
     }
 }
