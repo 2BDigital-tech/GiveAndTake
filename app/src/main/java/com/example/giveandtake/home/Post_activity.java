@@ -33,6 +33,8 @@ public class Post_activity extends AppCompatActivity {
     private String courrentName;
     private String courrentPhone;
     private String couurentGive;
+    private String courrentCity;
+
     private String courrentTake;
     private String []giveOptions;
     private String []takeOptions;
@@ -42,7 +44,6 @@ public class Post_activity extends AppCompatActivity {
     private DatabaseReference RootRef;
     private String MoreInfoText;
     private Spinner mySpinner;
-    private String City;
 
 
     @Override
@@ -126,8 +127,8 @@ public class Post_activity extends AppCompatActivity {
 
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
-        City = (String) mySpinner.getSelectedItem().toString();
-        Log.e(": TAG8=",City);
+//        City = (String) mySpinner.getSelectedItem().toString();
+//        Log.e(": TAG8=",City);
 
         // get Text from ciry
 
@@ -140,12 +141,15 @@ public class Post_activity extends AppCompatActivity {
                         courrentName = retrieveUserName;
                         String retrieveUserPhone = dataSnapshot.child("phone").getValue().toString();
                         courrentPhone = retrieveUserPhone;
+                        String retrieveCity = dataSnapshot.child("city").getValue().toString();
+                        courrentCity = retrieveCity;
+
 
 
                         String postId = RootRef.push().getKey();
 
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,MoreInfoText,currentUserID,postId);
-                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+City);
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId);
+                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+courrentCity);
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }

@@ -135,7 +135,9 @@ public class HomeFragment extends Fragment {
                     String PostID = ds.child("postid").getValue(String.class);
 
 
-                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,courrentUser,PostID);
+
+
+                    Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }

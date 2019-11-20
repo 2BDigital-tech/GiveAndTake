@@ -4,6 +4,7 @@ public class Post {
     private int imageResocure;
     private String NameAsk;
     private String PhoneAsk;
+    private String city;
     private String Give;
     private String Take;
     private String currentUserID;
@@ -43,6 +44,9 @@ public class Post {
     public String getPostid() {
         return PostId;
     }
+    public String getCity() {
+        return city;
+    }
 
     public String getcurrentUserID() {
         return currentUserID;
@@ -53,7 +57,7 @@ public class Post {
 
 
 
-    public Post(int img ,String nameAsk, String phoneAsk, String GiveAsk, String TakeAsk,String moreInfoText ,String id, String postid) {
+    public Post(int img ,String nameAsk, String phoneAsk,String City ,String GiveAsk, String TakeAsk,String moreInfoText ,String id, String postid) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
@@ -62,6 +66,7 @@ public class Post {
         currentUserID = id;
         freeText = moreInfoText;
         PostId = postid;
+        city = City;
 
     }
 }
