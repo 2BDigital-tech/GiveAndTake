@@ -37,7 +37,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public TextView _PhoneAsk;
         public TextView _GiveAsk;
         public TextView _TakeAsk;
-        public EditText _freeText;
+//        public EditText _freeText;
 
 
         public ViewHolder(View itemView, final OnPostClickListener listener){
@@ -47,7 +47,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             _PhoneAsk = itemView.findViewById(R.id.PhoneAsk);
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
-            _freeText = itemView.findViewById(R.id.freeText);
+//            _freeText = (EditText)itemView.findViewById(R.id.freeText);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,7 +87,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._PhoneAsk.setText(correntItem.getPhoneAsk());
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
-        //holder._freeText.setText(correntItem.getfreeText());
+        //holder._freeText.setText(correntItem.getfreeText()); - not working..
 
 
 

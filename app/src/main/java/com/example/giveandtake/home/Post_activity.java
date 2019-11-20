@@ -122,7 +122,6 @@ public class Post_activity extends AppCompatActivity {
 
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
-        Log.e(": TAG10=",MoreInfoText);
         RootRef.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
