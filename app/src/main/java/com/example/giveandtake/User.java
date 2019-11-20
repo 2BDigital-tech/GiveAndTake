@@ -4,16 +4,17 @@ package com.example.giveandtake;
 import java.util.ArrayList;
 
 public class User {
-    public String name, email, phone;
+    public String name, email, phone,city;
 
     public User(){
 
     }
 
-    public User(String name, String email, String phone) {
+    public User(String name, String email, String phone,String city) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.city=city;
     }
 
 
@@ -21,6 +22,11 @@ public class User {
 //    public String getUserEmail() {
 //        return email;
 //    }
+
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public void setUserEmail(String userEmail) {
         this.email = userEmail;

@@ -95,6 +95,11 @@
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint" />
 
+            <Spinner
+                android:id="@+id/cityspinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/button_register"
                 android:layout_width="match_parent"
