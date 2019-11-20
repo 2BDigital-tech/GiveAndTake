@@ -150,32 +150,31 @@ public class HomeFragment extends Fragment {
                     public void onPostClick(final int position) {
                         PostsList.get(position);
 
-                        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle(PostsList.get(position).getPhoneAsk() +" Post");
                         mBuilder.setMessage(PostsList.get(position).getfreeText()+"");
                         Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
 
-                     /// here
                             mBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     DeletePost(PostsList.get(position).getPostid());
-                                   // PostsList.remove(PostsList.get(position));
                                     updateView();
-
-                                    /*
-                                    https://stackoverflow.com/questions/46763346/remove-a-specific-value-from-firebase-database/46763581
-                                     */
-
-
                                 }
                             });
                             mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
+                                    // Send to New Activite That Get all user Trades.
                                 }
                             });
                             AlertDialog mDialog = mBuilder.create();
