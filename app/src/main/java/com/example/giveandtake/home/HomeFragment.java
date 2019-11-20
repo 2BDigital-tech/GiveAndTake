@@ -106,9 +106,10 @@ public class HomeFragment extends Fragment {
                     String phone = ds.child("phoneAsk").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
-                    String freeText = ds.child("freetext").getValue(String.class);
+                    String freeText = ds.child("freeText").getValue(String.class);
+                    String courrentUser = ds.child("currentUserID").getValue(String.class);
 
-                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,currentUserID);
+                    Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,courrentUser);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }
@@ -127,16 +128,46 @@ public class HomeFragment extends Fragment {
                         PostsList.get(position);
 
                         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                        mBuilder.setTitle(PostsList.get(position).getNameAsk());
-                        mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                        mBuilder.setTitle(PostsList.get(position).getPhoneAsk() +" Post");
+                        mBuilder.setMessage(PostsList.get(position).getcurrentUserID()+"");
+                        Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
-                            }
-                        });
-                        AlertDialog mDialog = mBuilder.create();
-                        mDialog.show();
-                    }
+                        if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
+
+                     /// here
+                            mBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                // Delete user..
+                                    /*
+                                    https://stackoverflow.com/questions/46763346/remove-a-specific-value-from-firebase-database/46763581
+                                     */
+
+
+                                }
+                            });
+                            mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }else{
+                            mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                        }
+
+
+
                 });
 
             }
