@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public TextView _PhoneAsk;
         public TextView _GiveAsk;
         public TextView _TakeAsk;
+        //public Spinner _city;
+
 //        public EditText _freeText;
 
 
@@ -47,7 +50,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             _PhoneAsk = itemView.findViewById(R.id.PhoneAsk);
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
-//            _freeText = (EditText)itemView.findViewById(R.id.freeText);
+            //_city = itemView.findViewById(R.id.cityspinner);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,6 +90,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._PhoneAsk.setText(correntItem.getPhoneAsk());
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
+
         //holder._freeText.setText(correntItem.getfreeText()); - not working..
 
 

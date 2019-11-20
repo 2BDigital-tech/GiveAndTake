@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.giveandtake.Connect_Fragment;
 import com.example.giveandtake.R;
@@ -40,6 +41,8 @@ public class Post_activity extends AppCompatActivity {
     private String currentUserID;
     private DatabaseReference RootRef;
     private String MoreInfoText;
+    private Spinner mySpinner;
+    private String City;
 
 
     @Override
@@ -55,6 +58,7 @@ public class Post_activity extends AppCompatActivity {
         currentUserID = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         RootRef = firebaseDatabase.getInstance().getReference();
+        mySpinner = (Spinner) findViewById(R.id.cityspinner);
 
 
 
@@ -122,6 +126,12 @@ public class Post_activity extends AppCompatActivity {
 
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
+        City = (String) mySpinner.getSelectedItem().toString();
+        Log.e(": TAG8=",City);
+
+        // get Text from ciry
+
+
         RootRef.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -135,7 +145,7 @@ public class Post_activity extends AppCompatActivity {
                         String postId = RootRef.push().getKey();
 
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,couurentGive,courrentTake,MoreInfoText,currentUserID,postId);
-                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID);
+                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+City);
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }

@@ -127,11 +127,13 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.child("nameAsk").getValue(String.class);
                     String phone = ds.child("phoneAsk").getValue(String.class);
+                    String city = ds.child("city").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
                     String freeText = ds.child("freeText").getValue(String.class);
                     String courrentUser = ds.child("currentUserID").getValue(String.class);
                     String PostID = ds.child("postid").getValue(String.class);
+
 
                     Post p = new Post(R.drawable.item_24dp, name, phone,give,take,freeText,courrentUser,PostID);
                     if(!PostsList.contains(p)){
