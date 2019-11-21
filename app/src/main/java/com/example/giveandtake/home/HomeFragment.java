@@ -37,7 +37,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private HomeViewModel homeViewModel;
+
     private RecyclerView _RecyclerView;
     private ItemAdapter _Adapter;
     private RecyclerView.LayoutManager _LayoutManager;
