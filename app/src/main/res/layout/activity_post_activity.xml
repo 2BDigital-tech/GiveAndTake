@@ -73,5 +73,16 @@
         android:hint="Create Post"
         android:textSize="15dp" />
 
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_toEndOf="@id/createPostbtn"
+        android:layout_below="@id/freeText"
+        android:hint="Cancel"
+        android:textSize="15dp" />
+
 
 </RelativeLayout>

@@ -151,7 +151,7 @@ public class HomeFragment extends Fragment {
                         PostsList.get(position);
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                        mBuilder.setTitle(PostsList.get(position).getPhoneAsk() +" Post");
+                        mBuilder.setTitle(PostsList.get(position).getNameAsk() +" - Post");
                         mBuilder.setMessage(PostsList.get(position).getfreeText()+"");
                         Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 

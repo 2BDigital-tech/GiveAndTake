@@ -30,6 +30,7 @@ public class Post_activity extends AppCompatActivity {
     private Button takeBtn;
     private Button createPost;
     private EditText freeText;
+    private Button cancelBtn;
     private String courrentName;
     private String courrentPhone;
     private String couurentGive;
@@ -55,6 +56,7 @@ public class Post_activity extends AppCompatActivity {
         giveBtn = findViewById(R.id.giveBtn);
         takeBtn = findViewById(R.id.takeBtn);
         freeText = findViewById(R.id.freeText);
+        cancelBtn = findViewById(R.id.cancelBtn);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -68,6 +70,13 @@ public class Post_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerPostToDataBase();
+                Intent i = new Intent(Post_activity.this, Connect_Fragment.class);
+                startActivity(i);
+            }
+        });
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent i = new Intent(Post_activity.this, Connect_Fragment.class);
                 startActivity(i);
             }

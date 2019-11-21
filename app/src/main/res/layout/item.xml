@@ -51,21 +51,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/GiveOption"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@+id/TakeText"
             android:text="TakeOp"
-            android:textSize="15dp"
-            android:textStyle="bold"></TextView>
-
-        <TextView
-            android:id="@+id/CityText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TakeText"
-            android:layout_marginStart="220dp"
-            android:layout_marginTop="3dp"
-            android:text="City:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
@@ -74,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/TakeOption"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@+id/TakeText"
             android:text="CityOp"
@@ -81,11 +71,33 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/CityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TakeText"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="3dp"
+            android:text="City:"
+            android:textSize="15dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TakeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GiveText"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="2dp"
+            android:text="Take:"
+            android:textSize="15dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
             android:id="@+id/GiveText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="250dp"
             android:layout_marginTop="3dp"
-            android:layout_marginStart="220dp"
             android:text="Give:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
@@ -98,39 +110,6 @@
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@+id/GiveText"
             android:text="GiveOp"
-            android:textSize="15dp"
-            android:textStyle="bold"></TextView>
-
-        <Button
-            android:id="@+id/accpetbtn"
-            android:layout_width="35dp"
-            android:layout_height="25dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/GiveOption"
-            android:background="@drawable/swapicon" />
-
-        <Button
-            android:id="@+id/infobtn"
-            android:layout_width="35dp"
-            android:layout_height="25dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="35dp"
-            android:layout_toEndOf="@+id/GiveOption"
-            android:background="@drawable/infoicon"
-
-            />
-
-        <TextView
-            android:id="@+id/TakeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GiveText"
-            android:layout_marginStart="220dp"
-            android:layout_marginTop="2dp"
-            android:text="Take:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
