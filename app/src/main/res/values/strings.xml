@@ -43,20 +43,7 @@
     <string name="title_dashboard">Activity</string>
     <string name="title_notifications">Profil</string>
     <string name="all_user_registered">All User Registered</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="all_post">All Post</string>
 
 
     <string-array name="City">
