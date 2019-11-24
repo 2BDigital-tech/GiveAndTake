@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment {
     private String name;
     private String phone;
     private String city;
+    private String freeText;
 
     /// get the Buttoms ////
 
@@ -88,7 +89,6 @@ public class HomeFragment extends Fragment {
 //    }
 
     public void DeletePost(String uid) {
-        //myRef = firebaseDatabase.getReference("Posts");
         myRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -123,7 +123,7 @@ public class HomeFragment extends Fragment {
                     city = ds.child("city").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
-                    String freeText = ds.child("freeText").getValue(String.class);
+                    freeText = ds.child("freeText").getValue(String.class);
                     String courrentUser = ds.child("currentUserID").getValue(String.class);
                     String PostID = ds.child("postid").getValue(String.class);
 
@@ -146,7 +146,6 @@ public class HomeFragment extends Fragment {
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle("Post ID: "+PostsList.get(position).getPostid());
                         mBuilder.setMessage(PostsList.get(position).getfreeText()+"\n"+PostsList.get(position).getGive());
-                        Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
 
@@ -182,6 +181,7 @@ public class HomeFragment extends Fragment {
                                                 .addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(DataSnapshot ds) {
+                                                        String postId = RootRef.push().getKey();
 
                                                         name = ds.child("name").getValue(String.class);
                                                         phone = ds.child("phone").getValue(String.class);
@@ -189,15 +189,16 @@ public class HomeFragment extends Fragment {
                                                         final Trade trade = new Trade(
                                                                 R.drawable.black2people,
                                                                 PostsList.get(position).getPostid(),
-                                                                currentUserID,
+                                                                postId,
                                                                 PostsList.get(position).getcurrentUserID(),
                                                                 PostsList.get(position).getNameAsk(),
                                                                 name,
                                                                 PostsList.get(position).getGive(),
                                                                 PostsList.get(position).getTake(),
                                                                 phone,
-                                                                city);
-                                                        String postId = RootRef.push().getKey();
+                                                                city,
+                                                                freeText
+                                                                );
 
                                                         FirebaseDatabase.getInstance().getReference("Trades").child(postId).setValue(trade);
                                                     }
