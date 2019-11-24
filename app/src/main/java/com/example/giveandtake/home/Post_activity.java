@@ -136,10 +136,6 @@ public class Post_activity extends AppCompatActivity {
 
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
-//        City = (String) mySpinner.getSelectedItem().toString();
-//        Log.e(": TAG8=",City);
-
-        // get Text from ciry
 
 
         RootRef.child("Users").child(currentUserID)

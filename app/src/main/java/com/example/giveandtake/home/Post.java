@@ -47,7 +47,6 @@ public class Post {
     public String getCity() {
         return city;
     }
-
     public String getcurrentUserID() {
         return currentUserID;
     }

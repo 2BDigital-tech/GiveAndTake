@@ -15,9 +15,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.giveandtake.Center.CenterFragment;
+import com.example.giveandtake.Center.Trade;
 import com.example.giveandtake.Connect_Fragment;
 import com.example.giveandtake.LoginActivity;
 import com.example.giveandtake.R;
@@ -43,7 +46,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
     static private ArrayList<Post> PostsList;
-
+    private DatabaseReference RootRef;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
     private Button addItem;
@@ -52,7 +55,9 @@ public class HomeFragment extends Fragment {
     private Button takeBtn;
     private String currentUserID;
     private FirebaseAuth mAuth;
-
+    private String name;
+    private String phone;
+    private String city;
 
     /// get the Buttoms ////
 
@@ -62,8 +67,9 @@ public class HomeFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_home, container, false);
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("Posts");
-        firebaseAuth = firebaseAuth.getInstance();
+        RootRef = firebaseDatabase.getInstance().getReference();
 
+        firebaseAuth = firebaseAuth.getInstance();
         //////////////////// Create Dialog ///////////////////
         addItem = root.findViewById(R.id.addItem);
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
@@ -125,9 +131,9 @@ public class HomeFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 PostsList = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String name = ds.child("nameAsk").getValue(String.class);
-                    String phone = ds.child("phoneAsk").getValue(String.class);
-                    String city = ds.child("city").getValue(String.class);
+                    name = ds.child("nameAsk").getValue(String.class);
+                    phone = ds.child("phoneAsk").getValue(String.class);
+                    city = ds.child("city").getValue(String.class);
                     String give = ds.child("give").getValue(String.class);
                     String take = ds.child("take").getValue(String.class);
                     String freeText = ds.child("freeText").getValue(String.class);
@@ -151,8 +157,8 @@ public class HomeFragment extends Fragment {
                         PostsList.get(position);
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                        mBuilder.setTitle(PostsList.get(position).getNameAsk() +" - Post");
-                        mBuilder.setMessage(PostsList.get(position).getfreeText()+"");
+                        mBuilder.setTitle("Post ID: "+PostsList.get(position).getPostid());
+                        mBuilder.setMessage(PostsList.get(position).getfreeText()+"\n"+PostsList.get(position).getGive());
                         Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
@@ -184,8 +190,35 @@ public class HomeFragment extends Fragment {
                             mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    final Trade trade = new Trade(
+                                            R.drawable.black2people,
+                                            PostsList.get(position).getPostid(),
+                                            currentUserID,
+                                            PostsList.get(position).getcurrentUserID(),
+                                            PostsList.get(position).getNameAsk(),
+                                            name,
+                                            PostsList.get(position).getGive(),
+                                            PostsList.get(position).getTake(),
+                                            phone,
+                                            city);
 
-                                    // Send to New Activite That Get all user Trades.
+                                        RootRef.child("Trades").child(currentUserID)
+                                                .addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                                                        String postId = RootRef.push().getKey();
+
+                                                        FirebaseDatabase.getInstance().getReference("Trades").child(postId).setValue(trade);
+                                                    }
+                                                    @Override
+                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                    }
+
+                                                });
+
                                 }
                             });
                             AlertDialog mDialog = mBuilder.create();
@@ -206,6 +239,10 @@ public class HomeFragment extends Fragment {
         myRef.addListenerForSingleValueEvent(eventListener);
 
     }
+
+
+
+
 
     public void updateView(){
         _RecyclerView = root.findViewById(R.id.recyclerview);
