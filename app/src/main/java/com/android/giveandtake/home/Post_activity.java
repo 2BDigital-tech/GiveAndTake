@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
+
 public class Post_activity extends AppCompatActivity {
     private Button giveBtn;
     private Button takeBtn;
@@ -148,9 +150,9 @@ public class Post_activity extends AppCompatActivity {
 
 
                         String postId = RootRef.push().getKey();
-
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId);
-                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+courrentCity);
+                        Timestamp now=new Timestamp(System.currentTimeMillis());
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
+                        Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+courrentCity+" "+now);
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }

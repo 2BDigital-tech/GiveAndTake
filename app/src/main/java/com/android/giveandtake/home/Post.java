@@ -1,5 +1,8 @@
 package com.android.giveandtake.home;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Post {
     private int imageResocure;
     private String NameAsk;
@@ -10,6 +13,7 @@ public class Post {
     private String currentUserID;
     private String freeText;
     private String PostId;
+    private Timestamp time;
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -55,8 +59,27 @@ public class Post {
     }
 
 
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
 
-    public Post(int img ,String nameAsk, String phoneAsk,String City ,String GiveAsk, String TakeAsk,String moreInfoText ,String id, String postid) {
+    public Timestamp getTime() {
+        return time;
+    }
+
+    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,Timestamp timee) {
+        imageResocure = img;
+        NameAsk = nameAsk;
+        PhoneAsk = phoneAsk;
+        Give = GiveAsk;
+        Take = TakeAsk;
+        currentUserID = id;
+        freeText = moreInfoText;
+        PostId = postid;
+        city = City;
+        time=timee;
+    }
+    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
