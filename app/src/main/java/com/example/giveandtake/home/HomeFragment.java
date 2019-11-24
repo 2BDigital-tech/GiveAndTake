@@ -170,13 +170,7 @@ public class HomeFragment extends Fragment {
                                     dialog.dismiss();
                                 }
                             });
-                            mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
 
-                                    // Send to New Activite That Get all user Trades.
-                                }
-                            });
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }else{
@@ -184,6 +178,14 @@ public class HomeFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
+                                }
+
+                            });
+                            mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    // Send to New Activite That Get all user Trades.
                                 }
                             });
                             AlertDialog mDialog = mBuilder.create();
