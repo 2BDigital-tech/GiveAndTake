@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
     private  Button buttonLogin;
     private  Button ReturnBtn;
     private FirebaseAuth firebaseAuth;
+        private String currentUserID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,9 @@ import com.google.firebase.auth.FirebaseAuth;
                                 progressDialog.dismiss();
 
                                 if (task.isSuccessful()) {
+currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
+
+
                                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(LoginActivity.this, Connect_Fragment.class);
                                     i.putExtra("Email",firebaseAuth.getCurrentUser().getEmail());
