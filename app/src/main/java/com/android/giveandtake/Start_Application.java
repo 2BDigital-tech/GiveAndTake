@@ -46,6 +46,7 @@ if user connect as not open a login and register box
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Start_Application.this, AdminConnect.class);
+
                 startActivity(i);
             }
         });
@@ -54,7 +55,10 @@ if user connect as not open a login and register box
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Start_Application.this, LoginActivity.class);
+//                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+
             }
         });
 
@@ -63,6 +67,7 @@ if user connect as not open a login and register box
             public void onClick(View v) {
                 Intent i = new Intent(Start_Application.this, RegistrationActivity.class);
                 startActivity(i);
+
             }
         });
 

@@ -12,11 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+    import com.android.giveandtake.Admin.AdminConnect;
     import com.android.giveandtake.R;
     import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+    import com.google.firebase.database.FirebaseDatabase;
 
     public class LoginActivity extends AppCompatActivity {
 
@@ -24,7 +26,9 @@ import com.google.firebase.auth.FirebaseAuth;
     private  EditText passwordboxLogin;
     private  Button buttonLogin;
     private  Button ReturnBtn;
+
     private FirebaseAuth firebaseAuth;
+        private String currentUserID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +60,28 @@ import com.google.firebase.auth.FirebaseAuth;
                                 progressDialog.dismiss();
 
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(LoginActivity.this, Connect_Fragment.class);
-                                    i.putExtra("Email",firebaseAuth.getCurrentUser().getEmail());
-                                    startActivity(i);
+                            //ADMIN CONNECTOR;
+                                    currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
+                                    if(firebaseAuth.getCurrentUser().getUid().equals(currentUserID)){
+
+                                        startActivity(new Intent (LoginActivity.this, AdminConnect.class)
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                                        Toast.makeText(LoginActivity.this, "Administrator Connector", Toast.LENGTH_LONG).show();
+finish();
+
+
+
+                                    }else {
+
+
+                                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(LoginActivity.this, Connect_Fragment.class);
+                                        i.putExtra("Email", firebaseAuth.getCurrentUser().getEmail());
+                                        startActivity(i);
+                                        finish();
+                                    }
                                 } else {
                                     Log.e("onComplete: Failed=", task.getException().getMessage());
                                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

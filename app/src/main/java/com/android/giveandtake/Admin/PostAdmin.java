@@ -133,8 +133,6 @@ public class PostAdmin extends AppCompatActivity {
                         mBuilder.setMessage(PostsList.get(position).getfreeText()+"");
                         Log.e(": TAG7=",PostsList.get(position).getcurrentUserID()+" "+currentUserID);
 
-                        if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
-
                             mBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -148,25 +146,10 @@ public class PostAdmin extends AppCompatActivity {
                                     dialog.dismiss();
                                 }
                             });
-                            mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    // Send to New Activite That Get all user Trades.
-                                }
-                            });
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
-                        }else{
-                            mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
 
-                                }
-                            });
-                            AlertDialog mDialog = mBuilder.create();
-                            mDialog.show();
-                        }
+
                     }
 
 
