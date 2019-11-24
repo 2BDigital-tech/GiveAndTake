@@ -35,9 +35,9 @@ public class tradeAdaper extends RecyclerView.Adapter<tradeAdaper.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView _ImageViewTrade;
-        public EditText _user_trade_name;
-        public EditText _user_giveOption;
-        public EditText _user_takeOption;
+        public TextView _user_trade_name;
+        public TextView _user_giveOption;
+        public TextView _user_takeOption;
 
 
 
@@ -74,7 +74,7 @@ public class tradeAdaper extends RecyclerView.Adapter<tradeAdaper.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.trade,parent,false);
         ViewHolder evh = new ViewHolder(v,mListener);
         return evh;
     }

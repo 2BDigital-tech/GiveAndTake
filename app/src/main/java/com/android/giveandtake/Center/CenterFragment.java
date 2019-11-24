@@ -1,6 +1,8 @@
 package com.android.giveandtake.Center;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +77,7 @@ public class CenterFragment extends Fragment {
                     String current_user_phone = ds.child("current_user_phone").getValue(String.class);
                     String current_user_city = ds.child("current_user_city").getValue(String.class);
 
+                    Log.e(": TAG12=",current_post_id+" "+current_user_id+" "+user_post_id+" "+user_post_name+" "+current_user_name+" "+current_user_phone+" "+post_give+" "+post_take);
 
                     Trade t = new Trade(R.drawable.black2people,current_post_id,current_user_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city);
                     if(!TradeList.contains(t)){
@@ -88,7 +91,6 @@ public class CenterFragment extends Fragment {
                     @Override
                     public void onTradeClick(final int position) {
                         TradeList.get(position);
-
                     }
 
                 });

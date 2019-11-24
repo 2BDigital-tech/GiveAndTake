@@ -177,24 +177,26 @@ public class HomeFragment extends Fragment {
                             mBuilder.setNegativeButton("Trade", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    final Trade trade = new Trade(
-                                            R.drawable.black2people,
-                                            PostsList.get(position).getPostid(),
-                                            currentUserID,
-                                            PostsList.get(position).getcurrentUserID(),
-                                            PostsList.get(position).getNameAsk(),
-                                            name,
-                                            PostsList.get(position).getGive(),
-                                            PostsList.get(position).getTake(),
-                                            phone,
-                                            city);
 
-                                        RootRef.child("Trades").child(currentUserID)
+                                        RootRef.child("Users").child(currentUserID)
                                                 .addValueEventListener(new ValueEventListener() {
                                                     @Override
-                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    public void onDataChange(DataSnapshot ds) {
 
-
+                                                        name = ds.child("name").getValue(String.class);
+                                                        phone = ds.child("phone").getValue(String.class);
+                                                        city = ds.child("city").getValue(String.class);
+                                                        final Trade trade = new Trade(
+                                                                R.drawable.black2people,
+                                                                PostsList.get(position).getPostid(),
+                                                                currentUserID,
+                                                                PostsList.get(position).getcurrentUserID(),
+                                                                PostsList.get(position).getNameAsk(),
+                                                                name,
+                                                                PostsList.get(position).getGive(),
+                                                                PostsList.get(position).getTake(),
+                                                                phone,
+                                                                city);
                                                         String postId = RootRef.push().getKey();
 
                                                         FirebaseDatabase.getInstance().getReference("Trades").child(postId).setValue(trade);
@@ -226,10 +228,6 @@ public class HomeFragment extends Fragment {
         myRef.addListenerForSingleValueEvent(eventListener);
 
     }
-
-
-
-
 
     public void updateView(){
         _RecyclerView = root.findViewById(R.id.recyclerview);
