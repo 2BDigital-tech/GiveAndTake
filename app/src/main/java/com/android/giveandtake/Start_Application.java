@@ -28,18 +28,6 @@ public class Start_Application extends AppCompatActivity {
         final Button RegisterBtn = (Button)findViewById(R.id.RegisterMainBox);
         Button LoginBtn = (Button)findViewById(R.id.LoginMainBox);
         Button ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
-/*
-if user connect as not open a login and register box 
- */
-//        firebaseAuth=firebaseAuth.getInstance();
-//
-//        FirebaseUser user=firebaseAuth.getCurrentUser();
-//        if(user!=null){
-//
-//            Intent activi=new Intent(Start_Application.this, Connect_Fragment.class);
-//            startActivity(activi);
-//        }
-
 
 
 

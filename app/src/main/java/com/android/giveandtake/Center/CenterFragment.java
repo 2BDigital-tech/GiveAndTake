@@ -171,25 +171,23 @@ public class CenterFragment extends Fragment {
         });
     }
 
-//    public void DeletePost(String uid) {
-//        myRef = firebaseDatabase.getReference("Posts");
+//    public void DeleteTradeAndPost(String uid) {
 //        myRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //
 //                String key = dataSnapshot.getKey();
 //                dataSnapshot.getRef().removeValue();
-//                updateView();
-//                createToShowTrades();
 //            }
-//
-//
 //            @Override
 //            public void onCancelled(@NonNull DatabaseError databaseError) {
 //
 //            }
 //
+//
 //        });
+//        myRef = firebaseDatabase.getReference("Trades");
+//
 //    }
 
         public void updateView(){
