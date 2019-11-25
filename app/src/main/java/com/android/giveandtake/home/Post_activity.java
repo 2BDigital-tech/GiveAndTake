@@ -150,7 +150,7 @@ public class Post_activity extends AppCompatActivity {
 
 
                         String postId = RootRef.push().getKey();
-                        Timestamp now=new Timestamp(System.currentTimeMillis());
+                        long now=new Timestamp(System.currentTimeMillis()).getTime();
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
                         Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+courrentCity+" "+now);
 

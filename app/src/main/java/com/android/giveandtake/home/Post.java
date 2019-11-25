@@ -13,7 +13,7 @@ public class Post {
     private String currentUserID;
     private String freeText;
     private String PostId;
-    private Timestamp time;
+    private long time;
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -59,15 +59,15 @@ public class Post {
     }
 
 
-    public void setTime(Timestamp time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
-    public Timestamp getTime() {
+    public long getTime() {
         return time;
     }
 
-    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,Timestamp timee) {
+    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,long timee) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
