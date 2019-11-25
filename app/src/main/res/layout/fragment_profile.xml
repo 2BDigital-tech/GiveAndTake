@@ -155,10 +155,10 @@
                 android:text="Disconnect" />
 
             <Button
-                android:id="@+id/Updateprofile"
-                android:layout_width="210dp"
+                android:id="@+id/editprofile"
+                android:layout_width="183dp"
                 android:layout_height="78dp"
-                android:text="Update profil" />
+                android:text="Edit profile" />
 
         </LinearLayout>
 
