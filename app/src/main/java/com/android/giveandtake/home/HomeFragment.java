@@ -113,21 +113,21 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         couurentGive = giveOptions[which];
-                        filerOption = true;
-
                         dialog.dismiss();
+                        filerOption = true;
                         createToShowPosts();
                         updateView();
+
                     }
 
                 });
-
                 mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
                 AlertDialog mDialog = mBuilder.create();
+
                 mDialog.show();
 
             }
