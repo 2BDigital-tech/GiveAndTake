@@ -29,8 +29,7 @@ import com.google.firebase.database.ValueEventListener;
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
     private Button unsigout;
-    private TextView name;
-    private TextView phone;
+    private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
     private FirebaseUser firebaseUser;
 
@@ -51,6 +50,8 @@ import com.google.firebase.database.ValueEventListener;
 
        name=(TextView)root.findViewById(R.id.nameprofile);
        phone=(TextView)root.findViewById(R.id.phoneProfil);
+       email=(TextView)root.findViewById(R.id.emailprofil);
+       city=(TextView)root.findViewById(R.id.cityprofil);
 
         String idUser=user.getUid();
 
@@ -59,9 +60,13 @@ import com.google.firebase.database.ValueEventListener;
           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               String userId=dataSnapshot.child("name").getValue(String.class);
               String phoneid=dataSnapshot.child("phone").getValue(String.class);
+              String emailid=dataSnapshot.child("email").getValue(String.class);
+              String cityid=dataSnapshot.child("city").getValue(String.class);
 
               name.setText(userId);
               phone.setText(phoneid);
+              email.setText(emailid);
+              city.setText(cityid);
 
           }
 
