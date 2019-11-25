@@ -79,6 +79,7 @@ public class CenterFragment extends Fragment {
                     String user_post_id = ds.child("user_post_id").getValue(String.class);
                     String user_post_name = ds.child("user_post_name").getValue(String.class);
                     String current_user_name = ds.child("current_user_name").getValue(String.class);
+                    String current_user_id = ds.child("current_user_id").getValue(String.class);
                     String post_give = ds.child("post_give").getValue(String.class);
                     String post_take = ds.child("post_take").getValue(String.class);
                     String current_user_phone = ds.child("current_user_phone").getValue(String.class);
@@ -86,16 +87,15 @@ public class CenterFragment extends Fragment {
                     String Textfree = ds.child("textFree").getValue(String.class);
 
                     Log.e(": TAG12=",current_post_id+" "+current_trade_id+" "+user_post_id+" "+user_post_name+" "+current_user_name+" "+current_user_phone+" "+post_give+" "+post_take);
+                    for(Trade i : TradeList){
+
+                    }
+
                     if(user_post_id.equals(currentUserID)){
-                        Trade t = new Trade(R.drawable.black2people,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree);
+                        Trade t = new Trade(R.drawable.black2people,current_user_id,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree);
                         if(!TradeList.contains(t)){
                             TradeList.add(t);
                         }
-                        // check if trade exsit
-
-//                        for(Trade i : TradeList){
-//                            if(i.getCurrent_Trade_id().ecurrent_trade_id)
-//                        }
                     }
 
                 }

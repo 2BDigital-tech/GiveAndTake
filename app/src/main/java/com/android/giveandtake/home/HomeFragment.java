@@ -40,12 +40,22 @@ public class HomeFragment extends Fragment {
     private View root;
     private Button giveBtn;
     private Button takeBtn;
+    private Button filterCitybtn;
+    private Button filterOptionbtn;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private String name;
     private String phone;
     private String city;
+    private String give;
+    private String take;
+    private String PostID;
+    private String current_city;
+    private String courrentUser;
     private String freeText;
+    private boolean filerCity = true;
+    private boolean filerOption = false;
+
 
     /// get the Buttoms ////
 
@@ -56,13 +66,14 @@ public class HomeFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("Posts");
         RootRef = firebaseDatabase.getInstance().getReference();
-
         firebaseAuth = firebaseAuth.getInstance();
         //////////////////// Create Dialog ///////////////////
         addItem = root.findViewById(R.id.addItem);
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
         giveBtn = root.findViewById(R.id.giveBtn);
         takeBtn = root.findViewById(R.id.takeBtn);
+        filterCitybtn = root.findViewById(R.id.filterCity);
+        filterCitybtn = root.findViewById(R.id.filterOption);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
@@ -73,6 +84,19 @@ public class HomeFragment extends Fragment {
                 Intent i = new Intent(getActivity(), Post_activity.class);
                 startActivity(i);
                // openDialog();
+            }
+
+        });
+
+        filterCitybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filerCity = true;
+                Log.e(": TAG2=",filerCity+"");
+
+                createToShowPosts();
+                updateView();
+
             }
 
         });
@@ -111,8 +135,6 @@ public class HomeFragment extends Fragment {
 
 
     public void createToShowPosts(){
-
-
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -121,19 +143,54 @@ public class HomeFragment extends Fragment {
                     name = ds.child("nameAsk").getValue(String.class);
                     phone = ds.child("phoneAsk").getValue(String.class);
                     city = ds.child("city").getValue(String.class);
-                    String give = ds.child("give").getValue(String.class);
-                    String take = ds.child("take").getValue(String.class);
+                    give = ds.child("give").getValue(String.class);
+                    take = ds.child("take").getValue(String.class);
                     freeText = ds.child("freeText").getValue(String.class);
-                    String courrentUser = ds.child("currentUserID").getValue(String.class);
-                    String PostID = ds.child("postid").getValue(String.class);
+                    courrentUser = ds.child("currentUserID").getValue(String.class);
+                    PostID = ds.child("postid").getValue(String.class);
 
 
 
+                    if((filerCity == true)){
+                        RootRef.child("Users").child(currentUserID)
+                                .addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot ds) {
+                                        current_city = ds.child("city").getValue(String.class);
+                                        Log.e(": TAG11=",filerCity+" G "+current_city+" D "+city);
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
 
-                    Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
-                    if(!PostsList.contains(p)){
+                                    }
+
+                                });
+                        Log.e(": TAG122=",city+" "+current_city);
+
+                        if(city.equals(current_city)){
+                            Log.e(": TAG122=","Equals");
+
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            PostsList.add(p);
+                            updateView();
+
+                        }
+
+                    }else{
+                        Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
                         PostsList.add(p);
                     }
+//
+//                    if(filerOption == true){
+//
+//
+//                    }else{
+//
+//                    }
+//                    if(!PostsList.contains(p)){
+//                        PostsList.add(p);
+//
+//                    }
                 }
 
                 updateView();
@@ -188,6 +245,7 @@ public class HomeFragment extends Fragment {
                                                         city = ds.child("city").getValue(String.class);
                                                         final Trade trade = new Trade(
                                                                 R.drawable.black2people,
+                                                                currentUserID,
                                                                 PostsList.get(position).getPostid(),
                                                                 postId,
                                                                 PostsList.get(position).getcurrentUserID(),

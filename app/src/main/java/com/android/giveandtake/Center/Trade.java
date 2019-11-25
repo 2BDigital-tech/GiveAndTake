@@ -11,10 +11,11 @@ public class Trade {
     private String post_give;
     private String post_take;
     private String current_user_phone;
+    private String current_user_id;
     private String current_user_city;
     private String textFree;
 
-    public Trade(int imageResocure, String current_post_id, String current_trade_id, String user_post_id, String user_post_name, String current_user_name, String post_give, String post_take, String current_user_phone, String current_user_city,String text) {
+    public Trade(int imageResocure,String current_user_id,String current_post_id, String current_trade_id, String user_post_id, String user_post_name, String current_user_name, String post_give, String post_take, String current_user_phone, String current_user_city,String text) {
         this.imageResocure = imageResocure;
         this.current_post_id = current_post_id;
         this.current_trade_id = current_trade_id;
@@ -26,6 +27,7 @@ public class Trade {
         this.current_user_phone = current_user_phone;
         this.current_user_city = current_user_city;
         this.textFree = text;
+        this.current_user_id = current_user_id;
     }
 
     public int getImageResocure() {
@@ -34,6 +36,10 @@ public class Trade {
 
     public String getCurrent_post_id() {
         return current_post_id;
+    }
+
+    public String getCurrent_user_id() {
+        return current_user_id;
     }
 
     public String getTextFree() {
