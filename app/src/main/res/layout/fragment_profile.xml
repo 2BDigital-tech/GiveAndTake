@@ -49,10 +49,10 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="160dp"
-                android:layout_height="34dp"
+                android:layout_width="136dp"
+                android:layout_height="45dp"
                 android:text="Welcome:"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
@@ -60,7 +60,6 @@
                 android:id="@+id/nameprofile"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:textAlignment="textStart"
                 android:textColor="#000000"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -72,20 +71,20 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="21dp"
-                android:layout_height="match_parent"
+                android:layout_width="57dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:text="Number Phone:"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/phoneProfil"
-                android:layout_width="wrap_content"
+                android:layout_width="197dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -96,18 +95,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="21dp"
+                android:layout_width="129dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
                 android:lineSpacingExtra="10sp"
                 android:text="Email:"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/emailprofil"
-                android:layout_width="wrap_content"
+                android:layout_width="270dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
                 android:textAlignment="textStart"
@@ -121,18 +120,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="24dp"
+                android:layout_width="119dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
                 android:lineSpacingExtra="10sp"
                 android:text="City:"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/cityprofil"
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
                 android:textAlignment="textStart"
