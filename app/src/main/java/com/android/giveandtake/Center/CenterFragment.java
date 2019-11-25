@@ -38,6 +38,7 @@ public class CenterFragment extends Fragment {
     private DatabaseReference RootRef;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
+    private DatabaseReference PostsRef;
     private FirebaseAuth mAuth;
     private String currentUserID;
 
@@ -54,6 +55,7 @@ public class CenterFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("Trades");
+        PostsRef = firebaseDatabase.getReference("Posts");
         RootRef = firebaseDatabase.getInstance().getReference();
         firebaseAuth = firebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -118,8 +120,8 @@ public class CenterFragment extends Fragment {
                         mBuilder.setPositiveButton("Accpet", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                DeletePost(TradeList.get(position).getCurrent_post_id());
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
-                                DeleteTradeAndPost(TradeList.get(position).getCurrent_post_id(),TradeList.get(position).getCurrent_Trade_id());
                                 updateView();
 
 
@@ -178,13 +180,14 @@ public class CenterFragment extends Fragment {
         });
     }
 
-    public void DeleteTradeAndPost(String postid,String tradeid) {
-        myRef.child(tradeid).orderByKey().equalTo(tradeid).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void DeletePost(String postid) {
+        PostsRef.child(postid).orderByKey().equalTo(postid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 String key = dataSnapshot.getKey();
                 dataSnapshot.getRef().removeValue();
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -193,24 +196,8 @@ public class CenterFragment extends Fragment {
 
 
         });
-        myRef = firebaseDatabase.getReference("Posts");
-        myRef.child(postid).orderByKey().equalTo(postid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String key = dataSnapshot.getKey();
-                dataSnapshot.getRef().removeValue();
-                updateView();
-                createToShowTrades();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-
-        });
-
+        updateView();
+        createToShowTrades();
 
     }
 
