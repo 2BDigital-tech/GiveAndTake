@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
-    private Button unsigout;
+    private Button unsigout, updateprofil;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
     private FirebaseUser firebaseUser;
@@ -92,6 +92,17 @@ import com.google.firebase.database.ValueEventListener;
             }
         });
 
+        updateprofil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                firebaseAuth.getInstance().signOut();
+
+                Intent acti = new Intent(getActivity(), UpdateProfile.class);
+                startActivity(acti);
+
+            }
+        });
 
         return root;
     }
