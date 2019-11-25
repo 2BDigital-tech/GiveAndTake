@@ -24,12 +24,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ProfileFragment extends Fragment {
+    public class ProfileFragment extends Fragment {
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
     private Button unsigout;
     private TextView name;
+    private TextView phone;
     private DatabaseReference UsersRef;
     private FirebaseUser firebaseUser;
 
@@ -49,13 +50,19 @@ public class ProfileFragment extends Fragment {
         FirebaseUser user=firebaseAuth.getCurrentUser();
 
        name=(TextView)root.findViewById(R.id.nameprofile);
-String idUser=user.getUid();
+       phone=(TextView)root.findViewById(R.id.phoneProfil);
+
+        String idUser=user.getUid();
 
       UsersRef.child(idUser).addValueEventListener(new ValueEventListener() {
           @Override
           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               String userId=dataSnapshot.child("name").getValue(String.class);
+              String phoneid=dataSnapshot.child("phone").getValue(String.class);
+
               name.setText(userId);
+              phone.setText(phoneid);
+
           }
 
           @Override
