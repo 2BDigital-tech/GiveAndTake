@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
-    private Button unsigout, updateprofil;
+    private Button unsigout, updateprofile;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
     private FirebaseUser firebaseUser;
@@ -40,7 +40,8 @@ import com.google.firebase.database.ValueEventListener;
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        unsigout = (Button) root.findViewById(R.id.Disconnect);
+        unsigout = (Button) root.findViewById(R.id.disconnect);
+        updateprofile = (Button) root.findViewById(R.id.Updateprofile);
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -49,9 +50,9 @@ import com.google.firebase.database.ValueEventListener;
         FirebaseUser user=firebaseAuth.getCurrentUser();
 
        name=(TextView)root.findViewById(R.id.nameprofile);
-       phone=(TextView)root.findViewById(R.id.phoneProfil);
-       email=(TextView)root.findViewById(R.id.emailprofil);
-       city=(TextView)root.findViewById(R.id.cityprofil);
+       phone=(TextView)root.findViewById(R.id.phoneprofile);
+       email=(TextView)root.findViewById(R.id.emailprofile);
+       city=(TextView)root.findViewById(R.id.cityprofile);
 
         String idUser=user.getUid();
 
@@ -92,11 +93,9 @@ import com.google.firebase.database.ValueEventListener;
             }
         });
 
-        updateprofil.setOnClickListener(new View.OnClickListener() {
+        updateprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                firebaseAuth.getInstance().signOut();
 
                 Intent acti = new Intent(getActivity(), UpdateProfile.class);
                 startActivity(acti);

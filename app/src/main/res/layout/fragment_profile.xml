@@ -80,7 +80,7 @@
                 android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/phoneProfil"
+                android:id="@+id/phoneprofile"
                 android:layout_width="194dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
                 android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/emailprofil"
+                android:id="@+id/emailprofile"
                 android:layout_width="267dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
@@ -130,7 +130,7 @@
                 android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/cityprofil"
+                android:id="@+id/cityprofile"
                 android:layout_width="255dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
@@ -145,13 +145,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/Disconnect"
+                android:id="@+id/disconnect"
                 android:layout_width="210dp"
                 android:layout_height="78dp"
                 android:text="Disconnect" />
 
             <Button
-                android:id="@+id/Update profil"
+                android:id="@+id/Updateprofile"
                 android:layout_width="210dp"
                 android:layout_height="78dp"
                 android:text="Update profil" />
