@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment {
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle("Post ID: "+PostsList.get(position).getPostid());
-                        mBuilder.setMessage(PostsList.get(position).getfreeText()+"\n"+PostsList.get(position).getGive());
+                        mBuilder.setMessage(PostsList.get(position).getfreeText()+"\n");
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){
 
