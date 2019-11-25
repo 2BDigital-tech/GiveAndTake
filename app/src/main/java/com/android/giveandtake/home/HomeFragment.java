@@ -96,7 +96,13 @@ public class HomeFragment extends Fragment {
         filterCitybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                filerCity = true;
+
+                if(filerCity == true){
+                    filerCity=false;
+                }
+                else{
+                    filerCity=true;
+                }
                 createToShowPosts();
                 updateView();
 
