@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
+import com.android.giveandtake.EditProfile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
-    private Button unsigout, updateprofile;
+    private Button unsigout, editprofile;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
     private FirebaseUser firebaseUser;
@@ -41,7 +42,7 @@ import com.google.firebase.database.ValueEventListener;
         final View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         unsigout = (Button) root.findViewById(R.id.disconnect);
-        updateprofile = (Button) root.findViewById(R.id.Updateprofile);
+        editprofile = (Button) root.findViewById(R.id.editprofile);
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -93,11 +94,11 @@ import com.google.firebase.database.ValueEventListener;
             }
         });
 
-        updateprofile.setOnClickListener(new View.OnClickListener() {
+        editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent acti = new Intent(getActivity(), UpdateProfile.class);
+                Intent acti = new Intent(getActivity(), EditProfile.class);
                 startActivity(acti);
 
             }
