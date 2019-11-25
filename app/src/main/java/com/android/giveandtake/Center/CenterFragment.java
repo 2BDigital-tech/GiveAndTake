@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.giveandtake.R;
+import com.android.giveandtake.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -106,15 +107,21 @@ public class CenterFragment extends Fragment {
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle("Post ID: "+TradeList.get(position).getCurrent_post_id());
-                        mBuilder.setMessage(TradeList.get(position).getTextFree()+"\n");
+                        mBuilder.setMessage("Name: "+TradeList.get(position).getCurrent_user_name()+"\n"+
+                                            "Phone: "+TradeList.get(position).getCurrent_user_phone()+"\n"+
+                                            "City: "+TradeList.get(position).getCurrent_user_city()+"\n"
+
+
+                        );
 
 
                         mBuilder.setPositiveButton("Accpet", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
-                                //DeletePost(TradeList.get(position).getCurrent_post_id());
+                                DeleteTradeAndPost(TradeList.get(position).getCurrent_post_id(),TradeList.get(position).getCurrent_Trade_id());
                                 updateView();
+
 
                             }
 
@@ -171,24 +178,41 @@ public class CenterFragment extends Fragment {
         });
     }
 
-//    public void DeleteTradeAndPost(String uid) {
-//        myRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                String key = dataSnapshot.getKey();
-//                dataSnapshot.getRef().removeValue();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//
-//
-//        });
-//        myRef = firebaseDatabase.getReference("Trades");
-//
-//    }
+    public void DeleteTradeAndPost(String postid,String tradeid) {
+        myRef.child(tradeid).orderByKey().equalTo(tradeid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+        myRef = firebaseDatabase.getReference("Posts");
+        myRef.child(postid).orderByKey().equalTo(postid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+                updateView();
+                createToShowTrades();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+
+    }
 
         public void updateView(){
             _RecyclerView = root.findViewById(R.id.recyclerviewCenter);
