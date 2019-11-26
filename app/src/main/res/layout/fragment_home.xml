@@ -23,8 +23,8 @@
 
     <Button
         android:id="@+id/filterCity"
-        android:layout_width="113dp"
-        android:layout_height="37dp"
+        android:layout_width="130dp"
+        android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -35,7 +35,7 @@
         android:textSize="12dp" />
 
     <Button
-        android:id="@+id/filterOption"
+        android:id="@+id/filterGive"
         android:layout_width="130dp"
         android:layout_height="39dp"
         android:layout_alignParentStart="true"
@@ -44,7 +44,20 @@
         android:layout_marginStart="129dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="151dp"
-        android:text="Filter By Option"
+        android:text="Filter By Give"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/filterTake"
+        android:layout_width="130dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-3dp"
+        android:layout_marginEnd="150dp"
+        android:text="Filter By Take"
         android:textSize="12dp" />
 
     <androidx.recyclerview.widget.RecyclerView

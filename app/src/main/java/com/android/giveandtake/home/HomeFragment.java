@@ -42,7 +42,8 @@ public class HomeFragment extends Fragment {
     private Button giveBtn;
     private Button takeBtn;
     private Button filterCitybtn;
-    private Button filterOptionbtn;
+    private Button filterGivebtn;
+    private Button filterTakebtn;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private String name;
@@ -50,7 +51,9 @@ public class HomeFragment extends Fragment {
     private String city;
     private String give;
     private String take;
+    static private String courrentTake;
     private String []giveOptions;
+    private String []takeOptions;
     private String PostID;
     static private String current_city;
     private String courrentUser;
@@ -58,7 +61,8 @@ public class HomeFragment extends Fragment {
 
     private String freeText;
     private boolean filerCity = false;
-    private boolean filerOption = false;
+    private boolean filerGive = false;
+    private boolean filerTake = false;
 
 
     /// get the Buttoms ////
@@ -78,7 +82,8 @@ public class HomeFragment extends Fragment {
         giveBtn = root.findViewById(R.id.giveBtn);
         takeBtn = root.findViewById(R.id.takeBtn);
         filterCitybtn = root.findViewById(R.id.filterCity);
-        filterOptionbtn = root.findViewById(R.id.filterOption);
+        filterGivebtn = root.findViewById(R.id.filterGive);
+        filterTakebtn = root.findViewById(R.id.filterTake);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
@@ -109,7 +114,7 @@ public class HomeFragment extends Fragment {
             }
 
         });
-        filterOptionbtn.setOnClickListener(new View.OnClickListener() {
+        filterGivebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 giveOptions = getResources().getStringArray(R.array.Option1);
@@ -120,16 +125,55 @@ public class HomeFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         couurentGive = giveOptions[which];
                         dialog.dismiss();
-                        filerOption = true;
+                        filerGive = true;
                         createToShowPosts();
                         updateView();
 
                     }
 
                 });
-                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                mBuilder.setNeutralButton("Cancel Filter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        filerGive = false;
+                        createToShowPosts();
+                        updateView();
+
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+
+                mDialog.show();
+
+            }
+
+        });
+
+        filterTakebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takeOptions = getResources().getStringArray(R.array.Option2);
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                mBuilder.setTitle("Choose From Options:");
+                mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        courrentTake = takeOptions[which];
+                        dialog.dismiss();
+                        filerTake = true;
+                        createToShowPosts();
+                        updateView();
+
+                    }
+
+                });
+                mBuilder.setNeutralButton("Cancel Filter", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        filerTake = false;
+                        createToShowPosts();
+                        updateView();
+
                     }
                 });
                 AlertDialog mDialog = mBuilder.create();
@@ -200,10 +244,8 @@ public class HomeFragment extends Fragment {
                         }
 
                     });
-                    Log.e(": TAG17=", filerOption+"");
 
-
-                    if(filerCity == true && filerOption == false) {
+                    if(filerCity == true && filerGive == false && filerTake == false) {
 
                         if (city.equals(current_city)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
@@ -211,7 +253,7 @@ public class HomeFragment extends Fragment {
                             updateView();
                         }
                     }
-                    else if(filerCity == true && filerOption == true) {
+                    else if(filerCity == true && filerGive == true && filerTake == false) {
 
                         if (city.equals(current_city) && give.equals(couurentGive)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
@@ -219,7 +261,32 @@ public class HomeFragment extends Fragment {
                             updateView();
                         }
                     }
-                    else if(filerCity == false && filerOption == true){
+                    else if(filerCity == true && filerGive == false && filerTake == true) {
+
+                        if (city.equals(current_city) && take.equals(courrentTake)) {
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            PostsList.add(p);
+                            updateView();
+                        }
+                    }
+                    else if(filerCity == true && filerGive == true && filerTake == true) {
+
+                        if (city.equals(current_city) && give.equals(couurentGive) && take.equals(courrentTake)) {
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            PostsList.add(p);
+                            updateView();
+                        }
+                    }
+                    else if(filerCity == false && filerGive == true && filerTake == true){
+
+                        if(give.equals(couurentGive) && take.equals(courrentTake)){
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            PostsList.add(p);
+                            updateView();
+                        }
+
+                    }
+                    else if(filerCity == false && filerGive == true && filerTake == false){
 
                         if(give.equals(couurentGive)){
                             Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
@@ -227,7 +294,17 @@ public class HomeFragment extends Fragment {
                             updateView();
                         }
 
-                    }else{
+                    }
+                    else if(filerCity == false && filerGive == false && filerTake == true){
+
+                        if(take.equals(courrentTake)){
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            PostsList.add(p);
+                            updateView();
+                        }
+
+                    }
+                    else{
                         Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
                         PostsList.add(p);
 
