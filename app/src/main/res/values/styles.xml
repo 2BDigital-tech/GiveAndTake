@@ -8,5 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+    <style name="Begin_App" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
 
 </resources>
