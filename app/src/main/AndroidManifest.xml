@@ -27,13 +27,15 @@
         <activity android:name=".Admin.AdminConnect" />
         <activity
             android:name=".Connect_Fragment"
-            android:label="@string/title_activity_main2" />
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Begin_App"/>
 
         <activity android:name=".LoginActivity"
             android:theme="@style/Begin_App"/>
 
         <activity android:name=".RegistrationActivity"
             android:theme="@style/Begin_App"/>
+
         <activity android:name=".Start_Application"
             android:theme="@style/Begin_App"/>
 
