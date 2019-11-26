@@ -2,6 +2,7 @@ package com.android.giveandtake;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,23 +22,30 @@ public class Begin_Application extends AppCompatActivity {
 //if user connect as not open a login and register box
 
         firebaseAuth=firebaseAuth.getInstance();
-
         FirebaseUser user=firebaseAuth.getCurrentUser();
-        try{
-            Thread.sleep(1000);
-        }catch (Exception e){}
-        if(user!=null){
 
-            Intent activi=new Intent(Begin_Application.this, Connect_Fragment.class);
-            startActivity(activi);
-            finish();
-        }
-        else{
-            Intent activi2=new Intent(Begin_Application.this, Start_Application.class);
-            startActivity(activi2);
-            finish();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FirebaseUser user=firebaseAuth.getCurrentUser();
+                if(user!=null){
+
+                    Intent activi=new Intent(Begin_Application.this, Connect_Fragment.class);
+                    startActivity(activi);
+                    finish();
+                }
+                else{
+                    Intent activi2=new Intent(Begin_Application.this, Start_Application.class);
+                    startActivity(activi2);
+                    finish();
 
 
-        }
+                }
+            }
+        }, 3000);
+
+
+
     }
 }
