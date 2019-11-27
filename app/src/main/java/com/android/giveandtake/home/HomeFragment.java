@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
     private String city;
     private String give;
     private String take;
+    private long time;
     static private String courrentTake;
     private String []giveOptions;
     private String []takeOptions;
@@ -249,7 +251,9 @@ public class HomeFragment extends Fragment {
                     phone = ds.child("phoneAsk").getValue(String.class);
                     city = ds.child("city").getValue(String.class);
                     give = ds.child("give").getValue(String.class);
+                    Log.e("TAGPOST",ds.child("time").getValue(long.class).toString());
                     take = ds.child("take").getValue(String.class);
+                    time = ds.child("time").getValue(long.class);
                     freeText = ds.child("freeText").getValue(String.class);
                     courrentUser = ds.child("currentUserID").getValue(String.class);
                     PostID = ds.child("postid").getValue(String.class);
@@ -272,7 +276,7 @@ public class HomeFragment extends Fragment {
                     if(filerCity == true && filerGive == false && filerTake == false) {
 
                         if (city.equals(current_city)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -280,7 +284,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == true && filerTake == false) {
 
                         if (city.equals(current_city) && give.equals(couurentGive)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -288,7 +292,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == false && filerTake == true) {
 
                         if (city.equals(current_city) && take.equals(courrentTake)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -296,7 +300,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == true && filerTake == true) {
 
                         if (city.equals(current_city) && give.equals(couurentGive) && take.equals(courrentTake)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID);
+                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -304,7 +308,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == true && filerTake == true){
 
                         if(give.equals(couurentGive) && take.equals(courrentTake)){
-                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -313,7 +317,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == true && filerTake == false){
 
                         if(give.equals(couurentGive)){
-                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
@@ -322,14 +326,14 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == false && filerTake == true){
 
                         if(take.equals(courrentTake)){
-                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                            Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
                             updateView();
                         }
 
                     }
                     else{
-                        Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                        Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                         PostsList.add(p);
 
                     }
