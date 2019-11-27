@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +43,7 @@ public class HomeFragment extends Fragment {
     private Button filterCitybtn;
     private Button filterGivebtn;
     private Button filterTakebtn;
+    private Button filterDatebtn;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private String name;
@@ -61,6 +61,7 @@ public class HomeFragment extends Fragment {
 
     private String freeText;
     private boolean filerCity = false;
+    private boolean filterDate = false;
     private boolean filerGive = false;
     private boolean filerTake = false;
 
@@ -84,6 +85,7 @@ public class HomeFragment extends Fragment {
         filterCitybtn = root.findViewById(R.id.filterCity);
         filterGivebtn = root.findViewById(R.id.filterGive);
         filterTakebtn = root.findViewById(R.id.filterTake);
+        filterDatebtn = root.findViewById(R.id.filterDate);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
@@ -102,6 +104,26 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(filterDate == true){
+                    filterDate=false;
+                }
+                else{
+                    filterDate=true;
+                }
+                createToShowPosts();
+                updateView();
+
+            }
+
+        });
+
+
+
+
+        filterDatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 if(filerCity == true){
                     filerCity=false;
                 }
@@ -114,6 +136,8 @@ public class HomeFragment extends Fragment {
             }
 
         });
+
+
         filterGivebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

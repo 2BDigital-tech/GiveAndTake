@@ -1,7 +1,5 @@
 package com.android.giveandtake.home;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.giveandtake.Connect_Fragment;
 import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class Post_activity extends AppCompatActivity {
     private Button giveBtn;
@@ -146,13 +146,14 @@ public class Post_activity extends AppCompatActivity {
                         courrentPhone = retrieveUserPhone;
                         String retrieveCity = dataSnapshot.child("city").getValue().toString();
                         courrentCity = retrieveCity;
-
-
-
+                long now= new Date().getTime();
                         String postId = RootRef.push().getKey();
-                        long now=new Timestamp(System.currentTimeMillis()).getTime();
+                       // LocalDateTime test= LocalDateTime.now();
+
+                        String Time_Test=   new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(now);
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
                         Log.e(": TAG5=",courrentName+" "+courrentPhone+" "+couurentGive+" "+courrentTake+" "+MoreInfoText+" "+currentUserID+" "+courrentCity+" "+now);
+                        Log.e(": TAGTIME="," "+ Time_Test);
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }

@@ -43,7 +43,7 @@ public class Begin_Application extends AppCompatActivity {
 
                 }
             }
-        }, 3000);
+        }, 1000);
 
 
 

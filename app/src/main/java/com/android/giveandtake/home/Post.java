@@ -1,8 +1,5 @@
 package com.android.giveandtake.home;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 public class Post {
     private int imageResocure;
     private String NameAsk;
@@ -65,6 +62,9 @@ public class Post {
 
     public long getTime() {
         return time;
+    }
+    public String GetDate (){
+        return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(time);
     }
 
     public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,long timee) {

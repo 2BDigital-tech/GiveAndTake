@@ -32,7 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         public ImageView _ImageView;
         public TextView _NameAsk;
-        public TextView _PhoneAsk;
+        public TextView _DateAsk;
         public TextView _GiveAsk;
         public TextView _TakeAsk;
         public TextView _City;
@@ -44,7 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             super(itemView);
             _ImageView = itemView.findViewById(R.id.ImageView);
             _NameAsk = itemView.findViewById(R.id.NameAsk);
-            _PhoneAsk = itemView.findViewById(R.id.PhoneAsk);
+            _DateAsk = itemView.findViewById(R.id.DateAsk);
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
             _City = itemView.findViewById(R.id.CityOption);
@@ -84,7 +84,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         holder._ImageView.setImageResource(correntItem.getImageResocure());
         holder._NameAsk.setText(correntItem.getNameAsk());
-        holder._PhoneAsk.setText(correntItem.getPhoneAsk());
+        holder._DateAsk.setText(correntItem.GetDate());
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
         holder._City.setText(correntItem.getCity());
