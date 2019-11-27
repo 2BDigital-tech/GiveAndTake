@@ -1,19 +1,19 @@
 package com.android.giveandtake.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.giveandtake.R;
 import com.android.giveandtake.home.ItemAdapter;
 import com.android.giveandtake.home.Post;
-import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -111,11 +111,11 @@ public class PostAdmin extends AppCompatActivity {
                     String freeText = ds.child("freeText").getValue(String.class);
                     String courrentUser = ds.child("currentUserID").getValue(String.class);
                     String PostID = ds.child("postid").getValue(String.class);
+long time=ds.child("time").getValue(long.class);
 
 
 
-
-                    com.android.giveandtake.home.Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID);
+                    com.android.giveandtake.home.Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }

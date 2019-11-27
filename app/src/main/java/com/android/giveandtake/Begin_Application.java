@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.giveandtake.Admin.AdminConnect;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,11 +32,19 @@ public class Begin_Application extends AppCompatActivity {
                 FirebaseUser user=firebaseAuth.getCurrentUser();
                 if(user!=null){
 
-                    Intent activi=new Intent(Begin_Application.this, Connect_Fragment.class);
-                    startActivity(activi);
-                    finish();
-                }
-                else{
+                  String  currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
+
+                    if(firebaseAuth.getCurrentUser().getUid().equals(currentUserID)) {
+                        Intent activi = new Intent(Begin_Application.this, AdminConnect.class);
+                        startActivity(activi);
+                        finish();
+                    }
+                    else {
+                        Intent activi = new Intent(Begin_Application.this, Connect_Fragment.class);
+                        startActivity(activi);
+                        finish();
+                    }
+                    }else{
                     Intent activi2=new Intent(Begin_Application.this, Start_Application.class);
                     startActivity(activi2);
                     finish();
