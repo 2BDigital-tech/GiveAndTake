@@ -273,6 +273,11 @@ public class HomeFragment extends Fragment {
 
                     });
 
+if(filterDate==true){
+
+
+ }
+
                     if(filerCity == true && filerGive == false && filerTake == false) {
 
                         if (city.equals(current_city)) {

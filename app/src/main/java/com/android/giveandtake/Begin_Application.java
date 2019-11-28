@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Begin_Application extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

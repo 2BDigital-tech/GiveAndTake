@@ -89,6 +89,7 @@ import com.google.firebase.database.ValueEventListener;
 
                 Intent activi = new Intent(getActivity(), Start_Application.class);
                 startActivity(activi);
+                getActivity().finish();
                 Toast.makeText(getActivity(), "Disconnect Full", Toast.LENGTH_LONG).show();
 
             }
