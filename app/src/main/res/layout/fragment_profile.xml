@@ -52,7 +52,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/changename"
                 android:layout_width="137dp"
                 android:layout_height="45dp"
                 android:text="Welcome:"
@@ -74,7 +74,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/changephone"
                 android:layout_width="57dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
