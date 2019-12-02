@@ -35,10 +35,12 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager _LayoutManager;
     private FirebaseDatabase firebaseDatabase;
     static private ArrayList<Post> PostsList;
+    static private ArrayList<Trade> TradeList = new ArrayList<>();
     private DatabaseReference RootRef;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
     private DatabaseReference myUsers;
+    private DatabaseReference tradeRef;
     private Button addItem;
     private View root;
     private Button giveBtn;
@@ -62,6 +64,8 @@ public class HomeFragment extends Fragment {
     static private String current_city;
     private String courrentUser;
     static private String couurentGive;
+    private int countTradePerUser = 0;
+
 
     private String freeText;
     private boolean firstime = true;
@@ -81,6 +85,8 @@ public class HomeFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("Posts");
         myUsers = firebaseDatabase.getReference("Users");
+        tradeRef = firebaseDatabase.getReference("Trades");
+
         RootRef = firebaseDatabase.getInstance().getReference();
         firebaseAuth = firebaseAuth.getInstance();
         //////////////////// Create Dialog ///////////////////
@@ -244,6 +250,23 @@ public class HomeFragment extends Fragment {
 
         });
     }
+    public void DeleteTrade(String uid) {
+        tradeRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+
 
     Comparator<Post> comparator = new Comparator<Post>() {
 
@@ -290,10 +313,6 @@ public class HomeFragment extends Fragment {
 
                     });
 
-if(filterDate==true){
-
-
- }
 
                     if(filerCity == true && filerGive == false && filerTake == false) {
 
@@ -434,7 +453,7 @@ if(filterDate==true){
                                                 .addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(DataSnapshot ds) {
-                                                        String postId = RootRef.push().getKey();
+                                                        String tradeid = RootRef.push().getKey();
 
                                                         name = ds.child("name").getValue(String.class);
                                                         phone = ds.child("phone").getValue(String.class);
@@ -443,7 +462,7 @@ if(filterDate==true){
                                                                 R.drawable.black2people,
                                                                 currentUserID,
                                                                 PostsList.get(position).getPostid(),
-                                                                postId,
+                                                                tradeid,
                                                                 PostsList.get(position).getcurrentUserID(),
                                                                 PostsList.get(position).getNameAsk(),
                                                                 name,
@@ -454,7 +473,11 @@ if(filterDate==true){
                                                                 freeText
                                                                 );
 
-                                                        FirebaseDatabase.getInstance().getReference("Trades").child(postId).setValue(trade);
+                                                        TradeList.add(trade);
+                                                        FirebaseDatabase.getInstance().getReference("Trades").child(tradeid).setValue(trade);
+
+                                                        checkDup(trade,PostsList.get(position).getPostid(),currentUserID);
+
                                                     }
                                                     @Override
                                                     public void onCancelled(DatabaseError databaseError) {
@@ -482,6 +505,24 @@ if(filterDate==true){
         };
         myRef.addListenerForSingleValueEvent(eventListener);
 
+
+
+    }
+    public void checkDup(Trade t, String current_post_id, String current_user_id){
+        countTradePerUser = 0;
+        for(Trade i : TradeList) {
+            if((i.getCurrent_post_id().equals(current_post_id)) && (i.getCurrent_user_id().equals(current_user_id))) {
+                countTradePerUser++;
+            }
+        }
+
+        Log.d("TAG11", countTradePerUser+" "+t.getCurrent_post_id() +" "+current_post_id+" and "+t.getCurrent_user_id()+" "+current_user_id );
+
+        if((t.getCurrent_post_id().equals(current_post_id)) && (t.getCurrent_user_id().equals(current_user_id)) && countTradePerUser > 1)
+        {
+            TradeList.remove(t);
+            DeleteTrade(t.getCurrent_Trade_id());
+        }
     }
 
 
