@@ -21,10 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditProfile" />
+        <activity android:name=".Login.EditProfile" />
         <activity android:name=".Admin.PostAdmin" />
         <activity android:name=".home.Post_activity" />
-        <activity android:name=".Admin.usertest" />
         <activity android:name=".Admin.ShowUsers" />
         <activity android:name=".Admin.AdminConnect" />
         <activity
@@ -32,10 +31,10 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Begin_App" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.LoginActivity"
             android:theme="@style/Begin_App" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".Login.RegistrationActivity"
             android:theme="@style/Begin_App" />
         <activity
             android:name=".Start_Application"
