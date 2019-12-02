@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+    import com.google.firebase.auth.FirebaseUser;
+    import com.google.firebase.database.DatabaseReference;
     import com.google.firebase.database.FirebaseDatabase;
 
     public class LoginActivity extends AppCompatActivity {
@@ -25,10 +27,11 @@ import com.google.firebase.auth.FirebaseAuth;
     private EditText emailboxLogin;
     private  EditText passwordboxLogin;
     private  Button buttonLogin;
-    private  Button ReturnBtn;
+    private  Button ReturnBtn, forgotPassword;
 
     private FirebaseAuth firebaseAuth;
-        private String currentUserID;
+    private String currentUserID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ import com.google.firebase.auth.FirebaseAuth;
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         firebaseAuth = firebaseAuth.getInstance();
         ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
-
+        forgotPassword = (Button)findViewById(R.id.forgotpassword);
 
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,27 @@ import com.google.firebase.auth.FirebaseAuth;
                 startActivity(i);
             }
         });
+
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user_email = emailboxLogin.getText().toString();
+                FirebaseAuth.getInstance().sendPasswordResetEmail(user_email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "An email has been sent to you! Please check it " +
+                                            "so you can change your password", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+            }
+        });
+
+
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

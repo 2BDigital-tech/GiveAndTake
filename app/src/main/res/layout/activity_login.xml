@@ -52,6 +52,13 @@
         android:textColorHint="@color/colorHint"/>
 
         <Button
+            android:id="@+id/forgotpassword"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Forgot your password?" />
+
+        <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
