@@ -25,7 +25,7 @@ private EditText emailboxLogin;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_code);
 
-        emailboxLogin = (EditText)findViewById(R.id.emailboxLogin);
+        emailboxLogin = (EditText)findViewById(R.id.mail_box);
 
         returnn=(Button)findViewById(R.id.btn_back);
         Sub=(Button)findViewById(R.id.btn_reset_password);

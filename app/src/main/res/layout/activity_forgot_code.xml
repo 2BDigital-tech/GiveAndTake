@@ -42,12 +42,16 @@
         <!-- Login Button -->
 
         <EditText
-            android:id="@+id/MailForgot"
+            android:id="@+id/mail_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:text="Please enter Your Email" />
+            android:nextFocusDown="@id/edit_text_password"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorHint"  />
 
         <Button
             android:id="@+id/btn_reset_password"
