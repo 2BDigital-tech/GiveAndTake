@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class HomeFragment extends Fragment {
 
@@ -62,6 +64,8 @@ public class HomeFragment extends Fragment {
     static private String couurentGive;
 
     private String freeText;
+    private boolean firstime = true;
+
     private boolean filerCity = false;
     private boolean filterDate = false;
     private boolean filerGive = false;
@@ -106,11 +110,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(filterDate == true){
-                    filterDate=false;
+                if(filerCity == true){
+                    filerCity=false;
                 }
                 else{
-                    filterDate=true;
+                    filerCity=true;
                 }
                 createToShowPosts();
                 updateView();
@@ -126,12 +130,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(filerCity == true){
-                    filerCity=false;
+                if(filterDate == true){
+                    filterDate = false;
                 }
                 else{
-                    filerCity=true;
+                    filterDate = true;
+                    if(!PostsList.isEmpty()){
+                        Collections.sort(PostsList,comparator);
+                    }
                 }
+
                 createToShowPosts();
                 updateView();
 
@@ -237,6 +245,15 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    Comparator<Post> comparator = new Comparator<Post>() {
+
+        @Override
+        public int compare(Post o1, Post o2) {
+
+                return o1.getTime() < o2.getTime() ? 1 : -1;
+        }
+    };
+
 
 
 
@@ -283,6 +300,9 @@ if(filterDate==true){
                         if (city.equals(current_city)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
                     }
@@ -291,6 +311,9 @@ if(filterDate==true){
                         if (city.equals(current_city) && give.equals(couurentGive)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
                     }
@@ -299,6 +322,9 @@ if(filterDate==true){
                         if (city.equals(current_city) && take.equals(courrentTake)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
                     }
@@ -307,6 +333,9 @@ if(filterDate==true){
                         if (city.equals(current_city) && give.equals(couurentGive) && take.equals(courrentTake)) {
                             Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
                     }
@@ -315,6 +344,9 @@ if(filterDate==true){
                         if(give.equals(couurentGive) && take.equals(courrentTake)){
                             Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
 
@@ -324,6 +356,9 @@ if(filterDate==true){
                         if(give.equals(couurentGive)){
                             Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
 
@@ -333,6 +368,9 @@ if(filterDate==true){
                         if(take.equals(courrentTake)){
                             Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                             PostsList.add(p);
+                            if(filterDate == true){
+                                Collections.sort(PostsList,comparator);
+                            }
                             updateView();
                         }
 
@@ -340,6 +378,10 @@ if(filterDate==true){
                     else{
                         Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
                         PostsList.add(p);
+                        if(filterDate == true){
+                            Collections.sort(PostsList,comparator);
+                        }
+
 
                     }
 
