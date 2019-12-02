@@ -58,12 +58,19 @@
 
             <EditText
                 android:id="@+id/changename"
-                android:layout_width="match_parent"
+                android:layout_width="298dp"
                 android:layout_height="match_parent"
                 android:hint="Name"
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
+
+            <Button
+                android:id="@+id/namebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="change" />
 
         </LinearLayout>
 
@@ -74,13 +81,20 @@
 
             <EditText
                 android:id="@+id/changephone"
-                android:layout_width="57dp"
-                android:layout_height="45dp"
+                android:layout_width="277dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="Phone number"
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
+
+            <Button
+                android:id="@+id/phonebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="change" />
 
         </LinearLayout>
 
@@ -91,14 +105,21 @@
 
             <EditText
                 android:id="@+id/changemail"
-                android:layout_width="129dp"
-                android:layout_height="39dp"
+                android:layout_width="277dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:lineSpacingExtra="10sp"
                 android:hint="Email"
+                android:lineSpacingExtra="10sp"
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
+
+            <Button
+                android:id="@+id/emailbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="change" />
 
         </LinearLayout>
 
