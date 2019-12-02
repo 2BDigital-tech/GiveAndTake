@@ -41,6 +41,7 @@ public class CenterFragment extends Fragment {
     private DatabaseReference PostsRef;
     private FirebaseAuth mAuth;
     private String currentUserID;
+    private int countTradePerUser = 0;
 
 
 
@@ -86,20 +87,13 @@ public class CenterFragment extends Fragment {
                     String current_user_city = ds.child("current_user_city").getValue(String.class);
                     String Textfree = ds.child("textFree").getValue(String.class);
 
-                    Log.e(": TAG12=",current_post_id+" "+current_trade_id+" "+user_post_id+" "+user_post_name+" "+current_user_name+" "+current_user_phone+" "+post_give+" "+post_take);
-                    for(Trade i : TradeList){
-
-                    }
-
                     if(user_post_id.equals(currentUserID)){
                         Trade t = new Trade(R.drawable.black2people,current_user_id,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree);
-                        if(!TradeList.contains(t)){
-                            TradeList.add(t);
-                        }
+                        TradeList.add(t);
+
                     }
 
                 }
-
                 updateView();
 
                 _Adapter.setOnTradeClickListener(new tradeAdaper.OnTradeClickListener(){
@@ -160,6 +154,8 @@ public class CenterFragment extends Fragment {
             myRef.addListenerForSingleValueEvent(eventListener);
     }
 
+
+
     public void DeleteTrade(String uid) {
         myRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -179,6 +175,7 @@ public class CenterFragment extends Fragment {
 
         });
     }
+
 
     public void DeletePost(String postid) {
         PostsRef.child(postid).orderByKey().equalTo(postid).addListenerForSingleValueEvent(new ValueEventListener() {
