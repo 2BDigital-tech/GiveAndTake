@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.giveandtake.R;
@@ -19,11 +22,15 @@ public class Forgot_code extends AppCompatActivity {
 private Button returnn;
 private Button Sub;
 private EditText emailboxLogin;
+    private FirebaseAuth firebaseAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_code);
+        firebaseAuth = firebaseAuth.getInstance();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar3);
 
         emailboxLogin = (EditText)findViewById(R.id.mail_box);
 
@@ -41,19 +48,42 @@ private EditText emailboxLogin;
         Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String email = emailboxLogin.getText().toString().trim();
 
-                String user_email = emailboxLogin.getText().toString();
-                FirebaseAuth.getInstance().sendPasswordResetEmail(user_email)
+                if (email.isEmpty()) {
+                    emailboxLogin.setError(getString(R.string.input_error_email));
+                    emailboxLogin.requestFocus();
+                    return;
+                }
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    emailboxLogin.setError(getString(R.string.input_error_email_invalid));
+                    emailboxLogin.requestFocus();
+                    return;
+                }
+
+
+
+
+
+
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Forgot_code.this, "An email has been sent to you! Please check it " +
-                                            "so you can change your password", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(Forgot_code.this,LoginActivity.class));
-                                    finish();
+                                    Toast.makeText(Forgot_code.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Forgot_code.this,LoginActivity.class));
+                                finish();
+                                } else {
+                                    Toast.makeText(Forgot_code.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
-                                Toast.makeText(Forgot_code.this, "Email Not Found, Please try again", Toast.LENGTH_LONG).show();
+
+                                progressBar.setVisibility(View.GONE);
                             }
                         });
             }

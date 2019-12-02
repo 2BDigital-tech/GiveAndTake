@@ -22,8 +22,9 @@
     import com.google.firebase.auth.FirebaseAuth;
 
     public class LoginActivity extends AppCompatActivity {
-        private EditText emailboxLogin;
 
+
+        private EditText emailboxLogin;
     private  EditText passwordboxLogin;
     private  Button buttonLogin;
     private  Button ReturnBtn, forgotPassword;
@@ -36,6 +37,7 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        emailboxLogin = (EditText)findViewById(R.id.emailboxLogin);
         passwordboxLogin = (EditText)findViewById(R.id.passwordboxLogin);
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         firebaseAuth = firebaseAuth.getInstance();
@@ -73,8 +75,10 @@
                                 progressDialog.dismiss();
 
                                 if (task.isSuccessful()) {
-                                    if(firebaseAuth.getCurrentUser().getEmail().equals("giveandtake.contacts@gmail.com")){
 
+                                    String  currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
+
+                                    if(firebaseAuth.getCurrentUser().getUid().equals(currentUserID)) {
                                         startActivity(new Intent (LoginActivity.this, AdminConnect.class)
                                                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
