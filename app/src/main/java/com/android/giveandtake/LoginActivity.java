@@ -56,17 +56,7 @@ import com.google.firebase.auth.FirebaseAuth;
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user_email = emailboxLogin.getText().toString();
-                FirebaseAuth.getInstance().sendPasswordResetEmail(user_email)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "An email has been sent to you! Please check it " +
-                                            "so you can change your password", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
+
             }
         });
 
@@ -84,9 +74,7 @@ import com.google.firebase.auth.FirebaseAuth;
                                 progressDialog.dismiss();
 
                                 if (task.isSuccessful()) {
-                            //ADMIN CONNECTOR;
-                                    currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
-                                    if(firebaseAuth.getCurrentUser().getUid().equals(currentUserID)){
+                                    if(firebaseAuth.getCurrentUser().getEmail().equals("giveandtake.contacts@gmail.com")){
 
                                         startActivity(new Intent (LoginActivity.this, AdminConnect.class)
                                                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
