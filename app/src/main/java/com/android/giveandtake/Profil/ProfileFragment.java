@@ -129,6 +129,8 @@ import com.google.firebase.database.ValueEventListener;
                                     Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
                                     Intent activi = new Intent(getActivity(), Start_Application.class);
                                     startActivity(activi);
+                                    DatabaseReference delete = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
+                                    delete.removeValue();
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
