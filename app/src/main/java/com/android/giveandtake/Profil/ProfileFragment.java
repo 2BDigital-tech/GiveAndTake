@@ -37,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
     private Button unsigout, editprofile, delete;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
-
+    private String currentUserID;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -129,8 +129,20 @@ import com.google.firebase.database.ValueEventListener;
                                     Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
                                     Intent activi = new Intent(getActivity(), Start_Application.class);
                                     startActivity(activi);
-                                    DatabaseReference delete = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
-                                    delete.removeValue();
+                                    DatabaseReference delete_user = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
+                                    delete_user.removeValue();
+//                                    currentUserID = myuser.getUid();
+//                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts").child("currentUserID");
+//                                    if (delete_posts.equals(currentUserID)){
+//                                        delete_posts.child(currentUserID).orderByKey().equalTo(currentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+//                                            @Override
+//                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                                dataSnapshot.getRef().removeValue();
+//                                            }
+//                                            @Override
+//                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+//                                        });
+//                                    }
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
