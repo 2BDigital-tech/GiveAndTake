@@ -17,6 +17,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
 import com.android.giveandtake.EditProfile;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,10 +31,9 @@ import com.google.firebase.database.ValueEventListener;
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
-    private Button unsigout, editprofile;
+    private Button unsigout, editprofile, delete;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
-    private FirebaseUser firebaseUser;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,12 +44,13 @@ import com.google.firebase.database.ValueEventListener;
 
         unsigout = (Button) root.findViewById(R.id.disconnect);
         editprofile = (Button) root.findViewById(R.id.editprofile);
+        delete = (Button)root.findViewById(R.id.delete);
 
         firebaseAuth = firebaseAuth.getInstance();
 
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        FirebaseUser user=firebaseAuth.getCurrentUser();
+        final FirebaseUser user=firebaseAuth.getCurrentUser();
 
        name=(TextView)root.findViewById(R.id.nameprofile);
        phone=(TextView)root.findViewById(R.id.phoneprofile);
@@ -104,6 +106,26 @@ import com.google.firebase.database.ValueEventListener;
 
             }
         });
+
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final FirebaseUser myuser = FirebaseAuth.getInstance().getCurrentUser();
+//                myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful())
+//                        {
+//                            Toast.makeText(getActivity(), "Your account has been deleted", Toast.LENGTH_LONG).show();
+//                        }
+//
+//                    }
+//                });
+//                Intent activi = new Intent(getActivity(), Start_Application.class);
+//                startActivity(activi);
+//                getActivity().finish();
+//            }
+//        });
 
         return root;
     }
