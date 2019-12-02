@@ -11,13 +11,15 @@
         android:roundIcon="@mipmap/logo2_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Begin_Application"
+        <activity android:name=".Login.Forgot_code"></activity>
+        <activity
+            android:name=".Begin_Application"
             android:theme="@style/Begin_App">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".EditProfile" />
         <activity android:name=".Admin.PostAdmin" />
@@ -28,17 +30,16 @@
         <activity
             android:name=".Connect_Fragment"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Begin_App"/>
-
-        <activity android:name=".LoginActivity"
-            android:theme="@style/Begin_App"/>
-
-        <activity android:name=".RegistrationActivity"
-            android:theme="@style/Begin_App"/>
-
-        <activity android:name=".Start_Application"
-            android:theme="@style/Begin_App"/>
-
+            android:theme="@style/Begin_App" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Begin_App" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:theme="@style/Begin_App" />
+        <activity
+            android:name=".Start_Application"
+            android:theme="@style/Begin_App" />
     </application>
 
 </manifest>

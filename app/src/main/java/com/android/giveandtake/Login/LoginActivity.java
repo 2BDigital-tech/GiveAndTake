@@ -22,8 +22,8 @@
     import com.google.firebase.auth.FirebaseAuth;
 
     public class LoginActivity extends AppCompatActivity {
+        private EditText emailboxLogin;
 
-    private EditText emailboxLogin;
     private  EditText passwordboxLogin;
     private  Button buttonLogin;
     private  Button ReturnBtn, forgotPassword;
@@ -36,7 +36,6 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        emailboxLogin = (EditText)findViewById(R.id.emailboxLogin);
         passwordboxLogin = (EditText)findViewById(R.id.passwordboxLogin);
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         firebaseAuth = firebaseAuth.getInstance();
@@ -55,7 +54,8 @@
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+        Intent forgot=new Intent(LoginActivity.this,Forgot_code.class);
+        startActivity(forgot);
             }
         });
 
