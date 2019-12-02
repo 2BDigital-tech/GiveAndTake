@@ -1,4 +1,4 @@
-package com.android.giveandtake;
+package com.android.giveandtake.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.giveandtake.R;
+import com.android.giveandtake.Start_Application;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -157,7 +159,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
-                                        Intent act= new Intent(RegistrationActivity.this,Start_Application.class);
+                                        Intent act= new Intent(RegistrationActivity.this, Start_Application.class);
                                         startActivity(act);
                                     } else {
                                         Toast.makeText(RegistrationActivity.this, "Error Registration", Toast.LENGTH_LONG).show();

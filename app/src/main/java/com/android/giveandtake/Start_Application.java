@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Admin.AdminConnect;
+import com.android.giveandtake.Login.LoginActivity;
+import com.android.giveandtake.Login.RegistrationActivity;
 import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
 
