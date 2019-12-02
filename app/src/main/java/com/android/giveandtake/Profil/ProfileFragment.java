@@ -1,6 +1,9 @@
 package com.android.giveandtake.Profil;
 
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,7 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-    public class ProfileFragment extends Fragment {
+    public class ProfileFragment extends Fragment{
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
@@ -107,25 +110,43 @@ import com.google.firebase.database.ValueEventListener;
             }
         });
 
-//        delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final FirebaseUser myuser = FirebaseAuth.getInstance().getCurrentUser();
-//                myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful())
-//                        {
-//                            Toast.makeText(getActivity(), "Your account has been deleted", Toast.LENGTH_LONG).show();
-//                        }
-//
-//                    }
-//                });
-//                Intent activi = new Intent(getActivity(), Start_Application.class);
-//                startActivity(activi);
-//                getActivity().finish();
-//            }
-//        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FirebaseUser myuser = firebaseAuth.getCurrentUser();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.create();
+                dialog.setTitle("Are you sure?");
+                dialog.setMessage("Deleting this account will result in completly removing your account from the system " +
+                        "and you won't be able to access the app.");
+                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
+                                    Intent activi = new Intent(getActivity(), Start_Application.class);
+                                    startActivity(activi);
+                                }
+                                else {
+                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = dialog.create();
+                alertDialog.show();
+            }
+        });
 
         return root;
     }
