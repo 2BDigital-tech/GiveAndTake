@@ -205,7 +205,7 @@ public class HomeFragment extends Fragment {
                         updateView();
 
 
-//test
+
                     }
 
                 });
