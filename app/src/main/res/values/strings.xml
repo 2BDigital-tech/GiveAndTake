@@ -44,6 +44,7 @@
     <string name="title_notifications">Profil</string>
     <string name="all_user_registered">All User Registered</string>
     <string name="all_post">All Post</string>
+    <string name="history">History</string>
 
 
     <string-array name="City">

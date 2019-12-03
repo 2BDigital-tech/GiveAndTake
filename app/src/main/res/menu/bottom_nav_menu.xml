@@ -12,6 +12,10 @@
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/ic_history_clock_button"
+        android:title="@string/history" />
+    <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="@string/title_notifications" />

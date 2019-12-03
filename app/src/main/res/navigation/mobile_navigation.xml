@@ -16,7 +16,11 @@
         android:name="com.android.giveandtake.Center.CenterFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_center" />
-
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.android.giveandtake.History.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history"/>
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.android.giveandtake.Profil.ProfileFragment"
