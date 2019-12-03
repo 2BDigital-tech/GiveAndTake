@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Connect_Fragment;
+import com.android.giveandtake.Login.RegistrationActivity;
 import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -114,6 +116,7 @@ public class Post_activity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         courrentTake = takeOptions[which];
+
                         dialog.dismiss();
                     }
                 });
@@ -135,7 +138,13 @@ public class Post_activity extends AppCompatActivity {
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
 
-
+        if (courrentTake.isEmpty()) {
+            Toast.makeText(Post_activity.this, "Please select Give Option", Toast.LENGTH_LONG).show();
+        }
+         if (courrentTake.isEmpty()) {
+            Toast.makeText(Post_activity.this, "Please select Take Option", Toast.LENGTH_LONG).show();
+            return;
+        }
         RootRef.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -149,8 +158,6 @@ public class Post_activity extends AppCompatActivity {
                         long now= new Date().getTime();
                         String postId = RootRef.push().getKey();
                        // LocalDateTime test= LocalDateTime.now();
-
-                        String Time_Test=   new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(now);
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
 
 
