@@ -204,8 +204,6 @@ public class HomeFragment extends Fragment {
                         createToShowPosts();
                         updateView();
 
-
-
                     }
 
                 });
