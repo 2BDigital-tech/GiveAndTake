@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.giveandtake.Connect_Fragment;
 import com.android.giveandtake.Login.LoginActivity;
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
@@ -117,7 +118,8 @@ public class Account_Google extends AppCompatActivity {
                     editTextPhone.requestFocus();
                     return;
                 }
-                String city = (String) mySpinner.getSelectedItem().toString();
+                city = (String) mySpinner.getSelectedItem().toString();
+                Log.e("CITY",city);
                 signIn();
             }
         });
@@ -130,10 +132,10 @@ public class Account_Google extends AppCompatActivity {
         //if the user is already signed in
         //we will close this activity
         //and take the user to profile activity 
-        if (mAuth.getCurrentUser() != null) {
+       /* if (mAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
-        }
+        }*/
     }
 
 
@@ -173,8 +175,7 @@ public class Account_Google extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-
-
+                            Log.e("CITY2",city);
                             User user_current = new User(
                                     name,
                                     user.getEmail().toString(),
@@ -188,7 +189,8 @@ public class Account_Google extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Account_Google.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
-
+                            startActivity(new Intent(Account_Google.this, Connect_Fragment.class));
+                            finish();
                                     } else {
                                         Toast.makeText(Account_Google.this, "Error Registration", Toast.LENGTH_LONG).show();
                                     }

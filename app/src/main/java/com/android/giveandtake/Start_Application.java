@@ -41,6 +41,7 @@ public class Start_Application extends AppCompatActivity {
 //                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+                finish();
 
             }
         });
@@ -50,6 +51,7 @@ public class Start_Application extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Start_Application.this, Account.class);
                 startActivity(i);
+                finish();
 
             }
         });
