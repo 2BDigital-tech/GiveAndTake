@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Login.LoginActivity;
 import com.android.giveandtake.R;
+import com.android.giveandtake.Start_Application;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,8 +28,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Account_Google extends AppCompatActivity {
+
+    private EditText editTextPhone;
+    private EditText editTextName;
+    private FirebaseAuth mAuth;
+    private Spinner mySpinner;
+    private String phone;
+    private String city;
+    private String name;
+
+
 
     //a constant for detecting the login intent result
     private static final int RC_SIGN_IN = 234;
@@ -37,15 +52,25 @@ public class Account_Google extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
 
     //And also a Firebase Auth object 
-    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account__google);
+        editTextPhone = findViewById(R.id.edit_text_phone2);
+        editTextName = findViewById(R.id.edit_text_name2);
 
         //first we intialized the FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
+        mySpinner = (Spinner) findViewById(R.id.cityspinner2);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Account_Google.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.City));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
+
+
 
         //Then we need a GoogleSignInOptions object
         //And we need to build it as below 
@@ -63,6 +88,36 @@ public class Account_Google extends AppCompatActivity {
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                phone= editTextPhone.getText().toString().trim();
+                name = editTextName.getText().toString().trim();
+
+                if (name.isEmpty()) {
+                    editTextName.setError(getString(R.string.input_error_name));
+                    editTextName.requestFocus();
+                    return;
+                }
+                if (phone.isEmpty()) {
+                    editTextPhone.setError(getString(R.string.input_error_phone));
+                    editTextPhone.requestFocus();
+                    return;
+                }
+
+                if (phone.length() != 10) {
+                    editTextPhone.setError(getString(R.string.input_error_phone_invalid));
+                    editTextPhone.requestFocus();
+                    return;
+                }
+                if (phone.charAt(0) != '0') {
+                    editTextPhone.setError(getString(R.string.input_error_phone_invalid));
+                    editTextPhone.requestFocus();
+                    return;
+                }
+                if (phone.charAt(1) != '5') {
+                    editTextPhone.setError(getString(R.string.input_error_Israel_phone));
+                    editTextPhone.requestFocus();
+                    return;
+                }
+                String city = (String) mySpinner.getSelectedItem().toString();
                 signIn();
             }
         });
@@ -104,6 +159,7 @@ public class Account_Google extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         //getting the auth credential 
@@ -117,6 +173,27 @@ public class Account_Google extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+
+                            User user_current = new User(
+                                    name,
+                                    user.getEmail().toString(),
+                                    phone,
+                                    city);
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user_current).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Account_Google.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+
+                                    } else {
+                                        Toast.makeText(Account_Google.this, "Error Registration", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
 
                             Toast.makeText(Account_Google.this, "User Signed In", Toast.LENGTH_SHORT).show();
                         } else {
