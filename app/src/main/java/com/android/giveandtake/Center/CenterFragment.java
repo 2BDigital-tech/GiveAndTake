@@ -2,6 +2,7 @@ package com.android.giveandtake.Center;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.giveandtake.History.History;
 import com.android.giveandtake.R;
 import com.android.giveandtake.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,7 @@ public class CenterFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
     private DatabaseReference PostsRef;
+    private DatabaseReference HistoryRef;
     private FirebaseAuth mAuth;
     private String currentUserID;
     private int countTradePerUser = 0;
@@ -57,6 +60,7 @@ public class CenterFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("Trades");
         PostsRef = firebaseDatabase.getReference("Posts");
+        HistoryRef = firebaseDatabase.getReference("History");
         RootRef = firebaseDatabase.getInstance().getReference();
         firebaseAuth = firebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -114,6 +118,10 @@ public class CenterFragment extends Fragment {
                         mBuilder.setPositiveButton("Accpet", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                createHistroy(R.drawable.accpet,TradeList.get(position));
+
+
+
                                 DeletePost(TradeList.get(position).getCurrent_post_id());
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
                                 updateView();
@@ -152,6 +160,13 @@ public class CenterFragment extends Fragment {
             }
         };
             myRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public void createHistroy(int img,Trade t){
+        String historyid = HistoryRef.push().getKey();
+        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getCurrent_user_id());
+        FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
+
     }
 
 
