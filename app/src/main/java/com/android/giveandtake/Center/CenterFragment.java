@@ -119,11 +119,9 @@ public class CenterFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 createHistroy(R.drawable.accpet,TradeList.get(position));
-
-
-
                                 DeletePost(TradeList.get(position).getCurrent_post_id());
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
+                                createToShowTrades();
                                 updateView();
 
 
@@ -133,7 +131,9 @@ public class CenterFragment extends Fragment {
                         mBuilder.setNegativeButton("Deny", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                createHistroy(R.drawable.deny,TradeList.get(position));
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
+                                createToShowTrades();
                                 updateView();
 
                                 /// delete the Trade only
@@ -164,7 +164,7 @@ public class CenterFragment extends Fragment {
 
     public void createHistroy(int img,Trade t){
         String historyid = HistoryRef.push().getKey();
-        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getCurrent_user_id());
+        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id());
         FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
 
     }
