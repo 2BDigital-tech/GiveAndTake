@@ -111,7 +111,8 @@ import com.google.firebase.database.ValueEventListener;
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FirebaseUser myuser = firebaseAuth.getCurrentUser();
+                final FirebaseUser
+                        myuser = firebaseAuth.getCurrentUser();
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.create();
                 dialog.setTitle("Are you sure?");

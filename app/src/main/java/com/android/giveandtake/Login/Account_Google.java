@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.giveandtake.Begin_Application;
 import com.android.giveandtake.Connect_Fragment;
 import com.android.giveandtake.Login.LoginActivity;
 import com.android.giveandtake.R;
@@ -39,7 +40,7 @@ public class Account_Google extends AppCompatActivity  {
 
     private EditText editTextPhone;
     private EditText editTextName;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
     private Spinner mySpinner;
     private String phone;
     private String city;
@@ -54,13 +55,35 @@ public class Account_Google extends AppCompatActivity  {
         editTextName = findViewById(R.id.edit_text_name2);
 
         //first we intialized the FirebaseAuth object
-        mAuth = FirebaseAuth.getInstance();
-        mySpinner = (Spinner) findViewById(R.id.cityspinner2);
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser myuser = firebaseAuth.getCurrentUser();
 
+
+        mySpinner = (Spinner) findViewById(R.id.cityspinner2);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Account_Google.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.City));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
+
+        findViewById(R.id.Cancler_buuton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Account_Google.this, "Good Bye", Toast.LENGTH_LONG).show();
+                            Intent activi = new Intent(Account_Google.this, Begin_Application.class);
+                            startActivity(activi);
+                            finish();
+                        } else {
+                            Toast.makeText(Account_Google.this, "Try again or Contact Administrator", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    });
+                }
+        });
+
 
 
         findViewById(R.id.Submit_register_google).setOnClickListener(new View.OnClickListener() {
@@ -98,7 +121,7 @@ public class Account_Google extends AppCompatActivity  {
                 city = (String) mySpinner.getSelectedItem().toString();
 
 
-                final FirebaseUser user = mAuth.getCurrentUser();
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 User user_current = new User(
                         name,
