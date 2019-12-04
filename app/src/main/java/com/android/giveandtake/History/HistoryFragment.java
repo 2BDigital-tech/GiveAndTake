@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HistoryFragment extends Fragment {
 
@@ -69,9 +70,10 @@ public class HistoryFragment extends Fragment {
                     String name_userPost = ds.child("name_userPost").getValue(String.class);
                     String name_userTrade = ds.child("name_userTrade").getValue(String.class);
                     String user_postedID = ds.child("user_postedID").getValue(String.class);
-
+                    long time=ds.child("user_time").getValue(long.class);
                     if(user_postedID.equals(currentUserID)){
-                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID);
+                        long now= new Date().getTime();
+                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,now);
                         historyList.add(h);
 
                     }

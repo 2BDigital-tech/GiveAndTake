@@ -40,6 +40,7 @@ public class historyAdapter extends RecyclerView.Adapter<historyAdapter.ViewHold
         public TextView history_name_trade;
         public TextView history_giveOption;
         public TextView history_takeOption;
+        public TextView history_Date;
 
 
 
@@ -52,6 +53,7 @@ public class historyAdapter extends RecyclerView.Adapter<historyAdapter.ViewHold
             history_name_trade = itemView.findViewById(R.id.history_name_trade);
             history_giveOption = itemView.findViewById(R.id.history_GiveOption);
             history_takeOption = itemView.findViewById(R.id.history_TakeOption);
+            history_Date = itemView.findViewById(R.id.history_Date);
 
 
 
@@ -93,6 +95,8 @@ public class historyAdapter extends RecyclerView.Adapter<historyAdapter.ViewHold
         holder.history_name_trade.setText(myListTrades.getName_userTrade());
         holder.history_giveOption.setText(myListTrades.getHistory_giveOption());
         holder.history_takeOption.setText(myListTrades.getHistory_takeOption());
+        holder.history_Date.setText(myListTrades.getDate_History());
+
 
     }
 

@@ -75,6 +75,18 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/history_date"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_GiveOption"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="24dp"
+            android:layout_toEndOf="@+id/TakeText"
+            android:text="date"
+            android:textSize="15dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
             android:id="@+id/TakeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

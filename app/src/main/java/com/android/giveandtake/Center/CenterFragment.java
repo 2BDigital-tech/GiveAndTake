@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CenterFragment extends Fragment {
 
@@ -45,7 +46,7 @@ public class CenterFragment extends Fragment {
     private FirebaseAuth mAuth;
     private String currentUserID;
     private int countTradePerUser = 0;
-
+private long time;
 
 
     private CenterViewModel dashboardViewModel;
@@ -65,7 +66,7 @@ public class CenterFragment extends Fragment {
         firebaseAuth = firebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-
+time=new Date().getTime();
 
         createToShowTrades();
 
@@ -90,7 +91,6 @@ public class CenterFragment extends Fragment {
                     String current_user_phone = ds.child("current_user_phone").getValue(String.class);
                     String current_user_city = ds.child("current_user_city").getValue(String.class);
                     String Textfree = ds.child("textFree").getValue(String.class);
-
                     if(user_post_id.equals(currentUserID)){
                         Trade t = new Trade(R.drawable.black2people,current_user_id,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree);
                         TradeList.add(t);
@@ -164,7 +164,7 @@ public class CenterFragment extends Fragment {
 
     public void createHistroy(int img,Trade t){
         String historyid = HistoryRef.push().getKey();
-        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id());
+        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id(),time);
         FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
 
     }
