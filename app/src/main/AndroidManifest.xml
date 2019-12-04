@@ -11,8 +11,6 @@
         android:roundIcon="@mipmap/logo2_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.Account_Google"></activity>
-        <activity android:name=".Login.Account" />
         <activity android:name=".Login.Forgot_code" />
         <activity
             android:name=".Begin_Application"
@@ -23,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.EditProfile" />
+        <activity android:name=".Profil.EditProfile" />
+        <activity android:name=".Login.Account_Google" />
         <activity android:name=".Admin.PostAdmin" />
         <activity android:name=".home.Post_activity" />
         <activity android:name=".Admin.ShowUsers" />
