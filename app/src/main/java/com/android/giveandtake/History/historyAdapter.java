@@ -95,7 +95,7 @@ public class historyAdapter extends RecyclerView.Adapter<historyAdapter.ViewHold
         holder.history_name_trade.setText(myListTrades.getName_userTrade());
         holder.history_giveOption.setText(myListTrades.getHistory_giveOption());
         holder.history_takeOption.setText(myListTrades.getHistory_takeOption());
-        holder.history_date.setText(myListTrades.getHistory_timeAndDate());
+        holder.history_date.setText(myListTrades.History_timeAndDate());
 
     }
 

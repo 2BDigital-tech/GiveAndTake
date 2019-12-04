@@ -11,10 +11,18 @@ public class History {
     private String user_postedID;
     private long history_time;
 
+    public long getHistory_time() {
+        return history_time;
+    }
 
-    public String getHistory_timeAndDate() {
+    public void setHistory_time(long history_time) {
+       this.history_time=history_time;
+    }
+
+    public String History_timeAndDate() {
         return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(history_time);
     }
+
     public String getUser_postedID() {
         return user_postedID;
     }
