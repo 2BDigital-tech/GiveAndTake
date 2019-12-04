@@ -45,7 +45,7 @@
     <string name="all_user_registered">All User Registered</string>
     <string name="all_post">All Post</string>
     <string name="history">History</string>
-
+    <string name="web_client_id">xxxxxxxx..place your web client id here</string>
 
     <string-array name="City">
 

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "942283238478-rug9otl8u4r1o1p32dfdmqkl1h8oeu5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.giveandtake",
+            "certificate_hash": "a41f2325a9100a75d26a79f7e834d2fa5fa49acb"
+          }
+        },
+        {
           "client_id": "942283238478-mt8198m3af1jgp2h9cmprtjeupa7ala3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
