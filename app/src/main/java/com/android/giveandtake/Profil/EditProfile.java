@@ -1,10 +1,11 @@
-package com.android.giveandtake.Login;
+package com.android.giveandtake.Profil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import com.android.giveandtake.Login.User;
 import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

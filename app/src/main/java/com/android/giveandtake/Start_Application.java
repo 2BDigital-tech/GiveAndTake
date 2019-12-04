@@ -9,7 +9,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Admin.AdminConnect;
-import com.android.giveandtake.Login.Account;
 import com.android.giveandtake.Login.LoginActivity;
 import com.android.giveandtake.Login.RegistrationActivity;
 import com.android.giveandtake.R;
@@ -49,7 +48,7 @@ public class Start_Application extends AppCompatActivity {
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Start_Application.this, Account.class);
+                Intent i = new Intent(Start_Application.this, RegistrationActivity.class);
                 startActivity(i);
                 finish();
 

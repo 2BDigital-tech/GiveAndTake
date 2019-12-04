@@ -9,6 +9,7 @@
     <string name="register">Register</string>
     <string name="input_error_name">name required</string>
     <string name="input_error_email">email required</string>
+    <string name="error_Register">Error Register</string>
     <string-array name="Option1">
         <item>Option1-1</item>
         <item>Option1-2</item>
