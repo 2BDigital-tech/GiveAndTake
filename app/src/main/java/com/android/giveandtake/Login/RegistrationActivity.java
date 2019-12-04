@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.giveandtake.Connect_Fragment;
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -160,8 +161,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
-                                        Intent act= new Intent(RegistrationActivity.this, Start_Application.class);
+                                        Intent act= new Intent(RegistrationActivity.this, Connect_Fragment.class);
                                         startActivity(act);
+                                        finish();
                                     } else {
                                         Toast.makeText(RegistrationActivity.this, "Error Registration", Toast.LENGTH_LONG).show();
                                     }

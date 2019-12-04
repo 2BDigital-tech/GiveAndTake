@@ -25,6 +25,8 @@ private Button Google_Create;
         public void onClick(View v) {
 
             startActivity(new Intent(Account.this,RegistrationActivity.class));
+            finish();
+
         }
 
     });
@@ -32,6 +34,8 @@ private Button Google_Create;
         @Override
         public void onClick(View v) {
             startActivity(new Intent(Account.this,Account_Google.class));
+            finish();
+
         }
     });
 
