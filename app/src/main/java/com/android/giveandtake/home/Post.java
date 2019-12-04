@@ -77,18 +77,7 @@ public class Post {
         freeText = moreInfoText;
         PostId = postid;
         city = City;
-        time=timee;
+        time= timee;
     }
-    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid) {
-        imageResocure = img;
-        NameAsk = nameAsk;
-        PhoneAsk = phoneAsk;
-        Give = GiveAsk;
-        Take = TakeAsk;
-        currentUserID = id;
-        freeText = moreInfoText;
-        PostId = postid;
-        city = City;
 
-    }
 }

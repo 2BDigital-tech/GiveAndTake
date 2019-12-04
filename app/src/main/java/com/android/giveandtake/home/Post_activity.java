@@ -157,9 +157,8 @@ public class Post_activity extends AppCompatActivity {
                         courrentCity = retrieveCity;
                         long now= new Date().getTime();
                         String postId = RootRef.push().getKey();
-                       // LocalDateTime test= LocalDateTime.now();
                         Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
-//test
+
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);
                     }

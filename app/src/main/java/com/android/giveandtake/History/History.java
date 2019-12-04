@@ -9,7 +9,12 @@ public class History {
     private String history_takeOption;
     private String current_historyId;
     private String user_postedID;
+    private long history_time;
 
+
+    public String getHistory_timeAndDate() {
+        return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(history_time);
+    }
     public String getUser_postedID() {
         return user_postedID;
     }
@@ -40,7 +45,7 @@ public class History {
     }
 
 
-    public History(int imageResocure, String name_userPost, String name_userTrade, String history_giveOption, String history_takeOption, String current_historyId, String user_postedID) {
+    public History(int imageResocure, String name_userPost, String name_userTrade, String history_giveOption, String history_takeOption, String current_historyId, String user_postedID,long time) {
         this.imageResocure = imageResocure;
         this.name_userPost = name_userPost;
         this.name_userTrade = name_userTrade;
@@ -48,6 +53,7 @@ public class History {
         this.history_takeOption = history_takeOption;
         this.current_historyId = current_historyId;
         this.user_postedID = user_postedID;
+        this.history_time = time;
     }
 
 }

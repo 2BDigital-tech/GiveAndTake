@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CenterFragment extends Fragment {
 
@@ -163,8 +164,9 @@ public class CenterFragment extends Fragment {
     }
 
     public void createHistroy(int img,Trade t){
+        long now= new Date().getTime();
         String historyid = HistoryRef.push().getKey();
-        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id());
+        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id(),now);
         FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
 
     }
