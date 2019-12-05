@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -25,9 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
-public class Post_activity extends AppCompatActivity {
-    private Button giveBtn;
-    private Button takeBtn;
+public class Post_activity extends AppCompatActivity implements View.OnClickListener {
+
     private Button createPost;
     private EditText freeText;
     private Button cancelBtn;
@@ -44,7 +45,8 @@ public class Post_activity extends AppCompatActivity {
     private String currentUserID;
     private DatabaseReference RootRef;
     private String MoreInfoText;
-    private Spinner mySpinner;
+    private Spinner mySpinner_take;
+    private Spinner mySpinner_give;
 
 
     @Override
@@ -53,17 +55,23 @@ public class Post_activity extends AppCompatActivity {
         setContentView(R.layout.activity_post_activity);
 
         createPost = findViewById(R.id.createPostbtn);
-        giveBtn = findViewById(R.id.giveBtn);
-        takeBtn = findViewById(R.id.takeBtn);
+
         freeText = findViewById(R.id.freeText);
         cancelBtn = findViewById(R.id.cancelBtn);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         RootRef = firebaseDatabase.getInstance().getReference();
-        mySpinner = (Spinner) findViewById(R.id.cityspinner);
+        mySpinner_take = (Spinner) findViewById(R.id.spinner_take);
+        mySpinner_give = (Spinner) findViewById(R.id.spinner_give);
 
 
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Post_activity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Option1));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner_take.setAdapter(myAdapter);
+        mySpinner_give.setAdapter(myAdapter);
 
 
         createPost.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +80,7 @@ public class Post_activity extends AppCompatActivity {
                 registerPostToDataBase();
                 Intent i = new Intent(Post_activity.this, Connect_Fragment.class);
                 startActivity(i);
+                finish();
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,69 +88,22 @@ public class Post_activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Post_activity.this, Connect_Fragment.class);
                 startActivity(i);
+                finish();
             }
         });
-
-
-        giveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                giveOptions = getResources().getStringArray(R.array.Option1);
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(Post_activity.this);
-                mBuilder.setTitle("Choose From Options:");
-                mBuilder.setSingleChoiceItems(giveOptions, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        couurentGive = giveOptions[which];
-                        dialog.dismiss();
-                    }
-                });
-                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
-            }
-        });
-        takeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takeOptions = getResources().getStringArray(R.array.Option1);
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(Post_activity.this);
-                mBuilder.setTitle("Choose From Options:");
-                mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        courrentTake = takeOptions[which];
-
-                        dialog.dismiss();
-                    }
-                });
-                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
-            }
-        });
-
 
 
     }
 
     public void registerPostToDataBase(){
         MoreInfoText = freeText.getText().toString().trim();
+       courrentTake = (String) mySpinner_take.getSelectedItem().toString();
+       couurentGive = (String) mySpinner_give.getSelectedItem().toString();
 
-        if (courrentTake.isEmpty()) {
+        if (mySpinner_give.getSelectedItemPosition() < 0) {
             Toast.makeText(Post_activity.this, "Please select Give Option", Toast.LENGTH_LONG).show();
         }
-         if (courrentTake.isEmpty()) {
+         if (couurentGive.isEmpty()) {
             Toast.makeText(Post_activity.this, "Please select Take Option", Toast.LENGTH_LONG).show();
             return;
         }
@@ -172,7 +134,10 @@ public class Post_activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
 
     }
+}
 
 
