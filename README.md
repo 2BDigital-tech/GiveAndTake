@@ -42,9 +42,13 @@ Create Project to [Firebase](https://firebase.google.com/) and change Rules of R
         ".write": true
       }
     }
-   Active  Email and Google to Authentication Project Firebase 
-   
+
+
+ 1. Active  Email and Google to Authentication Project Firebase
+
+
 ![Change Email and Google to Activate](https://lh3.googleusercontent.com/bp5Sf_tcyMeXmoh9skmZgriQ5P_zcAQPqRzrcZBoZ1piMMyFFTOnoaF5ZL_UuPTRNzZ9AM_ABkE "Auth")
 
-Downolad Google_Service.json and **add to file *app*** 
+ 2. Downolad Google_Service.json and **add to file *app***
+
 ![Download google_service.json](https://lh3.googleusercontent.com/Cd4tv3b9gxGvAqiKY5IqvXUbWFc13tJ4zzm0dw0aXUDzlqTghD-aZqvJWkG9oSVeFu5CISCjoGc "GoogleServicefile")
