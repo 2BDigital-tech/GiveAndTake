@@ -9,7 +9,9 @@ This application is non-profit and aims to help each person in his quotient.
 
 ## Author
 [Shimon Mimoun](https://github.com/ShimonMimoun) -[Contact](mailto:shimon1705@gmail.com)
+
 [Naomi Oyer](https://github.com/NaomiO)-[Contact](naomioyer95@gmail.com)
+
 [Omer Paz](https://github.com/omerpaz1) -[Contact](omerpaz93@gmail.com)
 
 ## Switch to another file
