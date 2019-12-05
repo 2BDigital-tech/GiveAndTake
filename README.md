@@ -33,7 +33,8 @@ This application is non-profit and aims to help each person in his quotient.
 
     git clone https://github.com/omerpaz1/GiveAndTake/
 
-Create Project to [Firebase](https://firebase.google.com/) and change Rules of Realtime Database to :
+Create Project to [Firebase](https://firebase.google.com/) in a name:
+***package : com.android.giveandtake*** and change Rules of Realtime Database to :
 
     {
       "rules": 
@@ -52,3 +53,14 @@ Create Project to [Firebase](https://firebase.google.com/) and change Rules of R
  2. Downolad Google_Service.json and **add to file *app***
 
 ![Download google_service.json](https://lh3.googleusercontent.com/Cd4tv3b9gxGvAqiKY5IqvXUbWFc13tJ4zzm0dw0aXUDzlqTghD-aZqvJWkG9oSVeFu5CISCjoGc "GoogleServicefile")
+
+ - [x] The project is ready to be used.
+ 
+## Explain 
+
+The application is divided into several parts:
+
+ - The Login/Register
+ - Fragment that contains my application center(Post/Trade/History/Profile)
+ - The Adminsitrator part which allows me to manage my application (for
+   administrator).
