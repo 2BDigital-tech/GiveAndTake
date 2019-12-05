@@ -60,7 +60,7 @@ Create Project to [Firebase](https://firebase.google.com/) in a name:
 
 The application is divided into several parts:
 
- - The Login/Register
+ - The Login/Registration
  - Fragment that contains my application center(Post/Trade/History/Profile)
  - The Adminsitrator part which allows me to manage my application (for
    administrator).
