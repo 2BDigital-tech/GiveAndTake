@@ -109,7 +109,7 @@ public class Post_activity extends AppCompatActivity {
         takeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeOptions = getResources().getStringArray(R.array.Option2);
+                takeOptions = getResources().getStringArray(R.array.Option1);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(Post_activity.this);
                 mBuilder.setTitle("Choose From Options:");
                 mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {

@@ -11,25 +11,18 @@
     <string name="input_error_email">email required</string>
     <string name="error_Register">Error Register</string>
     <string-array name="Option1">
-        <item>Option1-1</item>
-        <item>Option1-2</item>
-        <item>Option1-3</item>
+        <item>House repair</item>
+        <item>House keeping</item>
+        <item>Gardening</item>
+        <item>Plumbing</item>
+        <item>Private lesson</item>
+        <item>Computer assisstance</item>
+        <item>Phone assisstance</item>
+        <item>Administrative assisstance</item>
+        <item>Help Transport</item>
+        <item>Other</item>
     </string-array>
-    <string-array name="Option2">
-        <item>Option2-1</item>
-        <item>Option2-2</item>
-        <item>Option2-3</item>
-    </string-array>
-    <string-array name="Option3">
-        <item>Option3-1</item>
-        <item>Option3-2</item>
-        <item>Option3-3</item>
-    </string-array>
-    <string-array name="Option4">
-        <item>Option4-1</item>
-        <item>Option4-2</item>
-        <item>Option4-3</item>
-    </string-array>
+
     <string name="input_error_password">password required</string>
     <string name="input_error_phone">phone required</string>
     <string name="input_error_password_length">password should be atleast 6 characters long</string>

@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
         filterTakebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeOptions = getResources().getStringArray(R.array.Option2);
+                takeOptions = getResources().getStringArray(R.array.Option1);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 mBuilder.setTitle("Choose From Options:");
                 mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {
