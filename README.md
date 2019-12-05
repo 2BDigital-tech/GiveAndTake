@@ -14,5 +14,13 @@ This application is non-profit and aims to help each person in his quotient.
 
 [Omer Paz](https://github.com/omerpaz1) -[Contact](omerpaz93@gmail.com)
 
-## Switch to another file
+##  Built With
+[Android Studio](https://developer.android.com/studio/?gclid=CjwKCAiA8qLvBRAbEiwAE_ZzPastymvPMHVYr11FGfbx5wJFjzZ-34ZvL5jDXY-WROwxh6CK4aHlVhoCG1sQAvD_BwE) - Build Code
+
+[FireBase](https://firebase.google.com/) - RealTime Database 
+
+[Adobe XD](https://www.adobe.com/fr/products/xd.html) - Design
+
+
+
 
