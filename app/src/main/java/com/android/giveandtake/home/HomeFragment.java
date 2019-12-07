@@ -425,6 +425,7 @@ public class HomeFragment extends Fragment {
                             mBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+
                                     DeletePost(PostsList.get(position).getPostid());
                                     updateView();
                                 }
