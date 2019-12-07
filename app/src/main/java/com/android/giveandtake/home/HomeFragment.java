@@ -92,8 +92,7 @@ public class HomeFragment extends Fragment {
         //////////////////// Create Dialog ///////////////////
         addItem = root.findViewById(R.id.addItem);
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-        giveBtn = root.findViewById(R.id.giveBtn);
-        takeBtn = root.findViewById(R.id.takeBtn);
+
         filterCitybtn = root.findViewById(R.id.filterCity);
         filterGivebtn = root.findViewById(R.id.filterGive);
         filterTakebtn = root.findViewById(R.id.filterTake);
@@ -192,7 +191,7 @@ public class HomeFragment extends Fragment {
         filterTakebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeOptions = getResources().getStringArray(R.array.Option2);
+                takeOptions = getResources().getStringArray(R.array.Option1);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 mBuilder.setTitle("Choose From Options:");
                 mBuilder.setSingleChoiceItems(takeOptions, -1, new DialogInterface.OnClickListener() {
@@ -417,7 +416,7 @@ public class HomeFragment extends Fragment {
                         PostsList.get(position);
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                        mBuilder.setTitle("Post ID: "+PostsList.get(position).getPostid());
+                        mBuilder.setTitle("Information Post:");
                         mBuilder.setMessage(PostsList.get(position).getfreeText()+"\n");
 
                         if(PostsList.get(position).getcurrentUserID().equals(currentUserID)){

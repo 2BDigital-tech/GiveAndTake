@@ -33,8 +33,7 @@ public class PostAdmin extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference myRef;
-    private Button giveBtn;
-    private Button takeBtn;
+
     private String currentUserID;
     private FirebaseAuth mAuth;
 
@@ -51,10 +50,7 @@ public class PostAdmin extends AppCompatActivity {
         myRef = firebaseDatabase.getReference("Posts");
         firebaseAuth = firebaseAuth.getInstance();
 
-        //////////////////// Create Dialog ///////////////////
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(PostAdmin.this);
-        giveBtn = findViewById(R.id.giveBtn);
-        takeBtn = findViewById(R.id.takeBtn);
+
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
@@ -67,10 +63,7 @@ public class PostAdmin extends AppCompatActivity {
 
 
 
-//    public void buildRecyclerView(){
-//
-//
-//    }
+
 
     public void DeletePost(String uid) {
         //myRef = firebaseDatabase.getReference("Posts");
