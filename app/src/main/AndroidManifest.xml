@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profil.EditProfile" />
+        <activity android:name=".Login.EditProfile" />
         <activity android:name=".Login.Account_Google" />
         <activity android:name=".Admin.PostAdmin" />
         <activity android:name=".home.Post_activity" />

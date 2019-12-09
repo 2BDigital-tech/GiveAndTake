@@ -53,7 +53,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="46dp"
             android:orientation="horizontal">
 
             <EditText
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="change" />
+                android:text="apply" />
 
         </LinearLayout>
 
@@ -94,13 +94,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="change" />
+                android:text="apply" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="46dp"
             android:orientation="horizontal">
 
             <EditText
@@ -119,19 +119,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="change" />
+                android:text="apply" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="46dp"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/cityspinner"
-                android:layout_width="match_parent"
+                android:layout_width="297dp"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/changecity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="apply" />
 
 
         </LinearLayout>
@@ -141,9 +148,9 @@
             android:layout_height="27dp" />
 
         <Button
-            android:id="@+id/savebtn"
+            android:id="@+id/btn_back"
             android:layout_width="210dp"
-            android:layout_height="78dp"
+            android:layout_height="68dp"
             android:text="Save changes" />
 
 

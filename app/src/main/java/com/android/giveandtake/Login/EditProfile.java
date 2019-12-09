@@ -1,11 +1,10 @@
-package com.android.giveandtake.Profil;
+package com.android.giveandtake.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-import com.android.giveandtake.Login.User;
 import com.android.giveandtake.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,9 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EditProfile extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private Button save, changename, changephone, changeemail;
+    private Button changename, changephone, changeemail, changecity, back;
     private EditText newname, newphone, newemail;
-    private DatabaseReference UsersRef;
+    private DatabaseReference UsersRef, nameRef;
     private FirebaseUser current_user;
     private Spinner mySpinner;
 
@@ -34,13 +33,14 @@ public class EditProfile extends AppCompatActivity {
         newphone = findViewById(R.id.changephone);
         newemail = findViewById(R.id.changemail);
 
+        current_user = FirebaseAuth.getInstance().getCurrentUser();
+        UsersRef = FirebaseDatabase.getInstance().getReference("Users").child(current_user.getUid());
 
-        firebaseAuth = firebaseAuth.getInstance();
-
-        save = (Button)findViewById(R.id.savebtn);
         changename = (Button)findViewById(R.id.namebutton);
         changephone = (Button)findViewById(R.id.phonebutton);
         changeemail = (Button)findViewById(R.id.emailbutton);
+        changecity = (Button)findViewById(R.id.changecity);
+        back = (Button)findViewById(R.id.btn_back);
         mySpinner = (Spinner) findViewById(R.id.cityspinner);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(EditProfile.this,
@@ -53,35 +53,48 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String changedname = newname.getText().toString();
+                UsersRef.child("name").setValue(changedname);
+
+            }
+        });
+
+        changeemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String changedemail = newemail.getText().toString();
+                UsersRef.child("email").setValue(changedemail);
+
+            }
+        });
+
+        changephone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String changedphone = newphone.getText().toString();
+                UsersRef.child("phone").setValue(changedphone);
+
+            }
+        });
+
+        changecity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String changedcity = (String) mySpinner.getSelectedItem().toString();
+                UsersRef.child("city").setValue(changedcity);
+
             }
         });
 
 
-
-        save.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name = newname.getText().toString();
-                final String email = newemail.getText().toString();
-                final String city = (String) mySpinner.getSelectedItem().toString();
-                final String phone = newphone.getText().toString();
-                editProfile(name,email,phone,city);
                 finish();
             }
         });
 
     }
 
-    private void editProfile(String name, String email, String phone, String city) {
-
-        current_user = firebaseAuth.getCurrentUser();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user.getUid());
-        User myuser = new User(name,email,phone,city);
-
-        UsersRef.setValue(myuser);
-
-    }
-
-    }
+}
 
 
