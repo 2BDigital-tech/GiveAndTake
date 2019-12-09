@@ -1,4 +1,4 @@
-package com.android.giveandtake.Login;
+package com.android.giveandtake.Profil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

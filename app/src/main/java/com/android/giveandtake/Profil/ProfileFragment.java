@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.android.giveandtake.Login.EditProfile;
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
 import com.google.android.gms.tasks.OnCompleteListener;
