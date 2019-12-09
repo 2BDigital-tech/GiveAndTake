@@ -36,6 +36,7 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
     private String courrentPhone;
     private String couurentGive;
     private String courrentCity;
+    private String courrentHours;
 
     private String courrentTake;
     private String []giveOptions;
@@ -47,6 +48,7 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
     private String MoreInfoText;
     private Spinner mySpinner_take;
     private Spinner mySpinner_give;
+    private Spinner mySpinner_hours;
 
 
     @Override
@@ -64,14 +66,21 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
         RootRef = firebaseDatabase.getInstance().getReference();
         mySpinner_take = (Spinner) findViewById(R.id.spinner_take);
         mySpinner_give = (Spinner) findViewById(R.id.spinner_give);
+        mySpinner_hours = (Spinner) findViewById(R.id.spinner_hours);
 
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Post_activity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Option1));
+        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(Post_activity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Hours));
+
+
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner_take.setAdapter(myAdapter);
         mySpinner_give.setAdapter(myAdapter);
+        mySpinner_hours.setAdapter(myAdapter2);
 
 
         createPost.setOnClickListener(new View.OnClickListener() {
@@ -99,12 +108,21 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
         MoreInfoText = freeText.getText().toString().trim();
        courrentTake = (String) mySpinner_take.getSelectedItem().toString();
        couurentGive = (String) mySpinner_give.getSelectedItem().toString();
+       courrentHours = (String) mySpinner_hours.getSelectedItem().toString();
 
         if (mySpinner_give.getSelectedItemPosition() < 0) {
             Toast.makeText(Post_activity.this, "Please select Give Option", Toast.LENGTH_LONG).show();
         }
          if (couurentGive.isEmpty()) {
             Toast.makeText(Post_activity.this, "Please select Take Option", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (couurentGive.isEmpty()) {
+            Toast.makeText(Post_activity.this, "Please select Take Option", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (courrentHours.isEmpty()) {
+            Toast.makeText(Post_activity.this, "Please select Hours Option", Toast.LENGTH_LONG).show();
             return;
         }
         RootRef.child("Users").child(currentUserID)
@@ -119,7 +137,7 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
                         courrentCity = retrieveCity;
                         long now= new Date().getTime();
                         String postId = RootRef.push().getKey();
-                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now);
+                        Post p = new Post(R.drawable.item_24dp,courrentName,courrentPhone,courrentCity,couurentGive,courrentTake,MoreInfoText,currentUserID,postId,now,courrentHours);
 
 
                         FirebaseDatabase.getInstance().getReference("Posts").child(postId).setValue(p);

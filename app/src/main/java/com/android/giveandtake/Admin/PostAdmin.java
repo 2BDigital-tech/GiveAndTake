@@ -104,11 +104,13 @@ public class PostAdmin extends AppCompatActivity {
                     String freeText = ds.child("freeText").getValue(String.class);
                     String courrentUser = ds.child("currentUserID").getValue(String.class);
                     String PostID = ds.child("postid").getValue(String.class);
-long time=ds.child("time").getValue(long.class);
+                    long time=ds.child("time").getValue(long.class);
+                    String Hours = ds.child("hours").getValue(String.class);
 
 
 
-                    com.android.giveandtake.home.Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time);
+
+                    com.android.giveandtake.home.Post p = new Post(R.drawable.item_24dp, name,phone,city,give,take,freeText,courrentUser,PostID,time,Hours);
                     if(!PostsList.contains(p)){
                         PostsList.add(p);
                     }

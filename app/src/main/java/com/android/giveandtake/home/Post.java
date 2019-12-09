@@ -11,6 +11,9 @@ public class Post {
     private String freeText;
     private String PostId;
     private long time;
+    private String Hours;
+
+    public String getHours() { return Hours; }
 
     public void setNameAsk(String nameAsk) {
         NameAsk = nameAsk;
@@ -67,7 +70,7 @@ public class Post {
         return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(time);
     }
 
-    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,long timee) {
+    public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,long timee,String hours) {
         imageResocure = img;
         NameAsk = nameAsk;
         PhoneAsk = phoneAsk;
@@ -78,6 +81,7 @@ public class Post {
         PostId = postid;
         city = City;
         time= timee;
+        Hours = hours;
     }
 
 }

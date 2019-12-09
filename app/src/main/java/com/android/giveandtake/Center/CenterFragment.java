@@ -91,9 +91,10 @@ public class CenterFragment extends Fragment {
                     String current_user_phone = ds.child("current_user_phone").getValue(String.class);
                     String current_user_city = ds.child("current_user_city").getValue(String.class);
                     String Textfree = ds.child("textFree").getValue(String.class);
+                    String Hours = ds.child("hours").getValue(String.class);
 
                     if(user_post_id.equals(currentUserID)){
-                        Trade t = new Trade(R.drawable.black2people,current_user_id,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree);
+                        Trade t = new Trade(R.drawable.black2people,current_user_id,current_post_id,current_trade_id,user_post_id,user_post_name,current_user_name,post_give,post_take,current_user_phone,current_user_city,Textfree,Hours);
                         TradeList.add(t);
 
                     }
@@ -110,7 +111,8 @@ public class CenterFragment extends Fragment {
                         mBuilder.setTitle("Post ID: "+TradeList.get(position).getCurrent_post_id());
                         mBuilder.setMessage("Name: "+TradeList.get(position).getCurrent_user_name()+"\n"+
                                             "Phone: "+TradeList.get(position).getCurrent_user_phone()+"\n"+
-                                            "City: "+TradeList.get(position).getCurrent_user_city()+"\n"
+                                            "City: "+TradeList.get(position).getCurrent_user_city()+"\n"+
+                                            "Hours:" + TradeList.get(position).getHours()+"\n"
 
 
                         );

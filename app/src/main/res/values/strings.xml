@@ -197,5 +197,14 @@
     </string-array>
 
 
+
+    <string-array name="Hours">
+        <item>0.5</item>,
+        <item>1</item>,
+        <item>1.5</item>,
+        <item>2.5</item>
+    </string-array>
+
+
 </resources>
 

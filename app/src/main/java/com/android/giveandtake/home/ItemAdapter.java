@@ -36,6 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public TextView _GiveAsk;
         public TextView _TakeAsk;
         public TextView _City;
+        public TextView _Hours;
 
 //        public EditText _freeText;
 
@@ -48,6 +49,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             _GiveAsk = itemView.findViewById(R.id.GiveOption);
             _TakeAsk = itemView.findViewById(R.id.TakeOption);
             _City = itemView.findViewById(R.id.CityOption);
+            _Hours = itemView.findViewById(R.id.HoursAsk);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,6 +90,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder._GiveAsk.setText(correntItem.getGive());
         holder._TakeAsk.setText(correntItem.getTake());
         holder._City.setText(correntItem.getCity());
+        holder._Hours.setText((correntItem.getHours()));
 
 
 
