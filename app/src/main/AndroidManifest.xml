@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/logo2_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Admin.AllTrades"></activity>
         <activity android:name=".Login.Forgot_code" />
         <activity
             android:name=".Begin_Application"

@@ -14,11 +14,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class AdminConnect extends AppCompatActivity {
-Button unlogin;
-
+    Button unlogin;
     Button showuser;
     Button showpost;
+    Button alltrades;
     FirebaseAuth firebaseAuth;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +29,9 @@ Button unlogin;
 
         showuser=(Button)findViewById(R.id.View_User);
         showpost=(Button)findViewById(R.id.allpostadmin);
-unlogin=(Button)findViewById(R.id.disconnect_admin);
+        unlogin=(Button)findViewById(R.id.disconnect_admin);
+        alltrades=(Button)findViewById(R.id.ViewAllTrades);
+
         showuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,11 +40,18 @@ unlogin=(Button)findViewById(R.id.disconnect_admin);
             }
         });
 
-showpost.setOnClickListener(new View.OnClickListener() {
+        showpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent Show_User=new Intent(AdminConnect.this,PostAdmin.class);
                 startActivity(Show_User);
+            }
+        });
+     alltrades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent TradesView=new Intent(AdminConnect.this,AllTrades.class);
+                startActivity(TradesView);
             }
         });
 
