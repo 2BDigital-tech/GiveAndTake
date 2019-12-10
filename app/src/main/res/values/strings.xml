@@ -10,6 +10,7 @@
     <string name="input_error_name">name required</string>
     <string name="input_error_email">email required</string>
     <string name="error_Register">Error Register</string>
+    <string name="Cancel">Cancel</string>
     <string-array name="Option1">
         <item>Other</item>
         <item>House repair</item>
