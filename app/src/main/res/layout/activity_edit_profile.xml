@@ -58,19 +58,12 @@
 
             <EditText
                 android:id="@+id/changename"
-                android:layout_width="298dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Name"
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
-
-            <Button
-                android:id="@+id/namebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="apply" />
 
         </LinearLayout>
 
@@ -88,13 +81,6 @@
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
-
-            <Button
-                android:id="@+id/phonebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="apply" />
 
         </LinearLayout>
 
@@ -114,13 +100,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
-            <Button
-                android:id="@+id/emailbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="apply" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -130,15 +109,8 @@
 
             <Spinner
                 android:id="@+id/cityspinner"
-                android:layout_width="297dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/changecity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="apply" />
 
 
         </LinearLayout>

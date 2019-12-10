@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EditProfile extends AppCompatActivity {
 
-    private Button changename, changephone, changeemail, changecity, back;
+    private Button save;
     private EditText newname, newphone, newemail;
     private DatabaseReference UsersRef;
     private FirebaseUser current_user;
@@ -35,11 +35,7 @@ public class EditProfile extends AppCompatActivity {
         current_user = FirebaseAuth.getInstance().getCurrentUser();
         UsersRef = FirebaseDatabase.getInstance().getReference("Users").child(current_user.getUid());
 
-        changename = (Button)findViewById(R.id.namebutton);
-        changephone = (Button)findViewById(R.id.phonebutton);
-        changeemail = (Button)findViewById(R.id.emailbutton);
-        changecity = (Button)findViewById(R.id.changecity);
-        back = (Button)findViewById(R.id.btn_back);
+        save = (Button)findViewById(R.id.btn_back);
         mySpinner = (Spinner) findViewById(R.id.cityspinner);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(EditProfile.this,
@@ -48,44 +44,7 @@ public class EditProfile extends AppCompatActivity {
         mySpinner.setAdapter(myAdapter);
 
 
-        changename.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String changedname = newname.getText().toString();
-                UsersRef.child("name").setValue(changedname);
-
-            }
-        });
-
-        changeemail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String changedemail = newemail.getText().toString();
-                UsersRef.child("email").setValue(changedemail);
-
-            }
-        });
-
-        changephone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String changedphone = newphone.getText().toString();
-                UsersRef.child("phone").setValue(changedphone);
-
-            }
-        });
-
-        changecity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String changedcity = (String) mySpinner.getSelectedItem().toString();
-                UsersRef.child("city").setValue(changedcity);
-
-            }
-        });
-
-
-        back.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String changedname = newname.getText().toString();
