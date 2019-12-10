@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:foregroundTint="#D64214"
+
+
     tools:context=".Begin_Application">
 
     <ImageView

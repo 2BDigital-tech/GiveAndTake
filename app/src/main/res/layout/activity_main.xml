@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gt"
+    android:background="@drawable/back"
     tools:context=".Start_Application">
 
 
@@ -22,18 +22,20 @@
                 android:layout_height="281dp" />
 
             <Button
+
                 android:id="@+id/RegisterMainBox"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginTop="224dp"
-                android:backgroundTint="#ABFFFFFF"
+                android:background="@drawable/bouton"
+
                 android:text="Regisiter" />
 
             <Button
                 android:id="@+id/LoginMainBox"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:backgroundTint="#ABFFFFFF"
+                android:background="@drawable/bouton"
                 android:text="Login" />
         </LinearLayout>
     </ScrollView>
