@@ -11,14 +11,14 @@
 
     <Button
         android:id="@+id/addItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="66dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="298dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="6dp"
         android:text="+" />
 
     <Button
@@ -72,6 +72,16 @@
         android:layout_marginEnd="150dp"
         android:text="Filter By Take"
         android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/CancelFilter"
+        android:layout_width="52dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-1dp"
+        android:text="Esc"
+        android:layout_marginEnd="103dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"

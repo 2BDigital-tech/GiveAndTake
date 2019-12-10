@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
     private Button filterGivebtn;
     private Button filterTakebtn;
     private Button filterDatebtn;
+    private Button cancelfilter;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private String name;
@@ -98,6 +99,7 @@ public class HomeFragment extends Fragment {
         filterGivebtn = root.findViewById(R.id.filterGive);
         filterTakebtn = root.findViewById(R.id.filterTake);
         filterDatebtn = root.findViewById(R.id.filterDate);
+        cancelfilter = root.findViewById(R.id.CancelFilter);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
@@ -111,7 +113,20 @@ public class HomeFragment extends Fragment {
             }
 
         });
+cancelfilter.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
 
+        if(filerCity == true){
+            filerCity=false;
+        }
+        else{
+            filerCity=true;
+        }
+        createToShowPosts();
+        updateView();
+    }
+});
         filterCitybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
