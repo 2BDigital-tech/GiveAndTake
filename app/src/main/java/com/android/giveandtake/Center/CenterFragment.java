@@ -115,6 +115,7 @@ public class CenterFragment extends Fragment {
                                             "Hours:" + TradeList.get(position).getHours()+"\n"
 
 
+
                         );
 
 
