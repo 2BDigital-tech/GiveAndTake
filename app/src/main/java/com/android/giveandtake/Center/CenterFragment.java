@@ -118,7 +118,7 @@ public class CenterFragment extends Fragment {
                         );
 
 
-                        mBuilder.setPositiveButton("Accpet", new DialogInterface.OnClickListener() {
+                        mBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 createHistroy(R.drawable.accpet,TradeList.get(position));

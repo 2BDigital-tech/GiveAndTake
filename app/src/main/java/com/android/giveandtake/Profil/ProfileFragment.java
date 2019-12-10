@@ -35,7 +35,7 @@ import com.google.firebase.database.ValueEventListener;
     private Button unsigout, editprofile, delete;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef;
-    private String currentUserID;
+    private String currentID, otherId;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ import com.google.firebase.database.ValueEventListener;
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.create();
                 dialog.setTitle("Are you sure?");
-                dialog.setMessage("Deleting this account will result in completly removing your account from the system " +
+                dialog.setMessage("Deleting this account will result in completely removing your account from the system " +
                         "and you won't be able to access the app.");
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
@@ -129,19 +129,23 @@ import com.google.firebase.database.ValueEventListener;
                                     Intent activi = new Intent(getActivity(), Start_Application.class);
                                     startActivity(activi);
                                     DatabaseReference delete_user = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
+                                    currentID = myuser.getUid();
                                     delete_user.removeValue();
-//                                    currentUserID = myuser.getUid();
-//                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts").child("currentUserID");
-//                                    if (delete_posts.equals(currentUserID)){
-//                                        delete_posts.child(currentUserID).orderByKey().equalTo(currentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
-//                                            @Override
-//                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                dataSnapshot.getRef().removeValue();
-//                                            }
-//                                            @Override
-//                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
-//                                        });
-//                                    }
+                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts");
+                                    otherId = myuser.getUid();
+                                        delete_posts.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                                    String userId = (String) dataSnapshot.child(otherId).child("currentUserID").getValue();
+                                                    if (userId.equals(currentID)) {
+                                                        dataSnapshot.getRef().removeValue();
+                                                    }
+                                                }
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+                                        });
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();

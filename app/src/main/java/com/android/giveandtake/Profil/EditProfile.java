@@ -17,10 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EditProfile extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
     private Button changename, changephone, changeemail, changecity, back;
     private EditText newname, newphone, newemail;
-    private DatabaseReference UsersRef, nameRef;
+    private DatabaseReference UsersRef;
     private FirebaseUser current_user;
     private Spinner mySpinner;
 
