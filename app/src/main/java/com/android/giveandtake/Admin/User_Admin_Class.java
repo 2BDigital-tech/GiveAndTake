@@ -1,8 +1,6 @@
 package com.android.giveandtake.Admin;
 
 
-import java.util.ArrayList;
-
 public class User_Admin_Class {
     public String name, phone,email;
 

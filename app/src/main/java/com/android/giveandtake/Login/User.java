@@ -1,8 +1,6 @@
 package com.android.giveandtake.Login;
 
 
-import java.util.ArrayList;
-
 public class User {
     public String name, email, phone,city;
 

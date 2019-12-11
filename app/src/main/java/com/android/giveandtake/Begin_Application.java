@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Admin.AdminConnect;
 import com.android.giveandtake.Login.Account_Google;
-import com.android.giveandtake.Login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
