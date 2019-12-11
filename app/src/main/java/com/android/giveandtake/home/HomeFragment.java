@@ -117,12 +117,10 @@ cancelfilter.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
 
-        if(filerCity == true){
-            filerCity=false;
-        }
-        else{
-            filerCity=true;
-        }
+        filerCity = false;
+        filterDate = false;
+        filerGive = false;
+        filerTake = false;
         createToShowPosts();
         updateView();
     }

@@ -118,6 +118,13 @@ public class Account_Google extends AppCompatActivity  {
                     editTextPhone.requestFocus();
                     return;
                 }
+
+                if(mySpinner.getSelectedItem().toString().contains("Choose city")==true){
+
+                    Toast.makeText(Account_Google.this,"Please Select City", Toast.LENGTH_LONG).show();
+                    Log.e("TAG1","CLICK");
+                    return;
+                }
                 city = (String) mySpinner.getSelectedItem().toString();
 
 

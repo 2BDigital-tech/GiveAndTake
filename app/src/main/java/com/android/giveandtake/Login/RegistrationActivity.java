@@ -133,7 +133,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             editTextPhone.requestFocus();
             return;
         }
+if(mySpinner.getSelectedItem().toString().contains("Choose city")==true){
 
+    Toast.makeText(RegistrationActivity.this,"Please Select City", Toast.LENGTH_LONG).show();
+
+    Log.e("TAG1","CLICK");
+    return;
+}
       final  String city = (String) mySpinner.getSelectedItem().toString();
 
 
