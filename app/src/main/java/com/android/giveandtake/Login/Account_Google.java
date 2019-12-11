@@ -1,7 +1,6 @@
 package com.android.giveandtake.Login;
 
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,26 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.Begin_Application;
 import com.android.giveandtake.Connect_Fragment;
-import com.android.giveandtake.Login.LoginActivity;
 import com.android.giveandtake.R;
 import com.android.giveandtake.Start_Application;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Account_Google extends AppCompatActivity  {
 
@@ -59,7 +45,7 @@ public class Account_Google extends AppCompatActivity  {
         final FirebaseUser myuser = firebaseAuth.getCurrentUser();
 
 
-        mySpinner = (Spinner) findViewById(R.id.cityspinner2);
+        mySpinner = findViewById(R.id.cityspinner2);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Account_Google.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.City));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -119,17 +105,18 @@ public class Account_Google extends AppCompatActivity  {
                     return;
                 }
 
-                if(mySpinner.getSelectedItem().toString().contains("Choose city")==true){
+                if(mySpinner.getSelectedItem().toString().contains("Choose city")){
 
                     Toast.makeText(Account_Google.this,"Please Select City", Toast.LENGTH_LONG).show();
                     Log.e("TAG1","CLICK");
                     return;
                 }
-                city = (String) mySpinner.getSelectedItem().toString();
+                city =  mySpinner.getSelectedItem().toString();
 
 
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                assert user != null;
                 User user_current = new User(
                         name,
                         user.getEmail().toString(),
