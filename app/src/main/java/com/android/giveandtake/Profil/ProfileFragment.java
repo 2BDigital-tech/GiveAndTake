@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
     public class ProfileFragment extends Fragment{
@@ -131,34 +132,18 @@ import com.google.firebase.database.ValueEventListener;
                                     DatabaseReference delete_user = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
                                     currentID = myuser.getUid();
                                     delete_user.removeValue();
-                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts");
-                                    delete_posts.child("currentUserId").equalTo(currentID).addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                                                String key = dataSnapshot.getKey();
-                                                dataSnapshot.getRef().removeValue();
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });
-//                                        delete_posts.addValueEventListener(new ValueEventListener() {
-//                                            @Override
-//                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                                                    String userId = (String) dataSnapshot.child(otherId).child("currentUserID").getValue();
-//                                                    if (userId.equals(currentID)) {
-//                                                        dataSnapshot.getRef().removeValue();
-//                                                    }
-//                                                }
-//                                            }
-//                                            @Override
-//                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
-//                                        });
+//                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts");
+//                                    delete_posts.child("currentUserId").equalTo(currentID).addListenerForSingleValueEvent(new ValueEventListener() {
+//                                        @Override
+//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                            String post = dataSnapshot.getKey();
+//                                        }
+//
+//                                        @Override
+//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                        }
+//                                    });
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
