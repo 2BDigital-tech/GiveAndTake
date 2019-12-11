@@ -48,6 +48,12 @@
                 android:text="@string/all_trades" />
 
             <Button
+                android:id="@+id/ViewAllHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All History" />
+
+            <Button
                 android:id="@+id/disconnect_admin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

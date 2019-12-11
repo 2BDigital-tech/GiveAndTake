@@ -18,6 +18,7 @@ public class AdminConnect extends AppCompatActivity {
     Button showuser;
     Button showpost;
     Button alltrades;
+    Button allHistory;
     FirebaseAuth firebaseAuth;
 
 
@@ -31,6 +32,7 @@ public class AdminConnect extends AppCompatActivity {
         showpost=(Button)findViewById(R.id.allpostadmin);
         unlogin=(Button)findViewById(R.id.disconnect_admin);
         alltrades=(Button)findViewById(R.id.ViewAllTrades);
+        allHistory=(Button)findViewById(R.id.ViewAllHistory);
 
         showuser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,13 @@ public class AdminConnect extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent TradesView=new Intent(AdminConnect.this,AllTrades.class);
+                startActivity(TradesView);
+            }
+        });
+   allHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent TradesView=new Intent(AdminConnect.this,History_Show_All.class);
                 startActivity(TradesView);
             }
         });
