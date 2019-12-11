@@ -1,6 +1,9 @@
 package com.android.giveandtake.Admin;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.giveandtake.History.History;
 import com.android.giveandtake.History.historyAdapter;
 import com.android.giveandtake.R;
+import com.android.giveandtake.home.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class History_Show_All extends AppCompatActivity{
 
@@ -28,6 +33,10 @@ public class History_Show_All extends AppCompatActivity{
     private FirebaseAuth mAuth;
     private RecyclerView.LayoutManager _LayoutManager;
     private String currentUserID;
+    private Button filterAccpet;
+    private boolean bool_filerAccept = false;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +46,26 @@ public class History_Show_All extends AppCompatActivity{
         HistoryRef = firebaseDatabase.getReference("History");
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
+        filterAccpet = findViewById(R.id.filterAccpet);
+
+
+
+        filterAccpet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(bool_filerAccept == true){
+                    bool_filerAccept=false;
+                }
+                else{
+                    bool_filerAccept=true;
+                }
+                createToShowhistory();
+                updateView();
+
+            }
+
+        });
 
 
         createToShowhistory();
@@ -64,6 +93,18 @@ public class History_Show_All extends AppCompatActivity{
                         historyList.add(h);
 
                 }
+//                if(bool_filerAccept == true) {
+//
+//                    if (city.equals(current_city)) {
+//                        Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+//                        PostsList.add(p);
+//                        if(filterDate == true){
+//                            Collections.sort(PostsList,comparator);
+//                        }
+//                        updateView();
+//                    }
+//                }
+
 
                 updateView();
             }
@@ -71,6 +112,8 @@ public class History_Show_All extends AppCompatActivity{
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
+
+
         };
         HistoryRef.addListenerForSingleValueEvent(eventListener);
 

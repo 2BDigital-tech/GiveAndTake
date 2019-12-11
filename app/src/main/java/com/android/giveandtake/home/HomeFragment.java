@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
             }
 
         });
-cancelfilter.setOnClickListener(new View.OnClickListener() {
+    cancelfilter.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
 
