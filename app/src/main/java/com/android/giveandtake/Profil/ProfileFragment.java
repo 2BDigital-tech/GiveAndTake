@@ -132,20 +132,33 @@ import com.google.firebase.database.ValueEventListener;
                                     currentID = myuser.getUid();
                                     delete_user.removeValue();
                                     DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts");
-                                    otherId = myuser.getUid();
-                                        delete_posts.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                                    String userId = (String) dataSnapshot.child(otherId).child("currentUserID").getValue();
-                                                    if (userId.equals(currentID)) {
-                                                        dataSnapshot.getRef().removeValue();
-                                                    }
-                                                }
+                                    delete_posts.child("currentUserId").equalTo(currentID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                                String key = dataSnapshot.getKey();
+                                                dataSnapshot.getRef().removeValue();
                                             }
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
-                                        });
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+//                                        delete_posts.addValueEventListener(new ValueEventListener() {
+//                                            @Override
+//                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                                                    String userId = (String) dataSnapshot.child(otherId).child("currentUserID").getValue();
+//                                                    if (userId.equals(currentID)) {
+//                                                        dataSnapshot.getRef().removeValue();
+//                                                    }
+//                                                }
+//                                            }
+//                                            @Override
+//                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+//                                        });
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();

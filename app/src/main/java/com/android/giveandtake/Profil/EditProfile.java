@@ -2,6 +2,7 @@ package com.android.giveandtake.Profil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
@@ -56,9 +57,30 @@ public class EditProfile extends AppCompatActivity {
                     UsersRef.child("name").setValue(changedname);
                 }
                 if (changedemail.isEmpty()==false) {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(changedemail).matches()) {
+                        newemail.setError(getString(R.string.input_error_email_invalid));
+                        newemail.requestFocus();
+                        return;
+                    }
+
                     UsersRef.child("email").setValue(changedemail);
                 }
                 if (changedphone.isEmpty()==false) {
+                    if (changedphone.length() != 10) {
+                        newphone.setError(getString(R.string.input_error_phone_invalid));
+                        newphone.requestFocus();
+                        return;
+                    }
+                    if (changedphone.charAt(0) != '0') {
+                        newphone.setError(getString(R.string.input_error_phone_invalid));
+                        newphone.requestFocus();
+                        return;
+                    }
+                    if (changedphone.charAt(1) != '5') {
+                        newphone.setError(getString(R.string.input_error_Israel_phone));
+                        newphone.requestFocus();
+                        return;
+                    }
                     UsersRef.child("phone").setValue(changedphone);
                 }
                 if (changedcity.contains("Choose city")==false) {
