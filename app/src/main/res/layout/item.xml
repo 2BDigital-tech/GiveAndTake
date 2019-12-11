@@ -9,14 +9,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="151dp"
+        android:layout_height="110dp"
         android:layout_margin="4dp"
 
         >
 
         <TextView
             android:id="@+id/NameAsk"
-            android:layout_width="116dp"
+            android:layout_width="187dp"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/ImageView"
             android:text="Name"
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/GiveOption"
             android:layout_marginStart="6dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/TakeText"
             android:text="TakeOp"
             android:textSize="15dp"
@@ -89,8 +89,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/TakeOption"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="6dp"
             android:layout_toEndOf="@+id/TakeText"
             android:text="CityOp"
             android:textSize="15dp"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/TakeText"
             android:layout_marginStart="250dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="5dp"
             android:text="City:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/GiveText"
             android:layout_marginStart="250dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="6dp"
             android:text="Take:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
@@ -132,7 +132,7 @@
             android:id="@+id/GiveOption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@+id/GiveText"
             android:text="GiveOp"
