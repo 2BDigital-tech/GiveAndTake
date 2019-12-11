@@ -34,7 +34,17 @@ public class History_Show_All extends AppCompatActivity{
     private RecyclerView.LayoutManager _LayoutManager;
     private String currentUserID;
     private Button filterAccpet;
+    private Button filerDeny;
+    static private int imageResocure;
+    private String current_historyId;
+    private String history_giveOption;
+    private String history_takeOption;
+    private String name_userPost;
+    private String name_userTrade;
+    private String user_postedID;
+    private long time;
     private boolean bool_filerAccept = false;
+    private boolean bool_filerDeny = false;
 
 
 
@@ -47,6 +57,7 @@ public class History_Show_All extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         filterAccpet = findViewById(R.id.filterAccpet);
+        filerDeny = findViewById(R.id.filterDeny);
 
 
 
@@ -67,6 +78,23 @@ public class History_Show_All extends AppCompatActivity{
 
         });
 
+        filerDeny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(bool_filerDeny == true){
+                    bool_filerDeny=false;
+                }
+                else{
+                    bool_filerDeny=true;
+                }
+                createToShowhistory();
+                updateView();
+
+            }
+
+        });
+
 
         createToShowhistory();
 
@@ -78,32 +106,39 @@ public class History_Show_All extends AppCompatActivity{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 historyList = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String current_historyId = ds.child("current_historyId").getValue(String.class);
-                    String history_giveOption = ds.child("history_giveOption").getValue(String.class);
-                    String history_takeOption = ds.child("history_takeOption").getValue(String.class);
-                    int imageResocure = ds.child("imageResocure").getValue(Integer.class);
-                    String name_userPost = ds.child("name_userPost").getValue(String.class);
-                    String name_userTrade = ds.child("name_userTrade").getValue(String.class);
-                    String user_postedID = ds.child("user_postedID").getValue(String.class);
-                    long time = ds.child("history_time").getValue(long.class);
+                    current_historyId = ds.child("current_historyId").getValue(String.class);
+                    history_giveOption = ds.child("history_giveOption").getValue(String.class);
+                    history_takeOption = ds.child("history_takeOption").getValue(String.class);
+                    imageResocure = ds.child("imageResocure").getValue(Integer.class);
+                    name_userPost = ds.child("name_userPost").getValue(String.class);
+                    name_userTrade = ds.child("name_userTrade").getValue(String.class);
+                    user_postedID = ds.child("user_postedID").getValue(String.class);
+                    time = ds.child("history_time").getValue(long.class);
 
 
+                    if(bool_filerAccept == true && bool_filerDeny == false) {
+
+                        if (imageResocure == R.drawable.accpet) {
+                            History h = new History(R.drawable.accpet,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                            historyList.add(h);
+                            updateView();
+                        }
+                    }
+                    else if(bool_filerAccept == false && bool_filerDeny == true) {
+
+                        if (imageResocure == R.drawable.deny) {
+                            History h = new History(R.drawable.deny,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                            historyList.add(h);
+                            updateView();
+                        }
+                    }
+                    else{
 
                         History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
                         historyList.add(h);
-
+                    }
                 }
-//                if(bool_filerAccept == true) {
-//
-//                    if (city.equals(current_city)) {
-//                        Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
-//                        PostsList.add(p);
-//                        if(filterDate == true){
-//                            Collections.sort(PostsList,comparator);
-//                        }
-//                        updateView();
-//                    }
-//                }
+
 
 
                 updateView();
