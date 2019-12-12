@@ -139,6 +139,7 @@ public class ProfileFragment extends Fragment{
                                     DeleteUsers(myuser.getUid());
                                     DeletePost(myuser.getUid());
                                     DeleteTrade(myuser.getUid());
+                                    DeleteTrade2(myuser.getUid());
 
 
 
@@ -202,6 +203,22 @@ public class ProfileFragment extends Fragment{
     }
     public void DeleteTrade(String uid) {
         tradeRef.orderByChild("current_user_id").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+    public void DeleteTrade2(String uid) {
+        tradeRef.orderByChild("user_post_id").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
