@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,29 +30,34 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-    public class ProfileFragment extends Fragment{
+import java.util.ArrayList;
+
+public class ProfileFragment extends Fragment{
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
     private Button unsigout, editprofile, delete;
     private TextView name, phone, email, city;
-    private DatabaseReference UsersRef;
-    private String currentID, otherId;
+    private DatabaseReference UsersRef,myRef,tradeRef;
+    private FirebaseDatabase firebaseDatabase;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(ProfileViewModel.class);
+
+        private String currentID, otherId;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+        notificationsViewModel =ViewModelProviders.of(this).get(ProfileViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_profile, container, false);
-
         unsigout = (Button) root.findViewById(R.id.disconnect);
         editprofile = (Button) root.findViewById(R.id.editprofile);
         delete = (Button)root.findViewById(R.id.delete);
 
         firebaseAuth = firebaseAuth.getInstance();
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
+        UsersRef = firebaseDatabase.getReference().child("Users");
+        tradeRef = firebaseDatabase.getReference("Trades");
+        myRef = firebaseDatabase.getReference("Posts");
         final FirebaseUser user=firebaseAuth.getCurrentUser();
 
        name=(TextView)root.findViewById(R.id.nameprofile);
@@ -125,25 +131,17 @@ import com.google.firebase.database.ValueEventListener;
                         myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
+                                if(task.isSuccessful()) {
                                     Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
                                     Intent activi = new Intent(getActivity(), Start_Application.class);
                                     startActivity(activi);
-                                    DatabaseReference delete_user = FirebaseDatabase.getInstance().getReference("Users").child(myuser.getUid());
-                                    currentID = myuser.getUid();
-                                    delete_user.removeValue();
-//                                    DatabaseReference delete_posts = FirebaseDatabase.getInstance().getReference("Posts");
-//                                    delete_posts.child("currentUserId").equalTo(currentID).addListenerForSingleValueEvent(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            String post = dataSnapshot.getKey();
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                        }
-//                                    });
+                                    getActivity().finish();
+                                    DeleteUsers(myuser.getUid());
+                                    DeletePost(myuser.getUid());
+
+
+
+
                                 }
                                 else {
                                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -167,5 +165,40 @@ import com.google.firebase.database.ValueEventListener;
     }
 
 
+        public void DeletePost(String uid) {
+            myRef.orderByChild("currentUserID").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Log.e("POSTDELETE","SUCCES");
+                    String key = dataSnapshot.getKey();
+                    dataSnapshot.getRef().removeValue();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+            });
+        }
+        public void DeleteUsers(String uid) {
+            UsersRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Log.e("USERDELETE","SUCCES");
+
+                    String key = dataSnapshot.getKey();
+                    dataSnapshot.getRef().removeValue();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+            });
+        }
 
 }
