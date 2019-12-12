@@ -105,7 +105,7 @@ public class CenterFragment extends Fragment {
                         TradeList.get(position);
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                        mBuilder.setTitle("Post ID: "+TradeList.get(position).getCurrent_post_id());
+                        mBuilder.setTitle("Trade from your Post ");
                         mBuilder.setMessage("Name: "+TradeList.get(position).getCurrent_user_name()+"\n"+
                                             "Phone: "+TradeList.get(position).getCurrent_user_phone()+"\n"+
                                             "City: "+TradeList.get(position).getCurrent_user_city()+"\n"+
