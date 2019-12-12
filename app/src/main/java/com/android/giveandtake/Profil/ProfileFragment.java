@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment{
     private FirebaseDatabase firebaseDatabase;
 
 
-        private String currentID, otherId;
+    private String currentID, otherId;
 
     public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =ViewModelProviders.of(this).get(ProfileViewModel.class);
@@ -60,34 +60,34 @@ public class ProfileFragment extends Fragment{
         myRef = firebaseDatabase.getReference("Posts");
         final FirebaseUser user=firebaseAuth.getCurrentUser();
 
-       name=(TextView)root.findViewById(R.id.nameprofile);
-       phone=(TextView)root.findViewById(R.id.phoneprofile);
-       email=(TextView)root.findViewById(R.id.emailprofile);
-       city=(TextView)root.findViewById(R.id.cityprofile);
+        name=(TextView)root.findViewById(R.id.nameprofile);
+        phone=(TextView)root.findViewById(R.id.phoneprofile);
+        email=(TextView)root.findViewById(R.id.emailprofile);
+        city=(TextView)root.findViewById(R.id.cityprofile);
 
         String idUser=user.getUid();
 
 
-      UsersRef.child(idUser).addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              String userId=dataSnapshot.child("name").getValue(String.class);
-              String phoneid=dataSnapshot.child("phone").getValue(String.class);
-              String emailid=dataSnapshot.child("email").getValue(String.class);
-              String cityid=dataSnapshot.child("city").getValue(String.class);
+        UsersRef.child(idUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userId=dataSnapshot.child("name").getValue(String.class);
+                String phoneid=dataSnapshot.child("phone").getValue(String.class);
+                String emailid=dataSnapshot.child("email").getValue(String.class);
+                String cityid=dataSnapshot.child("city").getValue(String.class);
 
-              name.setText(userId);
-              phone.setText(phoneid);
-              email.setText(emailid);
-              city.setText(cityid);
+                name.setText(userId);
+                phone.setText(phoneid);
+                email.setText(emailid);
+                city.setText(cityid);
 
-          }
+            }
 
-          @Override
-          public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-          }
-      });
+            }
+        });
 
 
 
@@ -138,7 +138,7 @@ public class ProfileFragment extends Fragment{
                                     getActivity().finish();
                                     DeleteUsers(myuser.getUid());
                                     DeletePost(myuser.getUid());
-
+                                    DeleteTrade(myuser.getUid());
 
 
 
@@ -165,40 +165,56 @@ public class ProfileFragment extends Fragment{
     }
 
 
-        public void DeletePost(String uid) {
-            myRef.orderByChild("currentUserID").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Log.e("POSTDELETE","SUCCES");
-                    String key = dataSnapshot.getKey();
-                    dataSnapshot.getRef().removeValue();
+    public void DeletePost(String uid) {
+        myRef.orderByChild("currentUserID").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.e("POSTDELETE","SUCCES");
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
 
-                }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
+            }
 
-            });
-        }
-        public void DeleteUsers(String uid) {
-            UsersRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Log.e("USERDELETE","SUCCES");
+        });
+    }
+    public void DeleteUsers(String uid) {
+        UsersRef.child(uid).orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.e("USERDELETE","SUCCES");
 
-                    String key = dataSnapshot.getKey();
-                    dataSnapshot.getRef().removeValue();
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
 
-                }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
+            }
 
-            });
-        }
+        });
+    }
+    public void DeleteTrade(String uid) {
+        tradeRef.orderByChild("current_user_id").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String key = dataSnapshot.getKey();
+                dataSnapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+    }
 
 }
