@@ -63,11 +63,12 @@ public class HistoryFragment extends Fragment {
                     String name_userPost = ds.child("name_userPost").getValue(String.class);
                     String name_userTrade = ds.child("name_userTrade").getValue(String.class);
                     String user_postedID = ds.child("user_postedID").getValue(String.class);
+                    String text_reason = ds.child("textReason").getValue(String.class);
                     long time = ds.child("history_time").getValue(long.class);
 
 
                     if(user_postedID.equals(currentUserID)){
-                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time,text_reason);
                         historyList.add(h);
 
                     }

@@ -42,6 +42,7 @@ public class History_Show_All extends AppCompatActivity{
     private String name_userPost;
     private String name_userTrade;
     private String user_postedID;
+    private String Text_Reason;
     private long time;
     private boolean bool_filerAccept = false;
     private boolean bool_filerDeny = false;
@@ -114,12 +115,12 @@ public class History_Show_All extends AppCompatActivity{
                     name_userTrade = ds.child("name_userTrade").getValue(String.class);
                     user_postedID = ds.child("user_postedID").getValue(String.class);
                     time = ds.child("history_time").getValue(long.class);
-
+                    Text_Reason = ds.child("textReason").getValue(String.class);
 
                     if(bool_filerAccept == true && bool_filerDeny == false) {
 
                         if (imageResocure == R.drawable.accpet) {
-                            History h = new History(R.drawable.accpet,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                            History h = new History(R.drawable.accpet,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time,Text_Reason);
                             historyList.add(h);
                             updateView();
                         }
@@ -127,14 +128,14 @@ public class History_Show_All extends AppCompatActivity{
                     else if(bool_filerAccept == false && bool_filerDeny == true) {
 
                         if (imageResocure == R.drawable.deny) {
-                            History h = new History(R.drawable.deny,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                            History h = new History(R.drawable.deny,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time,Text_Reason);
                             historyList.add(h);
                             updateView();
                         }
                     }
                     else{
 
-                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time);
+                        History h = new History(imageResocure,name_userPost,name_userTrade,history_giveOption,history_takeOption,current_historyId,user_postedID,time,Text_Reason);
                         historyList.add(h);
                     }
                 }

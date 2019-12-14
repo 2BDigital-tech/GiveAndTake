@@ -183,7 +183,6 @@ if(mySpinner.getSelectedItem().toString().contains("Choose city")==true){
                 });
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
