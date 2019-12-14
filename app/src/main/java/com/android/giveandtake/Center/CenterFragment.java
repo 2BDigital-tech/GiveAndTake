@@ -123,16 +123,13 @@ public class CenterFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                     for(Trade i :TradeList){
-                                        if(i.getCurrent_Trade_id() != TradeList.get(position).getCurrent_Trade_id()){
-                                            if(i.getCurrent_post_id() == TradeList.get(position).getCurrent_post_id()){
+                                        if(i.getCurrent_Trade_id() != TradeList.get(position).getCurrent_Trade_id() && i.getCurrent_post_id() == TradeList.get(position).getCurrent_post_id()){
                                                 createHistroy(R.drawable.deny,i,"Trade No longer available");
                                                 DeleteTrade(i.getCurrent_Trade_id());
-                                            }
                                         }
-                                        createHistroy(R.drawable.accpet,TradeList.get(position),"Trade Accepted!");
-                                        DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
                                 }
-
+                                createHistroy(R.drawable.accpet,TradeList.get(position),"Trade Accepted!");
+                                DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
                                 DeletePost(TradeList.get(position).getCurrent_post_id());
                                 createToShowTrades();
                                 updateView();
