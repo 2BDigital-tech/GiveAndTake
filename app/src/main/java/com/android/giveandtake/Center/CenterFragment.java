@@ -3,9 +3,12 @@ package com.android.giveandtake.Center;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -119,9 +122,15 @@ public class CenterFragment extends Fragment {
                         mBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                createHistroy(R.drawable.accpet,TradeList.get(position));
-                                DeletePost(TradeList.get(position).getCurrent_post_id());
+                                    for(Trade i :TradeList){
+                                        if(i.getCurrent_Trade_id() != TradeList.get(position).getCurrent_Trade_id() && i.getCurrent_post_id() == TradeList.get(position).getCurrent_post_id()){
+                                                createHistroy(R.drawable.deny,i,"Trade No longer available");
+                                                DeleteTrade(i.getCurrent_Trade_id());
+                                        }
+                                }
+                                createHistroy(R.drawable.accpet,TradeList.get(position),"Trade Accepted!");
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
+                                DeletePost(TradeList.get(position).getCurrent_post_id());
                                 createToShowTrades();
                                 updateView();
 
@@ -132,7 +141,22 @@ public class CenterFragment extends Fragment {
                         mBuilder.setNegativeButton("Deny", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                createHistroy(R.drawable.deny,TradeList.get(position));
+                                final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                                final EditText editTextReason = new EditText(getActivity());
+                                alert.setMessage("Enter Your Reason below");
+                                alert.setTitle("Reason For Deny");
+
+                                alert.setView(editTextReason);
+
+                                alert.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        //What ever you want to do with the value
+                                        Editable TextReasonDeny = editTextReason.getText();
+                                        createHistroy(R.drawable.deny,TradeList.get(position),TextReasonDeny.toString().trim());
+
+                                    }
+                                });
+                                alert.show();
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
                                 createToShowTrades();
                                 updateView();
@@ -163,10 +187,11 @@ public class CenterFragment extends Fragment {
             myRef.addListenerForSingleValueEvent(eventListener);
     }
 
-    public void createHistroy(int img,Trade t){
+    public void createHistroy(int img,Trade t, String textReason){
         long now= new Date().getTime();
+        Log.e("omer",textReason);
         String historyid = HistoryRef.push().getKey();
-        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id(),now);
+        History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id(),now,textReason);
         FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
 
     }
@@ -180,8 +205,8 @@ public class CenterFragment extends Fragment {
 
                 String key = dataSnapshot.getKey();
                 dataSnapshot.getRef().removeValue();
-                updateView();
-                createToShowTrades();
+//                updateView();
+//                createToShowTrades();
 
             }
 

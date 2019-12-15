@@ -10,6 +10,7 @@ public class History {
     private String current_historyId;
     private String user_postedID;
     private long history_time;
+    private String TextReason;
 
     public long getHistory_time() {
         return history_time;
@@ -53,7 +54,7 @@ public class History {
     }
 
 
-    public History(int imageResocure, String name_userPost, String name_userTrade, String history_giveOption, String history_takeOption, String current_historyId, String user_postedID,long time) {
+    public History(int imageResocure, String name_userPost, String name_userTrade, String history_giveOption, String history_takeOption, String current_historyId, String user_postedID,long time,String textReason) {
         this.imageResocure = imageResocure;
         this.name_userPost = name_userPost;
         this.name_userTrade = name_userTrade;
@@ -62,6 +63,7 @@ public class History {
         this.current_historyId = current_historyId;
         this.user_postedID = user_postedID;
         this.history_time = time;
+        this.TextReason = textReason;
     }
 
 }
