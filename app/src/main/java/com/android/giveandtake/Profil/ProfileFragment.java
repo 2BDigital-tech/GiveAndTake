@@ -133,13 +133,14 @@ public class ProfileFragment extends Fragment{
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
                                     Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
-                                    Intent activi = new Intent(getActivity(), Start_Application.class);
+                   /*                 Intent activi = new Intent(getActivity(), Start_Application.class);
                                     startActivity(activi);
-                                    getActivity().finish();
-                                    DeleteUsers(myuser.getUid());
-                                    DeletePost(myuser.getUid());
-                                    DeleteTrade(myuser.getUid());
-                                    DeleteTrade2(myuser.getUid());
+                                    getActivity().finish();*/
+                   String currentuid=myuser.getUid().toString();
+                                    DeleteUsers(currentuid);
+                                    DeletePost(currentuid);
+//                                    DeleteTrade(myuser.getUid());
+//                                    DeleteTrade2(myuser.getUid());
 
 
 
