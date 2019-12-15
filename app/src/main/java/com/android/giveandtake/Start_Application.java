@@ -46,11 +46,10 @@ public class Start_Application extends AppCompatActivity {
     //Tag for the logs optional
     private static final String TAG = "simplifiedcoding";
     FirebaseAuth mAuth;
-    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        firebaseAuth = firebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
 
         super.onCreate(savedInstanceState);
