@@ -78,12 +78,19 @@
             android:id="@+id/Submit_register_google"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bouton"
             android:text="Submit" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
 
         <Button
             android:id="@+id/Cancler_buuton"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/bouton"
+
             android:text="@android:string/cancel" />
 
     </LinearLayout>
