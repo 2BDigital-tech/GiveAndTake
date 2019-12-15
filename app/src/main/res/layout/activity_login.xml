@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange"
+    android:background="@drawable/back"
     tools:context=".Login.LoginActivity">
 
     <LinearLayout
@@ -94,6 +94,7 @@
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="330dp"
+            android:textColor="@android:color/transparent"
             android:layout_height="wrap_content" />
 
 
