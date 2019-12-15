@@ -32,6 +32,9 @@ public class History {
         return current_historyId;
     }
 
+    public String getTextReason() {
+        return TextReason;
+    }
 
     public int getImageResocure() {
         return imageResocure;

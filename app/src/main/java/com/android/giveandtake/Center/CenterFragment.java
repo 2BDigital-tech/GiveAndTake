@@ -105,7 +105,7 @@ public class CenterFragment extends Fragment {
                 _Adapter.setOnTradeClickListener(new tradeAdaper.OnTradeClickListener(){
                     @Override
                     public void onTradeClick(final int position) {
-                        TradeList.get(position);
+
 
                         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                         mBuilder.setTitle("Trade from your Post ");
@@ -123,12 +123,23 @@ public class CenterFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                     for(Trade i :TradeList){
-                                        if(i.getCurrent_Trade_id() != TradeList.get(position).getCurrent_Trade_id() && i.getCurrent_post_id() == TradeList.get(position).getCurrent_post_id()){
-                                                createHistroy(R.drawable.deny,i,"Trade No longer available");
-                                                DeleteTrade(i.getCurrent_Trade_id());
+                                        if(i.getCurrent_Trade_id() == TradeList.get(position).getCurrent_Trade_id()){
+                                            createHistroy(R.drawable.accpet,i,"Trade Accepted!");
+
+                                        }else{
+                                            createHistroy(R.drawable.deny,i,"Trade No longer available");
+
                                         }
+
                                 }
-                                createHistroy(R.drawable.accpet,TradeList.get(position),"Trade Accepted!");
+                                    for(Trade t : TradeList){
+
+                                        if(t.getCurrent_post_id().equals(TradeList.get(position).getCurrent_post_id())){
+                                            if(!t.getCurrent_Trade_id().equals(TradeList.get(position).getCurrent_Trade_id())){
+                                                DeleteTrade(t.getCurrent_Trade_id());
+                                            }
+                                        }
+                                    }
                                 DeleteTrade(TradeList.get(position).getCurrent_Trade_id());
                                 DeletePost(TradeList.get(position).getCurrent_post_id());
                                 createToShowTrades();
@@ -189,7 +200,6 @@ public class CenterFragment extends Fragment {
 
     public void createHistroy(int img,Trade t, String textReason){
         long now= new Date().getTime();
-        Log.e("omer",textReason);
         String historyid = HistoryRef.push().getKey();
         History h = new History(img,t.getUser_post_name(),t.getCurrent_user_name(),t.getPost_give(),t.getPost_take(),historyid,t.getUser_post_id(),now,textReason);
         FirebaseDatabase.getInstance().getReference("History").child(historyid).setValue(h);
