@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#050505</color>
     <color name="colorAccent">#5b5b5b</color>
     <color name="colorText">#dddddd</color>
-    <color name="colorHint">#959595</color>
-    <color name="red">#E8F8F5</color>
+    <color name="colorHint">#7BEB7B</color>
+    <color name="red">#F5B746</color>
     <color name="colorButtonTransparent">#be050505</color>
+    <color name="ora">#FCB468</color>
+    <color name="orange">#FCA548</color>
+    <color name="dark_orange">#FCB468</color>
 </resources>

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/o"
     tools:context=".Login.LoginActivity">
 
     <LinearLayout
-        android:layout_width="397dp"
-        android:layout_height="628dp"
+        android:layout_width="match_parent"
+        android:layout_height="604dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
         android:orientation="vertical"
         android:padding="@dimen/default_padding">
 
@@ -26,6 +27,10 @@
             android:textSize="@dimen/app_name_size" />
 
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="89dp" />
+
         <EditText
             android:id="@+id/emailboxLogin"
             android:layout_width="match_parent"
@@ -36,7 +41,7 @@
             android:inputType="textEmailAddress"
             android:nextFocusDown="@id/edit_text_password"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorHint" />
+            android:textColorHint="@color/red" />
 
         <EditText
             android:id="@+id/passwordboxLogin"
@@ -49,7 +54,7 @@
             android:inputType="textPassword"
             android:nextFocusDown="@id/edit_text_phone"
             android:textColor="@color/colorText"
-            android:textColorHint="@color/colorHint" />
+            android:textColorHint="@color/red" />
 
         <Button
             android:id="@+id/buttonLogin"
@@ -83,8 +88,8 @@
             app:layout_constraintVertical_bias="0.522" />
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="248dp" />
+            android:layout_width="322dp"
+            android:layout_height="145dp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
