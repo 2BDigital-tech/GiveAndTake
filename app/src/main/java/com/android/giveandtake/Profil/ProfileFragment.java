@@ -36,7 +36,8 @@ public class ProfileFragment extends Fragment{
 
     private ProfileViewModel notificationsViewModel;
     private FirebaseAuth firebaseAuth;
-    private Button unsigout, editprofile, delete;
+    private Button unsigout, editprofile;
+    //private Button delete;
     private TextView name, phone, email, city;
     private DatabaseReference UsersRef,myRef,tradeRef;
     private FirebaseDatabase firebaseDatabase;
@@ -49,7 +50,7 @@ public class ProfileFragment extends Fragment{
         final View root = inflater.inflate(R.layout.fragment_profile, container, false);
         unsigout = (Button) root.findViewById(R.id.disconnect);
         editprofile = (Button) root.findViewById(R.id.editprofile);
-        delete = (Button)root.findViewById(R.id.delete);
+     //   delete = (Button)root.findViewById(R.id.delete);
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -115,53 +116,53 @@ public class ProfileFragment extends Fragment{
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final FirebaseUser
-                        myuser = firebaseAuth.getCurrentUser();
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                dialog.create();
-                dialog.setTitle("Are you sure?");
-                dialog.setMessage("Deleting this account will result in completely removing your account from the system " +
-                        "and you won't be able to access the app.");
-                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
-                   /*                 Intent activi = new Intent(getActivity(), Start_Application.class);
-                                    startActivity(activi);
-                                    getActivity().finish();*/
-                   String currentuid=myuser.getUid().toString();
-                                    DeleteUsers(currentuid);
-                                    DeletePost(currentuid);
-//                                    DeleteTrade(myuser.getUid());
-//                                    DeleteTrade2(myuser.getUid());
-
-
-
-                                }
-                                else {
-                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
-                    }
-                });
-                dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog alertDialog = dialog.create();
-                alertDialog.show();
-            }
-        });
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final FirebaseUser
+//                        myuser = firebaseAuth.getCurrentUser();
+//                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+//                dialog.create();
+//                dialog.setTitle("Are you sure?");
+//                dialog.setMessage("Deleting this account will result in completely removing your account from the system " +
+//                        "and you won't be able to access the app.");
+//                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int which) {
+//                        myuser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if(task.isSuccessful()) {
+//                                    Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG).show();
+//                   /*                 Intent activi = new Intent(getActivity(), Start_Application.class);
+//                                    startActivity(activi);
+//                                    getActivity().finish();*/
+//                   String currentuid=myuser.getUid().toString();
+//                                    DeleteUsers(currentuid);
+//                                    DeletePost(currentuid);
+////                                    DeleteTrade(myuser.getUid());
+////                                    DeleteTrade2(myuser.getUid());
+//
+//
+//
+//                                }
+//                                else {
+//                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+//                                }
+//                            }
+//                        });
+//                    }
+//                });
+//                dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int which) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                AlertDialog alertDialog = dialog.create();
+//                alertDialog.show();
+//            }
+//        });
 
         return root;
     }
