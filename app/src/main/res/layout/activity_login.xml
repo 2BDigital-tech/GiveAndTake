@@ -91,11 +91,7 @@
             android:layout_width="322dp"
             android:layout_height="145dp" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="330dp"
-            android:textColor="@android:color/transparent"
-            android:layout_height="wrap_content" />
+
 
 
     </LinearLayout>

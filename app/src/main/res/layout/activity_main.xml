@@ -42,22 +42,33 @@
         android:layout_width="237dp"
         android:layout_height="50dp"
 
-        android:layout_marginTop="512dp"
         android:background="@drawable/bouton"
         android:text="Regisiter"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.776" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="222dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="44dp"
+        android:textColor="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/signup_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterMainBox" />
 
     <TextView
         android:id="@+id/signup_start"
         android:layout_width="248dp"
         android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="Already have an account? SIGN IN"
         android:textColor="@android:color/white"
         android:textSize="16sp"
