@@ -215,8 +215,8 @@ public class CenterFragment extends Fragment {
 
                 String key = dataSnapshot.getKey();
                 dataSnapshot.getRef().removeValue();
-//                updateView();
-//                createToShowTrades();
+                updateView();
+                createToShowTrades();
 
             }
 
