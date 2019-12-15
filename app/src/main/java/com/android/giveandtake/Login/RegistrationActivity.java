@@ -8,6 +8,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,14 +34,38 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
+    private TextView editsignup;
     private ProgressBar progressBar;
-    private Button ReturnBtn;
     private FirebaseAuth mAuth;
     private Spinner mySpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        editsignup = findViewById(R.id.signup);
+        String text = "Already have an account? SIGN IN";
+        SpannableString ss = new SpannableString(text);
+
+        ClickableSpan clickableSpan1 = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Intent in = new Intent(RegistrationActivity.this,LoginActivity.class);
+                startActivity(in);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLACK);
+                ds.setUnderlineText(false);
+            }
+        };
+
+        ss.setSpan(clickableSpan1, 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        editsignup.setText(ss);
+        editsignup.setMovementMethod(LinkMovementMethod.getInstance());
 
         editTextName = findViewById(R.id.edit_text_name);
         editTextEmail = findViewById(R.id.edit_text_email);
@@ -46,8 +77,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.button_register).setOnClickListener(this);
-        ReturnBtn = (Button)findViewById(R.id.returnRegisterbtn);
-        ReturnBtn.setOnClickListener(this);
         mySpinner = (Spinner) findViewById(R.id.cityspinner);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RegistrationActivity.this,
@@ -55,15 +84,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
-
-
-        ReturnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(RegistrationActivity.this,Start_Application.class);
-                startActivity(i);
-            }
-        });
     }
 
     @Override

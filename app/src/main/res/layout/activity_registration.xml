@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange"
+    android:background="@drawable/background"
     tools:context=".Login.RegistrationActivity">
 
 
@@ -97,19 +97,29 @@
                 android:backgroundTint="@color/dark_orange"
                 android:text="@string/register" />
 
-            <Button
-                android:id="@+id/returnRegisterbtn"
-                android:layout_width="wrap_content"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/ora"
-                android:text="Return"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.334"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.522" />
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="242dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/signup"
+                    android:layout_width="391dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="1"
+                    android:text="Already have an account? SIGN IN"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
