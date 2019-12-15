@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context=".Login.RegistrationActivity" >
+    android:background="@drawable/background"
+    tools:context=".Login.RegistrationActivity">
 
 
     <ProgressBar
@@ -17,11 +17,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="497dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="183dp"
         android:layout_marginEnd="4dp">
 
         <LinearLayout
@@ -31,16 +31,6 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:padding="@dimen/default_padding">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-                android:text="@string/app_name"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/app_name_size" />
 
 
             <EditText
@@ -52,7 +42,7 @@
                 android:hint="@string/full_name"
                 android:nextFocusDown="@id/edit_text_email"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/colorHint" />
+                android:textColorHint="@color/orange" />
 
             <EditText
                 android:id="@+id/edit_text_email"
@@ -64,7 +54,7 @@
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/edit_text_password"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/colorHint" />
+                android:textColorHint="@color/orange" />
 
 
             <EditText
@@ -78,7 +68,7 @@
                 android:inputType="textPassword"
                 android:nextFocusDown="@id/edit_text_phone"
                 android:textColor="@color/colorText"
-                android:textColorHint="@color/colorHint" />
+                android:textColorHint="@color/orange" />
 
             <EditText
                 android:id="@+id/edit_text_phone"
@@ -93,7 +83,7 @@
                 android:maxLength="10"
                 android:nextFocusDown="@id/button_register"
                 android:textColor="@color/colorText"
-                android:textColorHint="@color/colorHint" />
+                android:textColorHint="@color/orange" />
 
             <Spinner
                 android:id="@+id/cityspinner"
@@ -104,22 +94,32 @@
                 android:id="@+id/button_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
+                android:backgroundTint="@color/dark_orange"
                 android:text="@string/register" />
 
-            <Button
-                android:id="@+id/returnRegisterbtn"
-                android:layout_width="wrap_content"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Return"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.334"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.522" />
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="242dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/signup"
+                    android:layout_width="391dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="1"
+                    android:text="Already have an account? SIGN IN"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
