@@ -18,8 +18,8 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="cursive"
-            android:text="@string/app_name"
+            android:fontFamily="@font/damion"
+            android:text="Give&amp;Take"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/app_name_size" />
@@ -29,8 +29,8 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="cursive"
-            android:text="Please Complete your information"
+            android:fontFamily="@font/damion"
+            android:text="Please complete your information"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bouton"
-            android:text="Submit" />
+            android:text="Register" />
 
         <Space
             android:layout_width="match_parent"

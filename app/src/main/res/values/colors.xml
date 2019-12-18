@@ -6,7 +6,7 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorHint">#FFFFFF</color>
     <color name="red">#F5B746</color>
-    <color name="colorButtonTransparent">#be050505</color>
+    <color name="colorButtonTransparent">#FD050505</color>
     <color name="ora">#FCB468</color>
     <color name="orange">#FCA548</color>
     <color name="dark_orange">#FCB468</color>
@@ -148,6 +148,7 @@
     <color name="darkblue">#00008B</color>
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
+    <color name="light_orange">#98FCE6CF</color>
 
 
 </resources>

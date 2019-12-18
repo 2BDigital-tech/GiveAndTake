@@ -2,11 +2,18 @@ package com.android.giveandtake.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,8 +49,9 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     private EditText emailboxLogin;
     private  EditText passwordboxLogin;
+    private TextView forgotPassword;
     private  Button buttonLogin;
-    private  Button ReturnBtn, forgotPassword;
+    private  Button ReturnBtn;
     private int verif_is_exist;
     private FirebaseAuth firebaseAuth;
     private String currentUserID;
@@ -59,7 +67,30 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         firebaseAuth = firebaseAuth.getInstance();
         ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
-        forgotPassword = (Button)findViewById(R.id.forgotpassword);
+
+        forgotPassword = findViewById(R.id.forgot);
+        String text = "Forgot your password? Click HERE";
+        SpannableString ss = new SpannableString(text);
+
+        ClickableSpan clickableSpan1 = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Intent forgot=new Intent(LoginActivity.this,Forgot_code.class);
+                startActivity(forgot);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLACK);
+                ds.setUnderlineText(false);
+            }
+        };
+
+        ss.setSpan(clickableSpan1, 28, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        forgotPassword.setText(ss);
+        forgotPassword.setMovementMethod(LinkMovementMethod.getInstance());
 
         ReturnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,16 +99,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent forgot=new Intent(LoginActivity.this,Forgot_code.class);
-                startActivity(forgot);
-            }
-        });
-
 
 
 

@@ -34,7 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
-    private TextView editsignup;
+    private TextView editsignin;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private Spinner mySpinner;
@@ -43,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        editsignup = findViewById(R.id.signup);
+        editsignin = findViewById(R.id.signin);
         String text = "Already have an account? SIGN IN";
         SpannableString ss = new SpannableString(text);
 
@@ -64,8 +64,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         ss.setSpan(clickableSpan1, 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        editsignup.setText(ss);
-        editsignup.setMovementMethod(LinkMovementMethod.getInstance());
+        editsignin.setText(ss);
+        editsignin.setMovementMethod(LinkMovementMethod.getInstance());
 
         editTextName = findViewById(R.id.edit_text_name);
         editTextEmail = findViewById(R.id.edit_text_email);
@@ -78,6 +78,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         findViewById(R.id.button_register).setOnClickListener(this);
         mySpinner = (Spinner) findViewById(R.id.cityspinner);
+
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RegistrationActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.City));
