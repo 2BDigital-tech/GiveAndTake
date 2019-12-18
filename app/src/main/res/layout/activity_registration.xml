@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/orange_vagues"
     tools:context=".Login.RegistrationActivity">
 
 
@@ -17,12 +17,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="497dp"
+        android:layout_height="653dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="183dp"
-        android:layout_marginEnd="4dp">
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +32,40 @@
             android:orientation="vertical"
             android:padding="@dimen/default_padding">
 
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:fontFamily="@font/damion"
+                android:text="Give&amp;Take"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="42sp" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/damion"
+                android:text="Register "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="27dp" />
 
             <EditText
                 android:id="@+id/edit_text_name"
@@ -95,12 +129,12 @@
                 android:id="@+id/button_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/dark_orange"
+                android:backgroundTint="@android:color/transparent"
                 android:text="@string/register" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="13dp" />
+                android:layout_height="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,18 +142,18 @@
                 android:orientation="horizontal">
 
                 <Space
-                    android:layout_width="242dp"
+                    android:layout_width="218dp"
                     android:layout_height="29dp"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/signin"
-                    android:layout_width="391dp"
+                    android:layout_width="387dp"
                     android:layout_height="29dp"
                     android:layout_weight="1"
                     android:text="Already have an account? SIGN IN"
                     android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>

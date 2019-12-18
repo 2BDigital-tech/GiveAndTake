@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-   android:background="@android:color/transparent"
     android:layout_height="match_parent"
+    android:background="@drawable/orange_vagues"
 
->
+    >
 
 
     <Button
@@ -19,6 +19,7 @@
         android:layout_marginStart="310dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/chocolate"
         android:text="+" />
 
     <Button
@@ -31,6 +32,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="-4dp"
         android:layout_marginEnd="292dp"
+        android:backgroundTint="@color/chocolate"
         android:text="Filter By Date"
         android:textSize="12dp" />
 
@@ -44,6 +46,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="293dp"
+        android:backgroundTint="@color/chocolate"
         android:text="Filter By City"
         android:textSize="12dp" />
 
@@ -57,6 +60,7 @@
         android:layout_marginStart="129dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="151dp"
+        android:backgroundTint="@color/chocolate"
         android:text="Filter By Give"
         android:textSize="12dp" />
 
@@ -70,6 +74,7 @@
         android:layout_marginStart="130dp"
         android:layout_marginTop="-3dp"
         android:layout_marginEnd="150dp"
+        android:backgroundTint="@color/chocolate"
         android:text="Filter By Take"
         android:textSize="12dp" />
 
@@ -80,8 +85,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-1dp"
-        android:text="Esc"
-        android:layout_marginEnd="103dp" />
+        android:layout_marginEnd="103dp"
+        android:backgroundTint="@color/chocolate"
+        android:text="Esc" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
