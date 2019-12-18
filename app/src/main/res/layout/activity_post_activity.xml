@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/orange_vagues"
     android:padding="16dp">
 
 
@@ -96,7 +96,7 @@
         <EditText
             android:id="@+id/freeText"
             android:layout_width="match_parent"
-            android:layout_height="86dp"
+            android:layout_height="58dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="" />
@@ -104,7 +104,7 @@
         <Button
             android:id="@+id/createPostbtn"
             android:layout_width="367dp"
-            android:layout_height="37dp"
+            android:layout_height="61dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="50dp"
             android:backgroundTint="@android:color/transparent"
@@ -114,7 +114,7 @@
         <Button
             android:id="@+id/cancelBtn"
             android:layout_width="140dp"
-            android:layout_height="37dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="50dp"
             android:backgroundTint="@android:color/transparent"

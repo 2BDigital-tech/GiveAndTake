@@ -4,24 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/orange_vagues"
     tools:context=".Admin.AllTrades">
-
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewCenterAdmin"
-        android:layout_width="391dp"
-        android:layout_height="578dp"
+        android:layout_width="wrap_content"
+        android:layout_height="575dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
 
         android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="2dp"
-        android:layout_marginBottom="1dp"
-        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
         android:padding="4dp"
         android:scrollbars="vertical" />
 

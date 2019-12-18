@@ -149,6 +149,7 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="light_orange">#98FCE6CF</color>
+    <color name="pale">#FFCF9F</color>
 
 
 </resources>

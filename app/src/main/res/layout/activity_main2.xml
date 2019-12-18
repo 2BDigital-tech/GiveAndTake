@@ -13,9 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="#303F9F"
-        app:itemTextColor="#4D07FC"
+        android:background="@color/black"
+        app:itemIconTint="@color/chocolate"
+        app:itemTextColor="@color/chocolate"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,8 +25,8 @@
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="418dp"
-        android:layout_height="591dp"
+        android:layout_width="411dp"
+        android:layout_height="602dp"
         android:background="#E64A19"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
