@@ -17,7 +17,7 @@
         android:text="Give&amp;Take"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="52sp"
+        android:textSize="55sp"
         app:layout_constraintBottom_toTopOf="@+id/RegisterMainBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,10 +32,10 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/damion"
-        android:text=" Find skills, advice and help, near you, between neighbors and local citizens :)"
+        android:text=" Find skills, advice and help near you, between neighbors and local citizens :)"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="22sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/RegisterMainBox"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -57,30 +57,31 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="222dp"
-        android:layout_height="47dp"
+        android:layout_width="234dp"
+        android:layout_height="43dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="44dp"
         android:textColor="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/signup_start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterMainBox" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterMainBox"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/signup_start"
         android:layout_width="248dp"
-        android:layout_height="28dp"
+        android:layout_height="26dp"
         android:text="Already have an account? SIGN IN"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisterMainBox"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.86" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
