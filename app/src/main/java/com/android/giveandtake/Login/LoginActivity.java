@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
 
         forgotPassword = findViewById(R.id.forgot);
-        String text = "Forgot your password? Click HERE";
+        String text = "Forgot your password? Click Here";
         SpannableString ss = new SpannableString(text);
 
         ClickableSpan clickableSpan1 = new ClickableSpan() {
@@ -83,11 +83,11 @@ public class LoginActivity extends AppCompatActivity {
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setColor(Color.BLACK);
-                ds.setUnderlineText(false);
+                ds.setUnderlineText(true);
             }
         };
 
-        ss.setSpan(clickableSpan1, 28, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan1, 22, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         forgotPassword.setText(ss);
         forgotPassword.setMovementMethod(LinkMovementMethod.getInstance());

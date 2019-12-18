@@ -58,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setColor(Color.BLACK);
-                ds.setUnderlineText(false);
+                ds.setUnderlineText(true);
             }
         };
 
