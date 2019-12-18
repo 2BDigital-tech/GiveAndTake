@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GiveAndTake</string>
+    <string name="app_name">Give&amp;Take</string>
     <string name="login">Login</string>
     <string name="regisiter">Regisiter</string>
     <string name="full_name">full name</string>
