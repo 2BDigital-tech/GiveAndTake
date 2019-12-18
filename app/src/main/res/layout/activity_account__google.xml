@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/back"
+    android:background="@drawable/orange_vagues"
     tools:context=".Login.Account_Google">
 
     <LinearLayout
@@ -37,7 +37,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="143dp" />
+            android:layout_height="88dp" />
 
         <EditText
             android:id="@+id/edit_text_name2"
@@ -72,7 +72,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="91dp" />
+            android:layout_height="136dp" />
 
         <Button
             android:id="@+id/Submit_register_google"
@@ -83,7 +83,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="11dp" />
+            android:layout_height="31dp" />
 
         <Button
             android:id="@+id/Cancler_buuton"

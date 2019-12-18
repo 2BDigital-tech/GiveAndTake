@@ -4,20 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/plain_background"
     tools:context=".Start_Application">
 
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="249dp"
-        android:layout_height="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo2" />
 
     <TextView
 
@@ -28,13 +17,27 @@
         android:text="Give&amp;Take"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="44sp"
+        android:textSize="52sp"
         app:layout_constraintBottom_toTopOf="@+id/RegisterMainBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.463" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="205dp"
+        android:layout_height="175dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/damion"
+        android:text=" Find skills, advice and help, near you, between neighbors and local citizens :)"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterMainBox"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
 
@@ -44,7 +47,7 @@
 
         android:background="@drawable/bouton"
         android:text="Regisiter"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"

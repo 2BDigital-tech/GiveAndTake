@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back">
+    android:background="@drawable/orange_vagues">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -118,11 +118,11 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="27dp" />
+                android:layout_height="21dp" />
 
             <Button
                 android:id="@+id/btn_back"
-                android:layout_width="210dp"
+                android:layout_width="422dp"
                 android:layout_height="68dp"
                 android:backgroundTint="@android:color/transparent"
                 android:text="Save changes" />
