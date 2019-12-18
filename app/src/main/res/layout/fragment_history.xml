@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/orange_vagues">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewHistory"
@@ -9,14 +10,14 @@
         android:layout_height="578dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-
         android:layout_alignParentBottom="true"
+
         android:layout_centerVertical="true"
         android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="1dp"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         android:padding="4dp"
         android:scrollbars="vertical" />
 

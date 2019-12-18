@@ -3,44 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/orange_vagues">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        >
+        android:orientation="vertical">
 
         <TextView
 
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="cursive"
-            android:text="@string/app_name"
+            android:fontFamily="@font/damion"
+            android:text="Give&amp;Take"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/app_name_size" />
-
-        <TextView
-
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:fontFamily="cursive"
-            android:text="Profil"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="71dp"
             app:srcCompat="@drawable/profile_image" />
+
+        <TextView
+
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:fontFamily="@font/damion"
+            android:text="Profil"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -98,7 +98,9 @@
             android:layout_height="40dp"
             android:orientation="horizontal">
 
-            z<TextView
+            z
+
+            <TextView
                 android:layout_width="129dp"
                 android:layout_height="39dp"
                 android:layout_weight="1"
@@ -152,20 +154,17 @@
                 android:id="@+id/disconnect"
                 android:layout_width="210dp"
                 android:layout_height="78dp"
+                android:backgroundTint="@android:color/transparent"
                 android:text="Disconnect" />
 
             <Button
                 android:id="@+id/editprofile"
                 android:layout_width="183dp"
                 android:layout_height="78dp"
+                android:backgroundTint="@android:color/transparent"
                 android:text="Edit profile" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:orientation="horizontal"/>
 
     </LinearLayout>
 
