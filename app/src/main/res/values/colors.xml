@@ -150,6 +150,7 @@
     <color name="black">#000000</color>
     <color name="light_orange">#98FCE6CF</color>
     <color name="pale">#FFCF9F</color>
+    <color name="black1">#AC000000</color>
 
 
 </resources>

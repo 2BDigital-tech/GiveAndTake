@@ -98,7 +98,6 @@
             android:layout_height="40dp"
             android:orientation="horizontal">
 
-            z
 
             <TextView
                 android:layout_width="129dp"
@@ -163,6 +162,7 @@
                 android:layout_height="78dp"
                 android:backgroundTint="@android:color/transparent"
                 android:text="Edit profile" />
+
 
         </LinearLayout>
 

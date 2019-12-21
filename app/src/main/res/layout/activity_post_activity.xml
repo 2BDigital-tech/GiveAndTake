@@ -7,8 +7,8 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="388dp"
+        android:layout_height="587dp"
         android:orientation="vertical">
 
         <TextView
@@ -16,10 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:fontFamily="@font/damion"
-            android:text="Create a post"
+            android:text="Create post"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="24sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="17dp" />
 
         <LinearLayout
             android:layout_width="382dp"
@@ -33,6 +37,8 @@
                 android:layout_marginTop="10dp"
                 android:hint="What Do You need?"
                 android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="#99000000"
                 android:textSize="20dp" />
 
             <Spinner
@@ -53,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="49dp"
                 android:hint="What Can You Give?"
+                android:textColorHint="#99000000"
                 android:textSize="20dp" />
 
             <Spinner
@@ -71,9 +78,10 @@
 
             <TextView
                 android:id="@+id/hoursText"
-                android:layout_width="175dp"
-                android:layout_height="match_parent"
+                android:layout_width="177dp"
+                android:layout_height="45dp"
                 android:hint="How Much Time?"
+                android:textColorHint="#99000000"
                 android:textSize="20dp" />
 
             <Spinner
@@ -91,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:hint="Add Other Information:"
+            android:textColorHint="#99000000"
             android:textSize="20dp" />
 
         <EditText
@@ -99,16 +108,22 @@
             android:layout_height="58dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="" />
+            android:text=""
+            android:textColor="@color/black1"
+            android:textColorHighlight="#99000000"
+            android:textColorHint="@color/black"
+            android:textColorLink="#99000000" />
 
         <Button
             android:id="@+id/createPostbtn"
             android:layout_width="367dp"
             android:layout_height="61dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@android:color/transparent"
             android:hint="Create Post"
+            android:textColor="@color/black"
+            android:textColorHint="#99000000"
             android:textSize="15dp" />
 
         <Button
@@ -116,9 +131,10 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="27dp"
             android:backgroundTint="@android:color/transparent"
             android:hint="Cancel"
+            android:textColorHint="#99000000"
             android:textSize="15dp" />
     </LinearLayout>
 
