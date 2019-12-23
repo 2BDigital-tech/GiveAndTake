@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * In this class we allow the user to register via google by just adding a phone number
+ * a name and a city, to add the user to firebase and in the future to log in fastly with google.
+ */
 public class Account_Google extends AppCompatActivity  {
 
     private EditText editTextPhone;

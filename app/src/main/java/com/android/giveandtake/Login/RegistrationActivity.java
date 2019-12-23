@@ -31,6 +31,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**This class is used to register in the app and start using it
+ *
+ */
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
@@ -96,6 +99,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    /**
+     * In this method we add a new user's information and checks if the information are in the right format before adding them
+     */
     private void registerUser() {
         final String name = editTextName.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();

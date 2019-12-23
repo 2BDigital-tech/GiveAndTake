@@ -22,7 +22,8 @@ public class Begin_Application extends AppCompatActivity {
 
 
     /**
-     *In this class we search in our database if by entering into the app we recognize that the user is still logged in the app so he doesn't have to log again
+     *In this class we search in our database if by entering into the app we recognize
+     * that the user is still logged in the app so he doesn't have to log again and whether he is the admin.
      * @param savedInstanceState
      */
     @Override

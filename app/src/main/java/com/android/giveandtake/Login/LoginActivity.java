@@ -41,11 +41,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * This class allows a registered user (only) to log in the app and to the admin to access to the admin section
+ */
 public class LoginActivity extends AppCompatActivity {
 
-
-    //creating a GoogleSignInClient object
-    //And also a Firebase Auth object
     FirebaseAuth mAuth;
     private EditText emailboxLogin;
     private  EditText passwordboxLogin;

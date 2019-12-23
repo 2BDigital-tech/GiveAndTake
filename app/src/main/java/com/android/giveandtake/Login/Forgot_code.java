@@ -17,6 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**This class is used when a user has forgotten his password and by clicking
+ * a button sends an email to it's email address to reinitialize it.
+ *
+ */
 public class Forgot_code extends AppCompatActivity {
 private Button returnn;
 private Button Sub;

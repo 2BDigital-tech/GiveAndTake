@@ -32,6 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * In this class the user can view it's profile and have the options to edit it or to disconnect
+ */
 public class ProfileFragment extends Fragment{
 
     private ProfileViewModel notificationsViewModel;

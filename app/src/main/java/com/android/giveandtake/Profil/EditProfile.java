@@ -16,7 +16,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+/**
+ * In this class we allow a user to change his information
+ */
 public class EditProfile extends AppCompatActivity {
 
     private Button save;
