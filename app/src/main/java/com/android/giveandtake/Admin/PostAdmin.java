@@ -103,18 +103,18 @@ public class PostAdmin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
-CancelFilter.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-       filerCity = false;
-        filterDate = false;
-      filerGive = false;
-     filerTake = false;
-        createToShowPosts();
-     updateView();
+        CancelFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filerCity = false;
+                filterDate = false;
+                filerGive = false;
+                filerTake = false;
+                createToShowPosts();
+                updateView();
 
-    }
-});
+            }
+        });
 
 
         filterCitybtn.setOnClickListener(new View.OnClickListener() {

@@ -38,23 +38,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * This class represents the starting page of the application where you can register to the app or log in if you're alreagy registered
+ */
 public class Start_Application extends AppCompatActivity {
+
     private TextView editsignup;
     GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 234;
-
-    //Tag for the logs optional
     private static final String TAG = "simplifiedcoding";
     FirebaseAuth mAuth;
+
+    /**
+     * Creates buttons to register or log in the app
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         mAuth = FirebaseAuth.getInstance();
-
-
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         final Button RegisterBtn = (Button)findViewById(R.id.RegisterMainBox);
@@ -87,11 +89,6 @@ public class Start_Application extends AppCompatActivity {
 
         Button ReturnBtn = (Button)findViewById(R.id.returnLoginbtn);
 
-
-
-
-
-
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,28 +100,13 @@ public class Start_Application extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
-        //Then we will get the GoogleSignInClient object from GoogleSignIn class
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        //Now we will attach a click listener to the sign_in_button
-        //and inside onClick() method we are calling the signIn() method that will open
-        //google sign in intent
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,22 +114,14 @@ public class Start_Application extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
-
-
-
-
-
+    /**
+     * Adds a navigation bar for the user to navigate easily through the app
+     */
     protected void onStart() {
         super.onStart();
 
-        //if the user is already signed in
-        //we will close this activity
-        //and take the user to profile activity
         if (mAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(this, Connect_Fragment.class));
@@ -159,16 +133,11 @@ public class Start_Application extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //if the requestCode is the Google Sign In code that we defined at starting
         if (requestCode == RC_SIGN_IN) {
 
-            //Getting the GoogleSignIn Task
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                //Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-
-                //authenticating with firebase
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 Toast.makeText(Start_Application.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -176,13 +145,13 @@ public class Start_Application extends AppCompatActivity {
         }
     }
 
+    /**
+     * Authentification with google account
+     * @param acct
+     */
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
-        //getting the auth credential
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-
-        //Now using firebase we are signing in the user here
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -217,25 +186,19 @@ public class Start_Application extends AppCompatActivity {
 
 
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(Start_Application.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
 
-                        // ...
                     }
                 });
     }
 
 
-    //this method is called on click
     private void signIn() {
-        //getting the google signin intent
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-
-        //starting the activity for result
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 

@@ -49,14 +49,14 @@ public class AdminConnect extends AppCompatActivity {
                 startActivity(Show_User);
             }
         });
-     alltrades.setOnClickListener(new View.OnClickListener() {
+        alltrades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent TradesView=new Intent(AdminConnect.this,AllTrades.class);
                 startActivity(TradesView);
             }
         });
-   allHistory.setOnClickListener(new View.OnClickListener() {
+        allHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent TradesView=new Intent(AdminConnect.this,History_Show_All.class);
@@ -84,9 +84,5 @@ public class AdminConnect extends AppCompatActivity {
         });
 
     }
-
-
-
 }
-
 
