@@ -80,7 +80,7 @@ public class Begin_Application extends AppCompatActivity {
 
                 }
             }
-        }, 1000);
+        }, 500);
 
 
 

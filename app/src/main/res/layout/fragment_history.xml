@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     android:background="@drawable/orange_vagues">
 
+    <TextView
+
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/damion"
+        android:text="Your History"
+        android:textAlignment="center"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/app_name_size" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewHistory"
-        android:layout_width="391dp"
-        android:layout_height="578dp"
+        android:layout_width="408dp"
+        android:layout_height="659dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -15,7 +27,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="3dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginBottom="1dp"
         android:background="@android:color/transparent"
         android:padding="4dp"
