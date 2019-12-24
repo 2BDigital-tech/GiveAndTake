@@ -64,3 +64,7 @@ The application is divided into several parts:
  - Fragment that contains my application center(Post/Trade/History/Profile)
  - The Adminsitrator part which allows me to manage my application (for
    administrator).
+   ## Admin Administrator
+
+To update the administrator, create a normal account to recover a ***UiD  Code*** of account.
+
