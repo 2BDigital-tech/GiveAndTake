@@ -1,5 +1,8 @@
 package com.android.giveandtake.home;
 
+/**
+ * Class to create a post with all it's information
+ */
 public class Post {
     private int imageResocure;
     private String NameAsk;

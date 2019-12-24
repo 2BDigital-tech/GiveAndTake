@@ -28,6 +28,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * In this class we display all the posts that have benn added by all the users and can search
+ * through them using filters to facilitate the user to find something he might be interested in.
+ * In this activity a user can also delete a post he added in the past.
+ */
 public class HomeFragment extends Fragment {
 
     private RecyclerView _RecyclerView;
