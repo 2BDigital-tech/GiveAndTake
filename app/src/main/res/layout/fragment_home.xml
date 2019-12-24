@@ -11,12 +11,12 @@
 
     <Button
         android:id="@+id/addItem"
-        android:layout_width="95dp"
-        android:layout_height="66dp"
+        android:layout_width="82dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="310dp"
+        android:layout_marginStart="323dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="6dp"
         android:backgroundTint="@color/chocolate"
@@ -80,26 +80,28 @@
 
     <Button
         android:id="@+id/CancelFilter"
-        android:layout_width="52dp"
+        android:layout_width="50dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-1dp"
-        android:layout_marginEnd="103dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="96dp"
         android:backgroundTint="@color/chocolate"
         android:text="Esc" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="542dp"
+        android:layout_width="407dp"
+        android:layout_height="484dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="172dp"
         android:background="@android:color/transparent"
         android:padding="4dp"
         android:scrollbars="vertical" />
