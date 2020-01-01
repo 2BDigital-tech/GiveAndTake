@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/transparent"
+    android:background="@android:color/holo_orange_dark"
     app:cardCornerRadius="10dp">
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_width="401dp"
+        android:layout_height="154dp"
         android:layout_margin="4dp"
 
-        android:background="@android:color/transparent">
+        android:background="@android:color/holo_orange_dark">
+
 
         <TextView
             android:id="@+id/NameAsk"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
             android:layout_toEndOf="@+id/ImageView"
             android:text="Name"
-            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textSize="23dp"
             android:textStyle="bold">
 
 
@@ -30,8 +34,9 @@
             android:id="@+id/DateAsk"
             android:layout_width="114dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/NameAsk"
-            android:layout_toEndOf="@+id/ImageView"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="115dp"
+            android:textColor="@color/black"
             android:text="Date"
             android:textSize="15dp"
             android:textStyle="bold">
@@ -42,8 +47,9 @@
             android:id="@+id/HoursAsk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/DateAsk"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="39dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="127dp"
             android:layout_toEndOf="@+id/HoursText"
             android:text="Hours"
             android:textSize="15dp"
@@ -55,42 +61,47 @@
             android:id="@+id/HoursText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/DateAsk"
+            android:textColor="@color/black"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="127dp"
             android:layout_toEndOf="@+id/ImageView"
-            android:text="Hours:"
+            android:text="Time:"
             android:textSize="15dp"
             android:textStyle="bold">
 
         </TextView>
 
-
         <ImageView
             android:id="@+id/ImageView"
-            android:layout_width="50dp"
-            android:layout_height="67dp"
-            android:padding="2dp">
+            android:layout_width="94dp"
+            android:layout_height="84dp"
+            android:padding="2dp"
+
+            tools:layout_marginTop="3dp">
 
         </ImageView>
 
         <TextView
             android:id="@+id/TakeOption"
-            android:layout_width="101dp"
+            android:layout_width="194dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/GiveOption"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="7dp"
             android:layout_toEndOf="@+id/TakeText"
+            android:textColor="@color/black"
             android:text="TakeOp"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:id="@+id/CityOption"
-            android:layout_width="99dp"
+            android:layout_width="189dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/TakeOption"
             android:layout_marginStart="10dp"
             android:layout_marginTop="6dp"
+            android:textColor="@color/black"
             android:layout_toEndOf="@+id/TakeText"
             android:text="CityOp"
             android:textSize="15dp"
@@ -101,8 +112,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/TakeText"
-            android:layout_marginStart="220dp"
+            android:layout_marginStart="140dp"
             android:layout_marginTop="6dp"
+            android:textColor="@color/black"
             android:text="City:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
@@ -112,9 +124,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/GiveText"
-            android:layout_marginStart="220dp"
-            android:layout_marginTop="6dp"
-            android:text="Take:"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="7dp"
+            android:text="You need:"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
@@ -122,19 +135,21 @@
             android:id="@+id/GiveText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="220dp"
-            android:layout_marginTop="3dp"
-            android:text="Give:"
+            android:layout_marginStart="140dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="43dp"
+            android:text="You offer:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:id="@+id/GiveOption"
-            android:layout_width="102dp"
+            android:layout_width="202dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="43dp"
             android:layout_toEndOf="@+id/GiveText"
+            android:textColor="@color/black"
             android:text="GiveOp"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>

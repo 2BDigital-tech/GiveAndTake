@@ -32,6 +32,7 @@ public class Post_activity extends AppCompatActivity implements View.OnClickList
     private String couurentGive;
     private String courrentCity;
     private String courrentHours;
+    private int pic;
 
     private String courrentTake;
     private String []giveOptions;

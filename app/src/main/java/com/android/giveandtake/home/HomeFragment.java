@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment {
     private String city;
     private String give;
     private String take;
+    private int pic;
     private long time;
     static private String courrentTake;
     private String []giveOptions;
@@ -333,11 +334,41 @@ public class HomeFragment extends Fragment {
 
                     });
 
+                    if (give.contains("House repair")){
+                        pic = R.drawable.repair;
+                    }
+                    if (give.contains("House keeping")){
+                        pic = R.drawable.clean;
+                    }
+                    if (give.contains("Gardening")){
+                        pic = R.drawable.flower;
+                    }
+                    if (give.contains("Plumbing")){
+                        pic = R.drawable.plumb;
+                    }
+                    if (give.contains("Private lesson")){
+                        pic = R.drawable.lesson;
+                    }
+                    if (give.contains("Computer assistance")){
+                        pic = R.drawable.computer;
+                    }
+                    if (give.contains("Phone assistance")){
+                        pic = R.drawable.phonefix;
+                    }
+                    if (give.contains("Administrative assistance")){
+                        pic = R.drawable.administrative;
+                    }
+                    if (give.contains("Help transport")){
+                        pic = R.drawable.transport;
+                    }
+                    if (give.contains("Other")){
+                        pic = R.drawable.other;
+                    }
 
                     if(filerCity == true && filerGive == false && filerTake == false) {
 
                         if (city.equals(current_city)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -348,7 +379,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == true && filerTake == false) {
 
                         if (city.equals(current_city) && give.equals(couurentGive)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -359,7 +390,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == false && filerTake == true) {
 
                         if (city.equals(current_city) && take.equals(courrentTake)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -370,7 +401,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == true && filerGive == true && filerTake == true) {
 
                         if (city.equals(current_city) && give.equals(couurentGive) && take.equals(courrentTake)) {
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -381,7 +412,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == true && filerTake == true){
 
                         if(give.equals(couurentGive) && take.equals(courrentTake)){
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -393,7 +424,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == true && filerTake == false){
 
                         if(give.equals(couurentGive)){
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -405,7 +436,7 @@ public class HomeFragment extends Fragment {
                     else if(filerCity == false && filerGive == false && filerTake == true){
 
                         if(take.equals(courrentTake)){
-                            Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                            Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                             PostsList.add(p);
                             if(filterDate == true){
                                 Collections.sort(PostsList,comparator);
@@ -415,7 +446,7 @@ public class HomeFragment extends Fragment {
 
                     }
                     else{
-                        Post p = new Post(R.drawable.item_24dp, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
+                        Post p = new Post(pic, name, phone, city, give, take, freeText, courrentUser, PostID,time,Hours);
                         PostsList.add(p);
                         if(filterDate == true){
                             Collections.sort(PostsList,comparator);
