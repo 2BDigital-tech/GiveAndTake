@@ -334,34 +334,34 @@ public class HomeFragment extends Fragment {
 
                     });
 
-                    if (give.contains("House repair")){
+                    if (take.contains("House repair")){
                         pic = R.drawable.repair;
                     }
-                    if (give.contains("House keeping")){
+                    if (take.contains("House keeping")){
                         pic = R.drawable.clean;
                     }
-                    if (give.contains("Gardening")){
+                    if (take.contains("Gardening")){
                         pic = R.drawable.flower;
                     }
-                    if (give.contains("Plumbing")){
+                    if (take.contains("Plumbing")){
                         pic = R.drawable.plumb;
                     }
-                    if (give.contains("Private lesson")){
+                    if (take.contains("Private lesson")){
                         pic = R.drawable.lesson;
                     }
-                    if (give.contains("Computer assistance")){
+                    if (take.contains("Computer assistance")){
                         pic = R.drawable.computer;
                     }
-                    if (give.contains("Phone assistance")){
+                    if (take.contains("Phone assistance")){
                         pic = R.drawable.phonefix;
                     }
-                    if (give.contains("Administrative assistance")){
+                    if (take.contains("Administrative assistance")){
                         pic = R.drawable.administrative;
                     }
-                    if (give.contains("Help transport")){
+                    if (take.contains("Help transport")){
                         pic = R.drawable.transport;
                     }
-                    if (give.contains("Other")){
+                    if (take.contains("Other")){
                         pic = R.drawable.other;
                     }
 

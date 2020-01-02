@@ -70,7 +70,7 @@ public class Post {
         return time;
     }
     public String GetDate (){
-        return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(time);
+        return new java.text.SimpleDateFormat("dd/MM/yyyy").format(time);
     }
 
     public Post(int img , String nameAsk, String phoneAsk, String City , String GiveAsk, String TakeAsk, String moreInfoText , String id, String postid,long timee,String hours) {

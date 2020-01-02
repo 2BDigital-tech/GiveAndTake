@@ -9,36 +9,54 @@
 
 
     <RelativeLayout
-        android:layout_width="401dp"
-        android:layout_height="154dp"
+        android:layout_width="409dp"
+        android:layout_height="188dp"
         android:layout_margin="4dp"
 
         android:background="@android:color/holo_orange_dark">
 
 
         <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:text="Post creator:"
+            android:textSize="13dp" />
+
+        <TextView
             android:id="@+id/NameAsk"
-            android:layout_width="120dp"
+            android:layout_width="103dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
-            android:layout_toEndOf="@+id/ImageView"
+            android:layout_marginTop="2dp"
             android:text="Name"
             android:textColor="@color/black"
-            android:textSize="23dp"
+            android:textSize="13dp"
             android:textStyle="bold">
 
 
         </TextView>
 
         <TextView
-            android:id="@+id/DateAsk"
-            android:layout_width="114dp"
+            android:id="@+id/publicated"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="115dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="211dp"
+            android:layout_marginTop="2dp"
+            android:text="Date of publication:"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/DateAsk"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="324dp"
+            android:layout_marginTop="2dp"
             android:text="Date"
-            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:textSize="13dp"
             android:textStyle="bold">
 
         </TextView>
@@ -47,11 +65,11 @@
             android:id="@+id/HoursAsk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="39dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="127dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="140dp"
             android:layout_toEndOf="@+id/HoursText"
             android:text="Hours"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold">
 
@@ -61,11 +79,10 @@
             android:id="@+id/HoursText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="140dp"
+            android:text="Estimated Time:"
             android:textColor="@color/black"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="127dp"
-            android:layout_toEndOf="@+id/ImageView"
-            android:text="Time:"
             android:textSize="15dp"
             android:textStyle="bold">
 
@@ -73,11 +90,10 @@
 
         <ImageView
             android:id="@+id/ImageView"
-            android:layout_width="94dp"
-            android:layout_height="84dp"
-            android:padding="2dp"
-
-            tools:layout_marginTop="3dp">
+            android:layout_width="154dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="58dp">
 
         </ImageView>
 
@@ -85,25 +101,23 @@
             android:id="@+id/TakeOption"
             android:layout_width="194dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/GiveOption"
             android:layout_marginStart="9dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="30dp"
             android:layout_toEndOf="@+id/TakeText"
-            android:textColor="@color/black"
             android:text="TakeOp"
-            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:textSize="17dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:id="@+id/CityOption"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TakeOption"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/black"
-            android:layout_toEndOf="@+id/TakeText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="120dp"
+            android:layout_toEndOf="@+id/CityText"
             android:text="CityOp"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
@@ -111,11 +125,10 @@
             android:id="@+id/CityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TakeText"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="120dp"
             android:text="City:"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
@@ -123,22 +136,21 @@
             android:id="@+id/TakeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/GiveText"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="30dp"
             android:text="You need:"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:id="@+id/GiveText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="160dp"
+            android:text="You can offer:"
             android:textColor="@color/black"
-            android:layout_marginTop="43dp"
-            android:text="You offer:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
@@ -146,11 +158,11 @@
             android:id="@+id/GiveOption"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="43dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="160dp"
             android:layout_toEndOf="@+id/GiveText"
-            android:textColor="@color/black"
             android:text="GiveOp"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
 
