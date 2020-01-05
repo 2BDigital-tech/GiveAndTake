@@ -68,12 +68,12 @@
 
         <TextView
             android:id="@+id/history_TakeOption"
-            android:layout_width="104dp"
+            android:layout_width="121dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/history_GiveOption"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/TakeText"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="12dp"
             android:text="TakeOp"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
@@ -82,9 +82,9 @@
             android:id="@+id/TakeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/GiveText"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="228dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="52dp"
             android:text="Needs:"
             android:textSize="15dp"
             android:textStyle="bold"></TextView>
