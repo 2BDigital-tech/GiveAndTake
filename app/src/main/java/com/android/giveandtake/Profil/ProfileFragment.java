@@ -104,7 +104,10 @@ public class ProfileFragment extends Fragment{
                 Intent activi = new Intent(getActivity(), Start_Application.class);
                 startActivity(activi);
                 getActivity().finish();
-                Toast.makeText(getActivity(), "Disconnect Full", Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getActivity(), "Disconnect Full", Toast.LENGTH_LONG);
+//                View toastView = toast.getView();
+//                toastView.setBackgroundResource(R.color.dark_orange);
+//                toast.show();
 
             }
         });
@@ -175,7 +178,7 @@ public class ProfileFragment extends Fragment{
         myRef.orderByChild("currentUserID").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e("POSTDELETE","SUCCES");
+                Log.e("POSTDELETE","SUCCESS");
                 String key = dataSnapshot.getKey();
                 dataSnapshot.getRef().removeValue();
 

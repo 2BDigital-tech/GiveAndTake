@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/orange_vagues"
+    android:background="@drawable/orange1"
     tools:context=".Admin.ShowUsers">
 
 
@@ -18,12 +18,14 @@
             android:id="@+id/Text_user_view"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:background="#70ACA4B9"
+            android:background="@android:color/white"
+            android:fontFamily="@font/damion"
             android:text="@string/all_user_registered"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="italic"
+            android:textColor="@color/orange"
+            android:textSize="36sp"
+            android:textStyle="bold"
             android:typeface="serif" />
 
         <ScrollView
@@ -33,7 +35,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/find_friends_recycler_list"

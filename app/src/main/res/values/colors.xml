@@ -8,7 +8,7 @@
     <color name="red">#F5B746</color>
     <color name="colorButtonTransparent">#FD050505</color>
     <color name="ora">#FCB468</color>
-    <color name="orange">#FCA548</color>
+    <color name="orange">#F86F19</color>
     <color name="dark_orange">#FCB468</color>
     <color name="white">#FFFFFF</color>
     <color name="ivory">#FFFFF0</color>
@@ -151,6 +151,7 @@
     <color name="light_orange">#98FCE6CF</color>
     <color name="pale">#FFCF9F</color>
     <color name="black1">#AC000000</color>
+    <color name="orange2">#FBCD8C</color>
 
 
 </resources>

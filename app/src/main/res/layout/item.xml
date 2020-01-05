@@ -22,14 +22,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
-            android:text="Post creator:"
+            android:text="Posted by:"
             android:textSize="13dp" />
 
         <TextView
             android:id="@+id/NameAsk"
             android:layout_width="103dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="67dp"
             android:layout_marginTop="2dp"
             android:text="Name"
             android:textColor="@color/black"
@@ -136,9 +136,9 @@
             android:id="@+id/TakeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="30dp"
-            android:text="You need:"
+            android:text="This user needs:"
             android:textColor="@color/black"
             android:textSize="17dp"
             android:textStyle="bold"></TextView>

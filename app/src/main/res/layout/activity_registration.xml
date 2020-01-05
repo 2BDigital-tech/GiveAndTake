@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange_vagues"
+    android:background="@drawable/orange1"
     tools:context=".Login.RegistrationActivity">
 
 
@@ -76,7 +76,7 @@
                 android:hint="@string/full_name"
                 android:nextFocusDown="@id/edit_text_email"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/orange" />
+                android:textColorHint="@color/orange2" />
 
             <EditText
                 android:id="@+id/edit_text_email"
@@ -88,7 +88,7 @@
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/edit_text_password"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/orange" />
+                android:textColorHint="@color/orange2" />
 
 
             <EditText
@@ -102,7 +102,7 @@
                 android:inputType="textPassword"
                 android:nextFocusDown="@id/edit_text_phone"
                 android:textColor="@color/colorText"
-                android:textColorHint="@color/orange" />
+                android:textColorHint="@color/orange2" />
 
             <EditText
                 android:id="@+id/edit_text_phone"
@@ -117,7 +117,7 @@
                 android:maxLength="10"
                 android:nextFocusDown="@id/button_register"
                 android:textColor="@color/colorText"
-                android:textColorHint="@color/orange" />
+                android:textColorHint="@color/orange2" />
 
             <Spinner
                 android:id="@+id/cityspinner"
@@ -152,7 +152,7 @@
                     android:layout_height="29dp"
                     android:layout_weight="1"
                     android:text="Already have an account? SIGN IN"
-                    android:textColor="@android:color/holo_orange_dark"
+                    android:textColor="@color/orange2"
                     android:textSize="18sp" />
             </LinearLayout>
 

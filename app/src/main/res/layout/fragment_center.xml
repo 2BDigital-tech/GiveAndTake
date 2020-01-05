@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange_vagues">
+    android:background="@drawable/orange1">
 
     <TextView
 
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:fontFamily="@font/damion"
+        android:text="Your activity"
         android:textAlignment="center"
         android:textColor="@color/orange"
         android:textSize="@dimen/app_name_size" />

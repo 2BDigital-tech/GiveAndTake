@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange_vagues"
+    android:background="@drawable/orange1"
     tools:context=".Admin.AdminConnect">
 
 
@@ -12,13 +12,14 @@
         android:id="@+id/User_txt_view"
         android:layout_width="406dp"
         android:layout_height="65dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/damion"
         android:lineSpacingExtra="18sp"
         android:text="Admin Connector"
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,48 +29,44 @@
         android:id="@+id/View_User"
         android:layout_width="155dp"
         android:layout_height="134dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="@android:color/transparent"
 
         android:text="Show Users"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/allpostadmin"
 
         android:layout_width="155dp"
         android:layout_height="134dp"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="@android:color/transparent"
-
+        android:layout_marginStart="48dp"
         android:layout_marginEnd="53dp"
+
+        android:backgroundTint="@android:color/transparent"
         android:text="@string/all_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ViewAllTrades"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/ViewAllTrades"
 
         android:layout_width="155dp"
         android:layout_height="134dp"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginEnd="30dp"
 
-        android:layout_marginEnd="32dp"
+        android:backgroundTint="@android:color/transparent"
         android:text="@string/all_trades"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/allpostadmin"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/ViewAllHistory"

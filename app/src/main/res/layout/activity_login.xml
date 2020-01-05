@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orange_vagues"
+    android:background="@drawable/orange1"
     tools:context=".Login.LoginActivity">
 
     <LinearLayout
@@ -100,7 +100,7 @@
             android:layout_height="9dp"
             android:layout_weight="1"
             android:text="Forgot your password? Click HERE"
-            android:textColor="?attr/colorControlActivated"
+            android:textColor="@color/light_orange"
             android:textSize="16sp" />
 
         <Button

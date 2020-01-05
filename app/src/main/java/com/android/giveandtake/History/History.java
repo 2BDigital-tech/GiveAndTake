@@ -21,7 +21,7 @@ public class History {
     }
 
     public String History_timeAndDate() {
-        return new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(history_time);
+        return new java.text.SimpleDateFormat("dd/MM/yyyy").format(history_time);
     }
 
     public String getUser_postedID() {
