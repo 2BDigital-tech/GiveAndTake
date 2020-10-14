@@ -1,4 +1,4 @@
-package com.android.help;
+package com.android.giveandtake;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,10 +17,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.help.Login.Account_Google;
-import com.android.help.Login.LoginActivity;
-import com.android.help.Login.RegistrationActivity;
-import com.android.giveandtake.R;
+import com.android.giveandtake.Login.Account_Google;
+import com.android.giveandtake.Login.LoginActivity;
+import com.android.giveandtake.Login.RegistrationActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -38,6 +37,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 /**
  * This class represents the starting page of the application where you can register to the app or log in if you're alreagy registered

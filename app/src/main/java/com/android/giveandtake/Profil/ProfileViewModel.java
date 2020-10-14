@@ -1,4 +1,4 @@
-package com.android.help.Profil;
+package com.android.giveandtake.Profil;
 
 import androidx.lifecycle.ViewModel;
 

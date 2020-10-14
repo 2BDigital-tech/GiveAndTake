@@ -1,4 +1,4 @@
-package com.android.help.Admin;
+package com.android.giveandtake.Admin;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.help.Center.Trade;
+import com.android.giveandtake.Center.Trade;
 import com.android.giveandtake.R;
-import com.android.help.home.ItemAdapter;
-import com.android.help.home.Post;
+import com.android.giveandtake.home.ItemAdapter;
+import com.android.giveandtake.home.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

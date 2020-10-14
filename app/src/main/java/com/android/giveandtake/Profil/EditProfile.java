@@ -1,4 +1,4 @@
-package com.android.help.Profil;
+package com.android.giveandtake.Profil;
 
 import android.os.Bundle;
 import android.util.Patterns;

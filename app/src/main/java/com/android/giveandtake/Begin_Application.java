@@ -1,4 +1,4 @@
-package com.android.help;
+package com.android.giveandtake;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.help.Admin.AdminConnect;
-import com.android.help.Login.Account_Google;
-import com.android.giveandtake.R;
+import com.android.giveandtake.Admin.AdminConnect;
+import com.android.giveandtake.Login.Account_Google;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +39,8 @@ public class Begin_Application extends AppCompatActivity {
             @Override
             public void run() {
                 FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null){
+                if(user!=null)//noinspection MagicConstant
+                {
 
                     final String currentUserID="nDk5cYyLV6Vjpt858AQDF1VNClr2";
                     final String uid=user.getUid().toString();

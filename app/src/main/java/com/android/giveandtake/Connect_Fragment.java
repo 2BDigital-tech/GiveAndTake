@@ -1,4 +1,4 @@
-package com.android.help;
+package com.android.giveandtake;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.android.giveandtake.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Connect_Fragment extends AppCompatActivity {
