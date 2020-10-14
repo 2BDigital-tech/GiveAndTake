@@ -1,4 +1,4 @@
-package com.android.giveandtake.home;
+package com.android.help.home;
 
 /**
  * Class to create a post with all it's information

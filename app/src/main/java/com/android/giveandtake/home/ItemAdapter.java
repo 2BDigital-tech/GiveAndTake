@@ -1,4 +1,4 @@
-package com.android.giveandtake.home;
+package com.android.help.home;
 
 import android.view.LayoutInflater;
 import android.view.View;

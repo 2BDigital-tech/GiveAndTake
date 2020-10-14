@@ -1,7 +1,6 @@
-package com.android.giveandtake.Admin;
+package com.android.help.Admin;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.giveandtake.History.History;
-import com.android.giveandtake.History.historyAdapter;
+import com.android.help.History.History;
+import com.android.help.History.historyAdapter;
 import com.android.giveandtake.R;
-import com.android.giveandtake.home.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class History_Show_All extends AppCompatActivity{
 

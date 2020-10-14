@@ -1,4 +1,4 @@
-package com.android.giveandtake.Login;
+package com.android.help.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.giveandtake.Begin_Application;
-import com.android.giveandtake.Connect_Fragment;
+import com.android.help.Begin_Application;
+import com.android.help.Connect_Fragment;
 import com.android.giveandtake.R;
-import com.android.giveandtake.Start_Application;
+import com.android.help.Start_Application;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

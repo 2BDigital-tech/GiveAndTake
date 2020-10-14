@@ -1,4 +1,4 @@
-package com.android.giveandtake.Login;
+package com.android.help.Login;
 
 /**
  * Class that represents all of a user's information to add it in firebase

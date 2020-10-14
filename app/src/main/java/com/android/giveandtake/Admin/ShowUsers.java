@@ -1,4 +1,4 @@
-package com.android.giveandtake.Admin;
+package com.android.help.Admin;
 
 import android.content.Intent;
 import android.net.Uri;

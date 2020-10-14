@@ -1,4 +1,4 @@
-package com.android.giveandtake.Center;
+package com.android.help.Center;
 
 import android.view.LayoutInflater;
 import android.view.View;

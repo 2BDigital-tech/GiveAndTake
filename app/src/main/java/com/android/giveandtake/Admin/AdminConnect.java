@@ -1,4 +1,4 @@
-package com.android.giveandtake.Admin;
+package com.android.help.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.giveandtake.R;
-import com.android.giveandtake.Start_Application;
+import com.android.help.Start_Application;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
